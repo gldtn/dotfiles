@@ -1,0 +1,1 @@
+export PATH="/Users/gldtn/.composer/vendor/bin:$PATH"

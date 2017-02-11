@@ -2,8 +2,6 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
 tap 'homebrew/dupes' # https://github.com/Homebrew/homebrew-dupes
-#tap 'homebrew/homebrew-php' # https://github.com/Homebrew/homebrew-php
-#tap 'homebrew/services' # https://github.com/Homebrew/homebrew-services
 
 # GNU Command Line Tools
 brew 'ack' # http://brewformulas.org/Ack
@@ -60,3 +58,7 @@ cask 'transmission' # https://transmissionbt.com
 cask 'tunnelbear' # https://tunnelbear.com
 cask 'vlc' # videolan.org/vlc/
 cask 'flux' # https://justgetflux.com
+cask 'sequel-pro' # sequelpro.com
+cask 'spamsieve' # http://c-command.com/spamsieve/
+cask 'appcleaner' # http://freemacsoft.net/appcleaner/
+cask 'carbon-copy-cloner' # http://bombich.com/
