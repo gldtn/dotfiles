@@ -9,11 +9,11 @@ return {
     },
     cmd = "Neogit",
     keys = {
-      { "<Leader>N", "<cmd>Neogit<CR>", desc = "Neogit" },
+      { "<C-n>", "<cmd>Neogit<CR>", desc = "Neogit" },
     },
     -- See: https://github.com/TimUntersberger/neogit#configuration
     opts = {
-      kind = "split", -- opens neogit in a split
+      kind = "tab", -- tab/floating/split/vsplit
       signs = {
         -- { CLOSED, OPENED }
         section = { "", "" },
