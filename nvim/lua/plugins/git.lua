@@ -16,9 +16,21 @@ return {
       kind = "tab", -- tab/floating/split/vsplit
       signs = {
         -- { CLOSED, OPENED }
-        section = { "", "" },
-        item = { "", "" },
         hunk = { "", "" },
+        item = { "", "" },
+        section = { "", "" },
+      },
+      sections = {
+        untracked = {
+          folded = true,
+          hidden = false,
+        },
+      },
+      commit_view = {
+        kind = "floating"
+      },
+      popup = {
+        kind = "floating",
       },
       integrations = { diffview = true },  -- adds integration with diffview.nvim
       disable_commit_confirmation = false, -- disables the commit confirmation message
