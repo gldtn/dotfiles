@@ -9,7 +9,7 @@ return {
     },
     cmd = "Neogit",
     keys = {
-      { "<C-n>", "<cmd>Neogit<CR>", desc = "Neogit" },
+      { "<C-g>", "<cmd>Neogit<CR>", desc = "Neogit" },
     },
     -- See: https://github.com/TimUntersberger/neogit#configuration
     opts = {

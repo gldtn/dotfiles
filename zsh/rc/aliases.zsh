@@ -85,11 +85,11 @@ alias yadmp="yadm push -u origin main:main" # Push
 alias yadmrebase="yadm pull --rebase origin main" # Rebase
 
 # Yabai/SKHD
-alias :yaedit="${EDITOR} \${XDG_CONFIG_HOME}/yabai"
-alias :yaupdate="${XDG_CONFIG_HOME}/yabai/./update.sh"
+alias :yabedit="${EDITOR} \${XDG_CONFIG_HOME}/yabai"
+alias :yabupdate="${XDG_CONFIG_HOME}/yabai/./update.sh"
 alias :esk="${EDITOR} \${XDG_CONFIG_HOME}/skhd/skhdrc"
-alias :yaapp="yabai -m query --windows | jq '.[].app'"
-alias :yatitle="yabai -m query --windows | jq '.[].title'"
+alias :yabapp="yabai -m query --windows | jq '.[].app'"
+alias :yabtitle="yabai -m query --windows | jq '.[].title'"
 
 # Jankyborders
 alias r.borders="brew services restart felixkratz/formulae/borders"
