@@ -80,6 +80,12 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window W
 -- [[ Misc/Experimental ]]
 -- ------------------------------------------------
 
+map("n", "<leader>GG", "<cmd>Git<CR>", { desc = "Git summary" })
+map("n", "<leader>Gc", "<cmd>Git add<CR>", { desc = "Git commit" })
+map("n", "<leader>Gc", "<cmd>Git remove<CR>", { desc = "Delete file" })
+map("n", "<leader>Gc", "<cmd>Git commit<CR>", { desc = "Git commit" })
+map("n", "<leader>Gb", "<cmd>Git blame<CR>", { desc = "Git blame" })
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
