@@ -1,0 +1,32 @@
+live_config_reload = true
+
+import = ["/Users/gldtn/.config/alacritty/theme_loader.toml"]
+
+[window]
+  opacity = 1
+  [window.padding]
+    x = 16
+    y = 16
+  dynamic_padding = false
+  # decorations = "buttonless"
+  title = "Alacritty > gldtn"
+
+[font.normal]
+  # family = "Monolisa"
+  # family = "SFMono Nerd Font"
+  family = "FiraCode Nerd Font"
+  style = "Light"
+
+[font.bold]
+  family = "Monolisa"
+  # family = "SFMono Nerd Font"
+  # family = "FiraCode Nerd Font"
+  # family = "FiraCode Nerd Font Mono"
+  style = "Regular"
+
+font.size = 18
+# use_thin_strokes = true
+# AppleFontSmooting = true
+
+[scrolling]
+  history = 10000

@@ -1,0 +1,42 @@
+source "$HOME/.config/sketchybar/colors.sh"
+source "$HOME/.config/sketchybar/icons.sh"
+source "$HOME/.config/sketchybar/icons_alt.sh" # Loads all defined icons
+source "$HOME/.config/sketchybar/userconfig.sh" # Loads all defined variables
+
+# Setting up and starting the helper process
+source "$HOME/.config/sketchybar/helper/helper.sh"
+
+export PLUGIN_DIR="$HOME/.config/sketchybar/gplugs" # Directory where all the plugins are stored
+export HELPER_DIR="$HOME/.config/sketchybar/helper"
+export ITEM_DIR="$HOME/.config/sketchybar/items"
+
+## Bar
+BAR=(
+    height=32
+    position=top
+    padding_left=0
+    padding_right=14
+    color=$BAR_COLOR
+    shadow=off
+    topmost=off
+)
+sketchybar -m --bar "${BAR[@]}"
+
+## Call global defaults
+sketchybar -m --default "${defaults[@]}"
+
+## Left items
+source "$PLUGIN_DIR/spaces/spaces.sh"
+
+## Center items
+source "$PLUGIN_DIR/spotify/item/spotify.sh"
+
+## Right items
+source "$PLUGIN_DIR/calendar/calendar.sh"
+#source "$PLUGIN_DIR/volume/volume.sh"
+source "$PLUGIN_DIR/mic/mic.sh"
+source "$PLUGIN_DIR/stats/stats.sh"
+
+## FINALIZING THE SETUP
+sketchybar -m --update
+echo "sketchybar configuration loaded.."

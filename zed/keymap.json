@@ -1,0 +1,83 @@
+[
+    {
+        "context": "Editor",
+        "bindings": {
+            //"cmd-e r": "editor::Rename",
+            "cmd-g cmd-g": "editor::GoToDefinition",
+            "cmd-g cmd-s": "editor::GoToDefinitionSplit",
+            "cmd-g cmd-t": "editor::GoToTypeDefinition",
+            "cmd-shift-9": "editor::GoToDiagnostic",
+            "cmd-shift-0": "editor::GoToPrevDiagnostic",
+            "ctrl-h": null,
+            "ctrl-j": null,
+            "ctrl-k": null,
+            "ctrl-l": null,
+            "ctrl-+": null,
+            "ctrl--": null,
+            "cmd-e": "editor::MoveToEndOfLine"
+        }
+    },
+    {
+        "context": "Pane",
+        "bindings": {
+            "cmd-k up": null,
+            "cmd-k down": null,
+            "cmd-k left": null,
+            "cmd-k right": null,
+            "ctrl-h": "pane::SplitUp",
+            "ctrl-j": "pane::SplitDown",
+            "ctrl-k": "pane::SplitLeft",
+            "ctrl-l": "pane::SplitRight",
+            "ctrl-w": "pane::CloseActiveItem",
+            "ctrl-[": "workspace::ActivatePreviousPane",
+            "ctrl-]": "workspace::ActivateNextPane",
+            "ctrl-shift-j": "editor::JoinLines"
+        }
+    },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-n": "editor::NextScreen",
+            "ctrl-b": "editor::Backspace",
+            // cmd
+            "cmd-p": "file_finder::Toggle",
+            "cmd-t": "project_symbols::Toggle",
+            "cmd-1": ["workspace::ActivatePane", 0],
+            "cmd-2": ["workspace::ActivatePane", 1],
+            "cmd-3": ["workspace::ActivatePane", 2],
+            "cmd-4": ["workspace::ActivatePane", 3],
+            "cmd-5": ["workspace::ActivatePane", 4],
+            "cmd-6": ["workspace::ActivatePane", 5],
+            "cmd-7": ["workspace::ActivatePane", 6],
+            "cmd-8": ["workspace::ActivatePane", 7],
+            "cmd-9": ["workspace::ActivatePane", 8],
+            // cmd-k key
+            "cmd-k t": "theme_selector::Toggle",
+            "cmd-k m": "language_selector::Toggle",
+            // cmd-k cmd-key
+            "cmd-k cmd-s": "zed::OpenKeymap",
+            "cmd-k cmd-a": "assistant::ToggleFocus",
+            "cmd-k cmd-z": "workspace::CloseAllDocks",
+            "cmd-b": null,
+            "cmd-k cmd-h": "workspace::ToggleLeftDock",
+            "cmd-r": null,
+            "cmd-k cmd-l": "workspace::ToggleRightDock",
+            "cmd-j": null,
+            "cmd-k cmd-j": "workspace::ToggleBottomDock",
+            // cmd-alt
+            "cmd-alt-s": "workspace::SaveAll",
+            // cmd-shift
+            "cmd-shift-m": "diagnostics::Deploy",
+            "cmd-shift-f": "workspace::NewSearch",
+            "cmd-shift-p": "command_palette::Toggle",
+            "cmd-shift-e": null,
+            "cmd-k cmd-e": "project_panel::ToggleFocus"
+        }
+    },
+    {
+        "context": "ProjectPanel",
+        "bindings": {
+            "cmd-r": "project_panel::Rename"
+        }
+    }
+]

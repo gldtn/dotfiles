@@ -1,0 +1,20 @@
+import = ["/Users/gldtn/.config/alacritty/themes/rose-pine-moon.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 16
+padding.y = 16
+dynamic_padding = false
+decorations = "Buttonless"
+
+[font]
+normal.family = "FiraCode Nerd Font"
+normal.style = "Light"
+#bold.family = "MonoLisa Variable"
+bold.style = "Regular"
+size = 18.0
+
+[colors]
+draw_bold_text_with_bright_colors = true
