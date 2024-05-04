@@ -52,9 +52,7 @@ return {
         interval = 1000,
         follow_files = true,
       },
-      preview_config      = {
-        border = 'rounded',
-      },
+
       on_attach           = function(bufnr)
         local gitsigns = require('gitsigns')
 
@@ -82,12 +80,11 @@ return {
         end)
 
         -- Actions
-        map('n', '<leader>hp', gitsigns.preview_hunk, { desc = "Preview hunk" })
-        map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end, { desc = "Git blame" })
-        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "[GS] Toggle current line blame" })
+        map('n', '<leader>hp', "<cmd>Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
+        map('n', '<leader>tb', "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "[GS] Toggle current line blame" })
         map('n', '<leader>hd', gitsigns.diffthis, { desc = "Diff this" })
         map('n', '<leader>hD', function() gitsigns.diffthis('~') end, { desc = "Diff since last commit" })
-        map('n', '<leader>td', gitsigns.toggle_deleted, { desc = "[GS] Toggle deleted" })
+        map('n', '<leader>td', "<cmd>Gitsigns toggle_deleted<CR>", { desc = "[GS] Toggle deleted" })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
