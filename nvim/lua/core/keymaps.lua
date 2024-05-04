@@ -42,16 +42,16 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 map("i", "<C-c>", "<C-o>gcc", { remap = true, desc = "Line comment" })
 map("i", "<C-b>", "<C-o>gbc", { remap = true, desc = "Block comment" })
 map("i", "<C-p>", "<C-o>gcip", { remap = true, desc = "Paragraph comment" })
-map({ "n", "v" }, "<C-c>", "gcc", { remap = true, desc = "Line comment" })
-map({ "n", "v" }, "<C-b>", "gbc", { remap = true, desc = "Block comment" })
-map({ "n", "v" }, "<C-p>", "gcip", { remap = true, desc = "Paragraph comment" })
+map({ "n", "v" }, "<M-c>", "gcc", { remap = true, desc = "Line comment" })
+map({ "n", "v" }, "<M-b>", "gbc", { remap = true, desc = "Block comment" })
+map({ "n", "v" }, "<M-p>", "gcip", { remap = true, desc = "Paragraph comment" })
 
 -- buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Alternate Buffer" })
 map("n", "<leader>bq", "<cmd>bd<cr>", { desc = "Close Buffer" })
-map("n", "<C-q>", "<cmd>bd<cr>", { desc = "Close Buffer" })
+map("n", "<M-w>", "<cmd>bd<cr>", { desc = "Close Buffer" })
 
 -- Move to window using the <ctrl> hjkl keys
 map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
