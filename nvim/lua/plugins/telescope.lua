@@ -43,12 +43,9 @@ return {
           n = { ["q"] = require("telescope.actions").close },
         },
         file_ignore_patterns = {
-          "node_modules",
-          "yarn.lock",
-          ".git",
-          "DS_Store",
+          ".DS_Store",
         },
-        hidden = true,
+        -- hidden = true,
       },
       -- pickers
       pickers = {
@@ -74,7 +71,7 @@ return {
         find_files = {
           prompt_prefix = "   ",
           -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+          find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
         },
         oldfiles = {
           prompt_prefix = "   ",
