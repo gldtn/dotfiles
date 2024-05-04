@@ -1,3 +1,29 @@
+-- thanks @CKolkey for this function
+-- See: https://github.com/CKolkey/config/blob/master/nvim/lua/ckolkey/plugins/telescope.lua
+local live_grep = function()
+  local filetype = vim.fn.expand("%:e")
+  if filetype == "" then
+    filetype = "*"
+  end
+
+  require("telescope").extensions.live_grep_args.live_grep_args({ debounce = 100 })
+
+  local keys = vim.api.nvim_replace_termcodes([["" -g "*.]] .. filetype .. [["<c-a><right>]], true, false, true)
+
+  vim.api.nvim_feedkeys(keys, "c", false)
+end
+
+local grep_current_word = function()
+  local word = vim.fn.expand("<cword>")
+  local filetype = vim.fn.expand("%:e")
+
+  require("telescope").extensions.live_grep_args.live_grep_args({ debounce = 100 })
+
+  local keys = vim.api.nvim_replace_termcodes([["" -g "*.]] .. filetype .. [["<c-a><right>]] .. word, true, false, true)
+
+  vim.api.nvim_feedkeys(keys, "c", false)
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
@@ -7,45 +33,80 @@ return {
     "dharmx/track.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
+    "natecraddock/telescope-zf-native.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build =
-      "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-      cond = vim.fn.executable("cmake") == 1,
-    },
+    "nvim-telescope/telescope-live-grep-args.nvim",
+    { "nvim-telescope/telescope-file-browser.nvim", dev = false },
+    { "nvim-telescope/telescope-fzf-native.nvim",   build = "make" },
+  },
+  keys = {
+    { "<c-t>",     "<cmd>Telescope colorscheme<cr>",                                                    desc = "Themes" },
+    { "<c-g>",     live_grep,                                                                           desc = "Live Grep" },
+    { "<c-f>",     "<cmd>Telescope find_files<cr>",                                                     desc = "Find File" },
+    { "<c-h>",     "<cmd>Telescope help_tags<cr>",                                                      desc = "Help Tags" },
+    { "-",         "<cmd>Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", desc = "File drawer" },
+    { "<c-r>",     "<cmd>Telescope oldfiles<cr>",                                                       desc = "Recent Files" },
+    { "<c-b",      "<cmd>Telescope buffers<cr>",                                                        desc = "List Buffers" },
+    { "<c-n",      function() require("telescope").extensions.notify.notify() end,                      desc = "Notifications" },
+    { "<c-space>", grep_current_word,                                                                   desc = "Grep current word" },
   },
 
   config = function()
     -- import telescope plugin
     local telescope = require("telescope")
+    local actions = require("telescope.actions")
     -- configure telescope
     telescope.setup({
-      dynamic_preview_title = true,
       defaults = {
         layout_config = {
           width = 0.80,
           height = 0.80,
         },
-        sorting_strategy = "ascending",
         prompt_prefix = "  ",
         selection_caret = "   ",
         entry_prefix = "    ",
+        show_line = false,
+        dynamic_preview_title = true,
+        sorting_strategy = "ascending",
         set_env = { ["COLORTERM"] = "truecolor" },
         mappings = {
           i = {
             ["<C-h>"] = "which_key",
-            ["<C-q>"] = require("telescope.actions").close,
-            ["<C-j>"] = require("telescope.actions").move_selection_next,
-            ["<C-k>"] = require("telescope.actions").move_selection_previous,
+            ["<esc>"] = actions.close,
+            ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+            ["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
+            ["<c-n>"] = actions.move_selection_next,
+            ["<c-q>"] = actions.send_selected_to_qflist,
+            ["<c-s>"] = actions.file_split,
+            ["<cr>"] = function(prompt_bufnr)
+              local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+              if #picker:get_multi_selection() > 1 then
+                actions.send_selected_to_qflist(prompt_bufnr)
+                actions.open_qflist(prompt_bufnr)
+              else
+                actions.select_default(prompt_bufnr)
+              end
+            end,
           },
-          n = { ["q"] = require("telescope.actions").close },
+          n = { ["<esc>"] = actions.close },
         },
         file_ignore_patterns = {
-          ".DS_Store",
+          "^.git\\/.*",
+          "^log\\/.*",
+          "^%.DS_Store$",
         },
         -- hidden = true,
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          -- "--hidden",
+          "--column",
+          "--smart-case",
+          -- "--trim",
+        },
       },
       -- pickers
       pickers = {
@@ -70,8 +131,14 @@ return {
         },
         find_files = {
           prompt_prefix = "   ",
-          -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-          find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+          find_command = {
+            "fd",
+            "--type",
+            "f",
+            "--strip-cwd-prefix",
+            "--color=never",
+            "--hidden",
+          }
         },
         oldfiles = {
           prompt_prefix = "   ",
@@ -120,9 +187,26 @@ return {
         },
       },
       extensions = {
+        ["zf-native"] = {
+          file = {
+            enable = true,
+            highlight_results = true,
+            match_filename = true,
+          },
+          generic = {
+            enable = true,
+            highlight_results = true,
+            match_filename = false,
+          },
+        },
         fzf = {
+          fuzzy = true,
           override_generic_sorter = false,
-          override_file_sorter = true,
+          override_file_sorter = false,
+          case_mode = "smart_case",
+        },
+        live_grep_args = {
+          auto_quoting = false,
         },
         file_browser = {
           dir_icon = "󰉓 ",
@@ -150,18 +234,9 @@ return {
     -- load telescope extensions
     telescope.load_extension("fzf")
     telescope.load_extension("track")
+    telescope.load_extension("zf-native")
     telescope.load_extension("ui-select")
+    telescope.load_extension("file_browser")
+    telescope.load_extension("live_grep_args")
   end,
-
-  keys = {
-    { "<leader>ft",       "<cmd>Telescope colorscheme<cr>",                                                    desc = "Themes" },
-    { "<leader>fg",       "<cmd>Telescope live_grep<cr>",                                                      desc = "Live Grep" },
-    { "<leader>ff",       "<cmd>Telescope find_files<cr>",                                                     desc = "Find File" },
-    { "<leader>fh",       "<cmd>Telescope help_tags<cr>",                                                      desc = "Help Tags" },
-    { "<leader>fr",       "<cmd>Telescope oldfiles<cr>",                                                       desc = "Recent Files" },
-    { "<leader>bf",       "<cmd>Telescope file_browser<CR>",                                                   desc = "Browse Files" },
-    { "<leader><leader>", "<cmd>Telescope buffers<cr>",                                                        desc = "List Buffers" },
-    { "<leader>fn",       function() require("telescope").extensions.notify.notify() end,                      desc = "Notifications", },
-    { "<leader>bd",       "<cmd>Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", desc = "Browse Dir" },
-  },
 }

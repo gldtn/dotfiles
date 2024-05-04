@@ -10,11 +10,44 @@ return {
     },
     cmd = "Neogit",
     keys = {
-      { "<C-g>", "<cmd>Neogit<CR>", desc = "Neogit" },
+      { "<leader>gg", "<cmd>Neogit<CR>",                                                                             desc = "Neogit" },
+      { "<leader>gf", function() require("neogit").action("log", "log_current", { "--", vim.fn.expand("%") })() end, desc = "Git log for file" },
+      {
+        "<leader>gf",
+        function()
+          local file = vim.fn.expand("%")
+          vim.cmd([[execute "normal! \<ESC>"]])
+          local line_start = vim.fn.getpos("'<")[2]
+          local line_end = vim.fn.getpos("'>")[2]
+
+          require("neogit").action(
+            "log",
+            "log_current",
+            { "-L" .. line_start .. "," .. line_end .. ":" .. file }
+          )()
+        end,
+        desc = "Git log for this range",
+        mode = "v",
+      },
     },
     -- See: https://github.com/TimUntersberger/neogit#configuration
     opts = {
       kind = "tab", -- tab/floating/split/vsplit
+      mappings = {
+        popup = {
+          ["P"] = false,
+          ["p"] = "PushPopup",
+          ["F"] = "PullPopup",
+        },
+        rebase_editor = {
+          ["<c-d>"] = "Abort",
+          ["<c-c><c-k>"] = false,
+        },
+        commit_editor = {
+          ["<c-d>"] = "Abort",
+          ["<c-c><c-k>"] = false,
+        },
+      },
       signs = {
         -- { CLOSED, OPENED }
         hunk = { "", "" },
@@ -27,9 +60,9 @@ return {
           hidden = false,
         },
       },
-      commit_editor = { kind = "auto", show_staged_diff = false },
+      commit_editor = { show_staged_diff = false },
       -- commit_view = { kind = "floating" },
-      popup = { kind = "floating", },
+      -- popup = { kind = "floating", },
       integrations = {
         -- telescope = true, -- use telescope instead of vim.ui.select
         diffview = true,
