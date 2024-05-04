@@ -26,12 +26,9 @@ return {
           hidden = false,
         },
       },
-      commit_view = {
-        kind = "floating"
-      },
-      popup = {
-        kind = "floating",
-      },
+      commit_editor = { kind = "floating" },
+      commit_view = { kind = "floating" },
+      popup = { kind = "floating", },
       integrations = { diffview = true },  -- adds integration with diffview.nvim
       disable_commit_confirmation = false, -- disables the commit confirmation message
     },
