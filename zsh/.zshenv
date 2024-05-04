@@ -1,5 +1,6 @@
 # PATH
 export PATH="$PATH:${HOME}/.local/bin:${HOME}/bin:${HOME}/.composer/vendor/bin"
+export PATH="($brew --prefix)/opt/curl/bin:$PATH"
 
 # zsh config dir
 export ZDOTDIR=${HOME}/.config/zsh
@@ -17,6 +18,7 @@ export BROWSER="chrome"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export SHELL_SESSIONS_DISABLE=1 # Disable sessions MacOS
+export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgrep/"
 
 ### Programs related PATH ###
 
