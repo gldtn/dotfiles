@@ -20,7 +20,7 @@ vim.g.maplocalleader = " "
 map("n", "<M-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
 map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
 map({ "n", "v", "i" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-map("n", "<C-a>", "gg0VG$", { desc = "Select all" })
+map("n", "<M-a>", "gg0VG$", { desc = "Select all" })
 
 -- Identing; stay in indent mode
 map("v", "<", "<gv^")
@@ -39,9 +39,9 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- Comments
-map("i", "<C-c>", "<C-o>gcc", { remap = true, desc = "Line comment" })
-map("i", "<C-b>", "<C-o>gbc", { remap = true, desc = "Block comment" })
-map("i", "<C-p>", "<C-o>gcip", { remap = true, desc = "Paragraph comment" })
+map("i", "<M-c>", "<C-o>gcc", { remap = true, desc = "Line comment" })
+map("i", "<M-b>", "<C-o>gbc", { remap = true, desc = "Block comment" })
+map("i", "<M-p>", "<C-o>gcip", { remap = true, desc = "Paragraph comment" })
 map({ "n", "v" }, "<M-c>", "gcc", { remap = true, desc = "Line comment" })
 map({ "n", "v" }, "<M-b>", "gbc", { remap = true, desc = "Block comment" })
 map({ "n", "v" }, "<M-p>", "gcip", { remap = true, desc = "Paragraph comment" })
@@ -79,12 +79,6 @@ map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window W
 -- ------------------------------------------------
 -- [[ Misc/Experimental ]]
 -- ------------------------------------------------
-
-map("n", "<leader>GG", "<cmd>Git<CR>", { desc = "Git summary" })
-map("n", "<leader>Gc", "<cmd>Git add<CR>", { desc = "Git commit" })
-map("n", "<leader>Gc", "<cmd>Git remove<CR>", { desc = "Delete file" })
-map("n", "<leader>Gc", "<cmd>Git commit<CR>", { desc = "Git commit" })
-map("n", "<leader>Gb", "<cmd>Git blame<CR>", { desc = "Git blame" })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
