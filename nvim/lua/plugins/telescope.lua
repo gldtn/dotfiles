@@ -46,9 +46,9 @@ return {
     { "<c-h>",     "<cmd>Telescope help_tags<cr>",                                                      desc = "Help Tags" },
     { "-",         "<cmd>Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", desc = "File drawer" },
     { "<c-r>",     "<cmd>Telescope oldfiles<cr>",                                                       desc = "Recent Files" },
-    { "<c-b",      "<cmd>Telescope buffers<cr>",                                                        desc = "List Buffers" },
-    { "<c-n",      function() require("telescope").extensions.notify.notify() end,                      desc = "Notifications" },
-    { "<c-space>", grep_current_word,                                                                   desc = "Grep current word" },
+    { "<c-space>", "<cmd>Telescope buffers<cr>",                                                        desc = "List Buffers" },
+    { "<c-m>",     function() require("telescope").extensions.notify.notify() end,                      desc = "Notifications" },
+    { "<c-w>",     grep_current_word,                                                                   desc = "Grep current word" },
   },
 
   config = function()
@@ -196,7 +196,7 @@ return {
           generic = {
             enable = true,
             highlight_results = true,
-            match_filename = false,
+            match_filename = true,
           },
         },
         fzf = {

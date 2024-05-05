@@ -28,7 +28,7 @@ return {
         soft_blue                     = c.comment
         high_blue                     = c.blue
         soft_white                    = c.fg
-        keys                          = high_blue
+        keys                          = magenta
         -- telescope
         hl.TelescopeNormal            = { bg = dark, fg = soft_white, }
         hl.TelescopeBorder            = { bg = dark, fg = dark, }
