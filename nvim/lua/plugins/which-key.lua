@@ -8,7 +8,6 @@ return {
 
     -- import which-key plugin
     local wk = require("which-key")
-    local colors = require("tokyonight.colors").setup()
 
     -- configure which-key
     wk.setup({

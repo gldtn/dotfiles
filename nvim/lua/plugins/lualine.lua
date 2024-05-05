@@ -3,10 +3,10 @@ return {
   event = "VeryLazy",
   opts = function()
     vim.o.laststatus = vim.g.lualine_laststatus
-
+    local colors = require("tokyonight.colors").setup({ style = "moon" })
     return {
       options = {
-        theme = "auto",
+        theme = "tokyonight",
         globalstatus = true,
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
@@ -17,10 +17,10 @@ return {
           {
             "diagnostics",
             symbols = {
-              error = " ",
-              warn = " ",
-              hint = " ",
-              info = " ",
+              error = " ",
+              warn = " ",
+              info = " ",
+              hint = "󰝶 ",
             },
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           },
@@ -28,13 +28,31 @@ return {
         },
 
         lualine_x = {
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
-          { -- lazy status
+          {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
-            color = { fg = "#ff9e64" },
+            padding = { left = 1, right = 1 },
+            color = { fg = colors.orange },
+            separator = "  ",
+          },
+          { "encoding", separator = "  ", padding = { left = 1, right = 1 } },
+          {
+            "fileformat",
+            symbols = {
+              unix = "",
+              dos = "",
+              mac = "",
+            },
+            separator = "  ",
+            color = { fg = colors.bg },
+            padding = { left = 1, right = 1 },
+          },
+          {
+            "filetype",
+            icon_only = true,
+            separator = " ",
+            color = { fg = colors.blue },
+            padding = { left = 1, right = 1 }
           },
         },
         lualine_y = {
@@ -48,9 +66,6 @@ return {
         },
       },
       extensions = { "neo-tree", "lazy", "toggleterm", "trouble" },
-      -- inactive_winbar = {
-      --   lualine_c = { "filename" },
-      -- },
     }
   end,
 }

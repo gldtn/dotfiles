@@ -2,7 +2,6 @@ return {
   "akinsho/toggleterm.nvim",
   event = "VeryLazy",
   opts = function()
-    local colors = require("tokyonight.colors").setup()
     require("toggleterm").setup({
       size = 20,
       open_mapping = [[<C-/>]],
