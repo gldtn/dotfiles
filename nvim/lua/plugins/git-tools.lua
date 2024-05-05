@@ -33,6 +33,20 @@ return {
     -- See: https://github.com/TimUntersberger/neogit#configuration
     opts = {
       kind = "tab", -- tab/floating/split/vsplit
+      console_timeout = 10000,
+      telescope_sorter = function()
+        return require("telescope").extensions.fzf.native_fzf_sorter()
+      end,
+      filewatcher = {
+        enabled = true,
+      },
+      fetch_after_checkout = true,
+      auto_show_console = true,
+      disable_hint = true,
+      notification_icon = " ",
+      disable_insert_on_commit = "auto",
+      use_per_project_settings = true,
+      remember_settings = true,
       mappings = {
         popup = {
           ["P"] = false,
@@ -59,6 +73,12 @@ return {
           folded = true,
           hidden = false,
         },
+        rebase = {
+          folded = false,
+        },
+        recent = {
+          folded = false,
+        },
       },
       commit_editor = { show_staged_diff = false },
       -- commit_view = { kind = "floating" },
@@ -71,57 +91,25 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    event = { 'BufReadPre', 'BufNewFile' },
-    -- See: https://github.com/lewis6991/gitsigns.nvim#usage
-    -- stylua: ignore
+    event = "BufReadPre",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "[GS] Toggle current line blame" },
+      { "<leader>gw", ":Gitsigns toggle_word_diff<cr>",              desc = "Toggle word diff" },
+      { "[g",         ":Gitsigns next_hunk<cr>",                     desc = "Next hunk" },
+      { "]g",         ":Gitsigns prev_hunk<cr>",                     desc = "Previous hunk" },
+    },
     opts = {
-      signcolumn          = true,  -- Toggle with `:Gitsigns toggle_signs`
-      numhl               = false, -- Toggle with `:Gitsigns toggle_numhl`
-      linehl              = false, -- Toggle with `:Gitsigns toggle_linehl`
-      word_diff           = false, -- Toggle with `:Gitsigns toggle_word_diff`
-      current_line_blame  = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-      attach_to_untracked = true,
-      watch_gitdir        = {
-        interval = 1000,
-        follow_files = true,
+      signcolumn = true,
+      current_line_blame_formatter = "<author>:<author_time:%Y-%m-%d> - <summary>",
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "right_align",
+        delay = 1,
+        ignore_whitespace = false,
       },
-
-      on_attach           = function(bufnr)
-        local gitsigns = require('gitsigns')
-
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
-        end
-
-        -- Navigation
-        map('n', ']c', function()
-          if vim.wo.diff then
-            vim.cmd.normal({ ']c', bang = true })
-          else
-            gitsigns.nav_hunk('next')
-          end
-        end)
-
-        map('n', '[c', function()
-          if vim.wo.diff then
-            vim.cmd.normal({ '[c', bang = true })
-          else
-            gitsigns.nav_hunk('prev')
-          end
-        end)
-
-        -- Actions
-        map('n', '<leader>hp', "<cmd>Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
-        map('n', '<leader>tb', "<cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "[GS] Toggle current line blame" })
-        map('n', '<leader>hd', gitsigns.diffthis, { desc = "Diff this" })
-        map('n', '<leader>hD', function() gitsigns.diffthis('~') end, { desc = "Diff since last commit" })
-        map('n', '<leader>td', "<cmd>Gitsigns toggle_deleted<CR>", { desc = "[GS] Toggle deleted" })
-
-        -- Text object
-        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-      end
     },
   }
 }
