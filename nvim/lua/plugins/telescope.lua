@@ -7,8 +7,8 @@ local live_grep = function()
   end
 
   require("telescope").extensions.live_grep_args.live_grep_args({ debounce = 100 })
-
-  local keys = vim.api.nvim_replace_termcodes([["" -g "*.]] .. filetype .. [["<c-a><right>]], true, false, true)
+  -- search only in files of the same type as the current buffer
+  local keys = vim.api.nvim_replace_termcodes([[-g "*.]] .. filetype .. [[" <c-a><right>]], true, false, true)
 
   vim.api.nvim_feedkeys(keys, "c", false)
 end
@@ -18,10 +18,10 @@ local grep_current_word = function()
   local filetype = vim.fn.expand("%:e")
 
   require("telescope").extensions.live_grep_args.live_grep_args({ debounce = 100 })
+  -- search only in files of the same type as the current buffer
+  local keys = vim.api.nvim_replace_termcodes([[-g "*.]] .. filetype .. [[" <c-a><right>]] .. word, true, false, true)
 
-  local keys = vim.api.nvim_replace_termcodes([["" -g "*.]] .. filetype .. [["<c-a><right>]] .. word, true, false, true)
-
-  vim.api.nvim_feedkeys(keys, "c", false)
+  vim.api.nvim_feedkeys(keys, "n", false)
 end
 
 return {
@@ -113,11 +113,17 @@ return {
         buffers = {
           prompt_prefix = "   ",
           previewer = false,
+          cache_picker = false,
           sort_lastused = true,
           initial_mode = "normal",
           layout_config = {
             width = 0.3,
             height = 0.4,
+          },
+          mappings = {
+            i = {
+              ["<c-d>"] = "delete_buffer",
+            },
           },
         },
         colorscheme = {
@@ -131,6 +137,7 @@ return {
         },
         find_files = {
           prompt_prefix = "   ",
+          cache_picker = false,
           find_command = {
             "fd",
             "--type",
@@ -148,6 +155,7 @@ return {
         },
         live_grep = {
           prompt_prefix = "   ",
+          cache_picker = false,
         },
         help_tags = {
           prompt_prefix = "   ",
