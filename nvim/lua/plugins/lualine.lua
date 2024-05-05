@@ -44,14 +44,12 @@ return {
               mac = "",
             },
             separator = "  ",
-            color = { fg = colors.bg },
             padding = { left = 1, right = 1 },
           },
           {
             "filetype",
             icon_only = true,
             separator = " ",
-            color = { fg = colors.blue },
             padding = { left = 1, right = 1 }
           },
         },
