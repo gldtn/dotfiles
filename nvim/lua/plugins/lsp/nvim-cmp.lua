@@ -25,7 +25,7 @@ return {
   config = function()
     local cmp = require("cmp")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    require("utils.colorscheme")
+    -- require("utils.colorscheme")
 
     cmp.setup({
       snippet = {

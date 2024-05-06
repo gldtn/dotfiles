@@ -1,8 +1,7 @@
 return {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  config = function()
+  opts = function()
+    require("utils.colorscheme")
+
     require("tokyonight").setup({
       style = "moon",
       terminal_colors = true,
@@ -67,7 +66,6 @@ return {
         -- hl.NeogitCursorLineNr           = { fg = c.yellow, bg = c.bg15 }
       end,
     })
-
     -- set colorscheme
     vim.cmd([[colorscheme tokyonight]])
   end,
