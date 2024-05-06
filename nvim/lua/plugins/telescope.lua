@@ -69,6 +69,11 @@ return {
         dynamic_preview_title = true,
         sorting_strategy = "ascending",
         set_env = { ["COLORTERM"] = "truecolor" },
+        borderchars = {
+          prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+          results = { " ", " ", " ", " ", " ", " ", " ", " " },
+          preview = { " ", "", "", "▌", "▌", "", "", "▌" },
+        },
         mappings = {
           i = {
             ["<C-h>"] = "which_key",

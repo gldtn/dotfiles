@@ -3,64 +3,96 @@ return {
   event = "VeryLazy",
   opts = function()
     vim.o.laststatus = vim.g.lualine_laststatus
-    local colors = require("tokyonight.colors").setup({ style = "moon" })
+    local theme = require("lualine.themes.rose-pine")
+    local p = require("rose-pine.palette")
+
     return {
       options = {
-        theme = "tokyonight",
+        theme = theme,
         globalstatus = true,
+        component_separators = { "" },
+        section_separators = { "" },
         disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
       },
       sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
-        lualine_c = {
+        lualine_a = {
+          {
+            "mode",
+            -- icon = { " ", color = { fg = p.base, bg = p.overlay } },
+            separator = "",
+            icons_enabled = true,
+            color = { fg = p.love },
+            padding = { left = 1, right = 1 },
+          },
+          { "", separator = { left = "", right = "" }, draw_empty = "true" },
           {
             "diagnostics",
+            separator = "",
             symbols = {
-              error = " ",
-              warn = " ",
-              info = " ",
-              hint = "󰝶 ",
+              error = " ", --" ",
+              warn = " ", --" ",
+              info = " ", --" ",
+              hint = " " --"󰝶 ",
             },
-            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           },
-          { "filename", file_status = true, path = 1 },
+          {
+            "filename",
+            path = 1,
+            separator = "",
+            file_status = true,
+            padding = { left = 1, right = 0 },
+          },
         },
-
+        lualine_b = {
+          -- { "", separator = "", draw_empty = "true" },
+        },
+        lualine_c = {
+        },
         lualine_x = {
           {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
             padding = { left = 1, right = 1 },
-            color = { fg = colors.orange },
-            separator = "  ",
           },
-          -- { "encoding", separator = "  ", padding = { left = 1, right = 1 } },
-          -- {
-          --   "fileformat",
-          --   symbols = {
-          --     unix = "",
-          --     dos = "",
-          --     mac = "",
-          --   },
-          --   separator = "  ",
-          --   padding = { left = 1, right = 1 },
-          -- },
           {
-            "filetype",
-            icon_only = true,
-            separator = " ",
-            padding = { left = 1, right = 1 }
+            "branch",
+            separator = "",
+            fmt = string.upper,
+            icon = { "", color = { fg = p.gold } },
+          },
+          {
+            -- Lsp server name .
+            function()
+              local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+              local clients = vim.lsp.get_clients({ bufnr = 0 }) -- Filter by the current buffer
+              if next(clients) == nil then
+                return ""
+              end
+              for _, client in ipairs(clients) do
+                local filetypes = client.config.filetypes
+                if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                  return client.name
+                end
+              end
+            end,
+            icon = { " ", color = { fg = p.gold } },
+            fmt = string.upper,
+            color = { fg = p.muted, gui = "italic" },
+            padding = { left = 1, right = 2 },
           },
         },
         lualine_y = {
-          { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
-          { "location", padding = { left = 0, right = 1 } },
+          { "", draw_empty = true, separator = "", },
         },
         lualine_z = {
-          function()
-            return " " .. os.date("%I:%M%p")
-          end,
+          {
+            "location",
+            separator = "",
+            padding = { left = 1, right = 1 },
+          },
+          -- function()
+          --   return " " .. os.date("%I:%M %p")
+          -- end,
         },
       },
       extensions = { "neo-tree", "lazy", "toggleterm", "trouble" },

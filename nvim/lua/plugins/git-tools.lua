@@ -40,13 +40,14 @@ return {
       filewatcher = {
         enabled = true,
       },
-      fetch_after_checkout = true,
-      auto_show_console = true,
-      disable_hint = true,
-      notification_icon = " ",
-      disable_insert_on_commit = "auto",
-      use_per_project_settings = true,
+      disable_hint = false,
+      graph_style = "unicode",
       remember_settings = true,
+      notification_icon = " ",
+      auto_show_console = true,
+      fetch_after_checkout = true,
+      use_per_project_settings = true,
+      disable_insert_on_commit = "auto",
       mappings = {
         popup = {
           ["P"] = false,
@@ -69,6 +70,10 @@ return {
         section = { " ", " " },
       },
       sections = {
+        tracked = {
+          folded = false,
+          hidden = false,
+        },
         untracked = {
           folded = true,
           hidden = false,
