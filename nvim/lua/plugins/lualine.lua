@@ -35,17 +35,17 @@ return {
             color = { fg = colors.orange },
             separator = "  ",
           },
-          { "encoding", separator = "  ", padding = { left = 1, right = 1 } },
-          {
-            "fileformat",
-            symbols = {
-              unix = "",
-              dos = "",
-              mac = "",
-            },
-            separator = "  ",
-            padding = { left = 1, right = 1 },
-          },
+          -- { "encoding", separator = "  ", padding = { left = 1, right = 1 } },
+          -- {
+          --   "fileformat",
+          --   symbols = {
+          --     unix = "",
+          --     dos = "",
+          --     mac = "",
+          --   },
+          --   separator = "  ",
+          --   padding = { left = 1, right = 1 },
+          -- },
           {
             "filetype",
             icon_only = true,

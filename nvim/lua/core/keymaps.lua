@@ -17,6 +17,7 @@ vim.g.maplocalleader = " "
 -- a good part of these keymaps was stolen from Lazyvim.
 
 -- Misc bindings
+map("n", "x", "\"_x", { noremap = true }) -- don't yank
 map("n", "<M-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
 map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
 map({ "n", "v", "i" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
@@ -40,11 +41,9 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- Comments
 map("i", "<M-c>", "<C-o>gcc", { remap = true, desc = "Line comment" })
-map("i", "<M-b>", "<C-o>gbc", { remap = true, desc = "Block comment" })
-map("i", "<M-p>", "<C-o>gcip", { remap = true, desc = "Paragraph comment" })
+map("i", "<M-b>", "<C-o>gcip", { remap = true, desc = "Paragraph comment" })
 map({ "n", "v" }, "<M-c>", "gcc", { remap = true, desc = "Line comment" })
-map({ "n", "v" }, "<M-b>", "gbc", { remap = true, desc = "Block comment" })
-map({ "n", "v" }, "<M-p>", "gcip", { remap = true, desc = "Paragraph comment" })
+map({ "n", "v" }, "<M-b>", "gcip", { remap = true, desc = "Paragraph comment" })
 
 -- buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
