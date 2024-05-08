@@ -8,8 +8,8 @@ return {
     {
       "rcarriga/nvim-notify",
       opts = {
-        stages = "fade",
-        top_down = false,
+        -- stages = "fade",
+        -- top_down = false,
       },
     },
   },

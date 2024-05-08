@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   opts = function()
     vim.o.laststatus = vim.g.lualine_laststatus
-    local theme = require("lualine.themes.rose-pine")
+    local theme = require("../themes/lualine/rose-pine")
     local p = require("rose-pine.palette")
 
     return {
@@ -29,10 +29,14 @@ return {
             "diagnostics",
             separator = "",
             symbols = {
-              error = " ", --" ",
-              warn = " ", --" ",
-              info = " ", --" ",
-              hint = " " --"󰝶 ",
+              error = " ",
+              warn = " ",
+              info = " ",
+              hint = "󰝶 ",
+              -- error = " ",
+              -- warn = " ",
+              -- info = " ",
+              -- hint = " "
             },
           },
           {
@@ -53,6 +57,7 @@ return {
             require("lazy.status").updates,
             cond = require("lazy.status").has_updates,
             padding = { left = 1, right = 1 },
+            icon = { " ", color = { fg = p.gold } },
           },
           {
             "branch",
