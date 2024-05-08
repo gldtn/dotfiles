@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   opts = function()
     vim.o.laststatus = vim.g.lualine_laststatus
-    local theme = require("../themes/lualine/rose-pine")
+    local theme = require("themes.lualine.rose-pine")
     local p = require("rose-pine.palette")
 
     return {

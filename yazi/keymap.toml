@@ -1,0 +1,16 @@
+[[manager.prepend_keymap]]
+on   = [ "p" ]
+run  = "plugin --sync smart-paste"
+desc = "Paste into the hovered directory or CWD"
+
+[[manager.prepend_keymap]]
+on  = [ "T" ]
+run = "plugin --sync hide-preview"
+
+[[manager.prepend_keymap]]
+on  = [ "K" ]
+run = "plugin --sync parent-arrow --args=-1"
+
+[[manager.prepend_keymap]]
+on  = [ "J" ]
+run = "plugin --sync parent-arrow --args=1"
