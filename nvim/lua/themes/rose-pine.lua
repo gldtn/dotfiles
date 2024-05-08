@@ -1,14 +1,15 @@
+local darken = "#26233a"
 return {
   require("rose-pine").setup({
-    variant = "auto",        -- auto, main, moon, or dawn
-    dark_variant = "moon",   -- main, moon, or dawn
+    variant = "auto",      -- auto, main, moon, or dawn
+    dark_variant = "moon", -- main, moon, or dawn
     dim_inactive_windows = false,
     extend_background_behind_borders = true,
 
     enable = {
       terminal = true,
-      legacy_highlights = false,   -- Improve compatibility for previous versions of Neovim
-      migrations = true,           -- Handle deprecated options automatically
+      legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
+      migrations = true,         -- Handle deprecated options automatically
     },
 
     styles = {
@@ -49,21 +50,20 @@ return {
     },
 
     highlight_groups = {
-      -- Comment = { fg = "foam" },
-      -- VertSplit = { fg = "muted", bg = "muted" },
+      TelescopeBorder = { fg = "base", bg = "surface" },
+      TelescopeNormal = { fg = "subtle", bg = "surface" },
+      TelescopeSelection = { fg = "text", bg = "highlight_med" },
+      TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
+      TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
+
+      TelescopeTitle = { fg = "base", bg = "love" },
+      TelescopePromptTitle = { fg = "base", bg = "gold" },
+      TelescopePreviewTitle = { fg = "base", bg = "iris" },
+
+      TelescopePromptNormal = { fg = "text", bg = "overlay" },
+      TelescopePromptBorder = { fg = "overlay", bg = "overlay" },
     },
 
-    before_highlight = function(group, highlight, palette)
-      -- Disable all undercurls
-      -- if highlight.undercurl then
-      --     highlight.undercurl = false
-      -- end
-      --
-      -- Change palette colour
-      -- if highlight.fg == palette.pine then
-      --     highlight.fg = palette.foam
-      -- end
-    end,
   }),
   vim.cmd("colorscheme rose-pine")
 }
