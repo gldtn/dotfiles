@@ -61,6 +61,7 @@ return {
         layout_config = {
           width = 0.80,
           height = 0.80,
+          preview_width = 0.65,
         },
         prompt_prefix = "  ",
         selection_caret = "   ",
@@ -251,5 +252,6 @@ return {
     telescope.load_extension("ui-select")
     telescope.load_extension("file_browser")
     telescope.load_extension("live_grep_args")
+    vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
   end,
 }
