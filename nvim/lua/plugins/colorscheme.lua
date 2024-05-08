@@ -6,7 +6,7 @@ return {
     priority = 1000,
     name = "tokyonight",
     config = function()
-      require("lua/themes/tokyonight")
+      require("themes.tokyonight")
     end,
   },
   {
@@ -16,7 +16,7 @@ return {
     priority = 1000,
     name = "rose-pine",
     config = function()
-      require("lua/themes/rose-pine")
+      require("themes.rose-pine")
     end,
   },
 }
