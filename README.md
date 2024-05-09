@@ -1,5 +1,8 @@
-My personal dotfiles
+# My personal dotfiles
+### Use at your own risk 😎
 
-nvim + rose-pine-moon
+## Yabai + kitty + btop + rose-pine-moon
+![screenshot](shots/desktop.png)
 
+## nvim + rose-pine-moon theme
 ![screenshot](shots/nvim.png)
