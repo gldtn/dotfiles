@@ -49,7 +49,7 @@ return {
     },
     highlight_groupr = {
       -- notify
-      NotifyINFOBody = { bg = "base" },
+      NotifyINFOBody = { bg = "love" },
       NotifyINFOBorder = { bg = "base" },
       NotifyWARNBody = { bg = "base" },
       NotifyWARNBorder = { bg = "base" },
