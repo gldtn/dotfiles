@@ -27,7 +27,7 @@ end
 return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
-  lazy = true,
+  Lazy = true,
   cmd = "Telescope",
   dependencies = {
     "dharmx/track.nvim",
@@ -252,6 +252,7 @@ return {
     telescope.load_extension("ui-select")
     telescope.load_extension("file_browser")
     telescope.load_extension("live_grep_args")
+    -- add linenumbers to preview
     vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
   end,
 }

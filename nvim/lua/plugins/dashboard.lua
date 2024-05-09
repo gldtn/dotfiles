@@ -4,21 +4,19 @@ return {
     "kyazdani42/nvim-web-devicons",
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope.nvim",
+    { "nvim-telescope/telescope.nvim", lazy = true },
   },
   event = "VimEnter",
   opts = function()
-    -- stylua: ignore start
     local logo = [[
-      @gldtn
-      ██╗  ██╗██╗████████╗ █████╗ ███╗   ██╗ █████╗
-      ██║ ██╔╝██║╚══██╔══╝██╔══██╗████╗  ██║██╔══██╗
-      █████╔╝ ██║   ██║   ███████║██╔██╗ ██║███████║
-      ██╔═██╗ ██║   ██║   ██╔══██║██║╚██╗██║██╔══██║
-      ██║  ██╗██║   ██║   ██║  ██║██║ ╚████║██║  ██║
-      ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝
+      @gldtn                                             
+      ██╗  ██╗██╗████████╗ █████╗ ███╗   ██╗ █████╗       
+      ██║ ██╔╝██║╚══██╔══╝██╔══██╗████╗  ██║██╔══██╗      
+      █████╔╝ ██║   ██║   ███████║██╔██╗ ██║███████║      
+      ██╔═██╗ ██║   ██║   ██╔══██║██║╚██╗██║██╔══██║      
+      ██║  ██╗██║   ██║   ██║  ██║██║ ╚████║██║  ██║      
+      ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝      
     ]]
-    -- stylua: ignore end
 
     -- Add 12 empty lines above and below the logo
     logo = string.rep("\n", 10) .. logo .. "\n\n"
