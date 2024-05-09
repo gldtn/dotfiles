@@ -54,6 +54,10 @@ return {
           ["p"] = "PushPopup",
           ["F"] = "PullPopup",
         },
+        status = {
+          ["<c-s"] = "StageUnstaged",
+          ["<c-g><c-s>"] = "StageAll",
+        },
         rebase_editor = {
           ["<c-d>"] = "Abort",
           ["<c-c><c-k>"] = false,
@@ -97,7 +101,7 @@ return {
       "nvim-lua/plenary.nvim",
     },
     keys = {
-      { "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "[GS] Toggle current line blame" },
+      { "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "[GS] Toggle current line blame" },
       { "<leader>gw", ":Gitsigns toggle_word_diff<cr>",              desc = "Toggle word diff" },
       { "[g",         ":Gitsigns next_hunk<cr>",                     desc = "Next hunk" },
       { "]g",         ":Gitsigns prev_hunk<cr>",                     desc = "Previous hunk" },

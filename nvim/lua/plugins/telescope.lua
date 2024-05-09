@@ -40,15 +40,15 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim",   build = "make" },
   },
   keys = {
-    { "<c-t>",     "<cmd>Telescope colorscheme<cr>",                                                    desc = "Themes" },
-    { "<c-g>",     live_grep,                                                                           desc = "Live Grep" },
-    { "<c-f>",     "<cmd>Telescope find_files<cr>",                                                     desc = "Find File" },
-    { "<c-h>",     "<cmd>Telescope help_tags<cr>",                                                      desc = "Help Tags" },
-    { "-",         "<cmd>Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", desc = "File drawer" },
-    { "<c-r>",     "<cmd>Telescope oldfiles<cr>",                                                       desc = "Recent Files" },
-    { "<c-space>", "<cmd>Telescope buffers<cr>",                                                        desc = "List Buffers" },
-    { "<c-m>",     function() require("telescope").extensions.notify.notify() end,                      desc = "Notifications" },
-    { "<c-w>",     grep_current_word,                                                                   desc = "Grep current word" },
+    { "<c-k><c-t>",       "<cmd>Telescope colorscheme<cr>",                                                    desc = "Themes" },
+    { "<c-k><c-g>",       live_grep,                                                                           desc = "Live Grep" },
+    { "<c-k><c-f>",       "<cmd>Telescope find_files<cr>",                                                     desc = "Find File" },
+    { "<c-k><c-h>",       "<cmd>Telescope help_tags<cr>",                                                      desc = "Help Tags" },
+    { "<c-k><c-b>",       "<cmd>Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", desc = "File drawer" },
+    { "<c-k><c-r>",       "<cmd>Telescope oldfiles<cr>",                                                       desc = "Recent Files" },
+    { "<leader><leader>", "<cmd>Telescope buffers<cr>",                                                        desc = "List Buffers" },
+    { "<c-k><c-n>",       function() require("telescope").extensions.notify.notify() end,                      desc = "Notifications" },
+    { "<c-k><c-w>",       grep_current_word,                                                                   desc = "Grep current word" },
   },
 
   config = function()
@@ -61,7 +61,7 @@ return {
         layout_config = {
           width = 0.80,
           height = 0.80,
-          preview_width = 0.65,
+          preview_width = 0.6,
         },
         prompt_prefix = "  ",
         selection_caret = "   ",
@@ -118,13 +118,14 @@ return {
       pickers = {
         buffers = {
           prompt_prefix = "   ",
+          results_title = false,
           previewer = false,
-          cache_picker = false,
           sort_lastused = true,
           initial_mode = "normal",
           layout_config = {
             width = 0.3,
             height = 0.4,
+            prompt_position = "top",
           },
           mappings = {
             i = {
@@ -134,11 +135,13 @@ return {
         },
         colorscheme = {
           prompt_prefix = "   ",
+          results_title = false,
           previewer = false,
           sort_lastused = true,
           layout_config = {
             width = 0.3,
             height = 0.4,
+            prompt_position = "top",
           },
         },
         find_files = {

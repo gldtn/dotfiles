@@ -1,4 +1,3 @@
-local darken = "#26233a"
 return {
   require("rose-pine").setup({
     variant = "auto",      -- auto, main, moon, or dawn
@@ -8,8 +7,8 @@ return {
 
     enable = {
       terminal = true,
-      legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
-      migrations = true,         -- Handle deprecated options automatically
+      legacy_highlights = false,
+      migrations = true, -- Handle deprecated options automatically
     },
 
     styles = {
@@ -48,18 +47,27 @@ return {
       h5 = "pine",
       h6 = "foam",
     },
-
-    highlight_groups = {
+    highlight_groupr = {
+      -- notify
+      NotifyINFOBody = { bg = "base" },
+      NotifyINFOBorder = { bg = "base" },
+      NotifyWARNBody = { bg = "base" },
+      NotifyWARNBorder = { bg = "base" },
+      NotifyERRORBody = { bg = "base" },
+      NotifyERRORBorder = { bg = "base" },
+      NotifyDEBUGBody = { bg = "base" },
+      NotifyDEBUGBorder = { bg = "base" },
+      NotifyTRACEbody = { bg = "base" },
+      NotifyTRACEBorder = { bg = "base" },
+      -- telescope
       TelescopeBorder = { fg = "base", bg = "surface" },
       TelescopeNormal = { fg = "subtle", bg = "surface" },
       TelescopeSelection = { fg = "text", bg = "highlight_med" },
       TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
       TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
-
       TelescopeTitle = { fg = "base", bg = "love" },
       TelescopePromptTitle = { fg = "base", bg = "gold" },
-      TelescopePreviewTitle = { fg = "base", bg = "iris" },
-
+      TelescopePreviewTitle = { fg = "base", bg = "foam" },
       TelescopePromptNormal = { fg = "text", bg = "overlay" },
       TelescopePromptBorder = { fg = "overlay", bg = "overlay" },
     },
