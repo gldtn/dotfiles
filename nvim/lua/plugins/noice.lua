@@ -8,7 +8,8 @@ return {
     {
       "rcarriga/nvim-notify",
       opts = {
-        -- stages = "fade",
+        timeout = 3000,
+        stages = "slide",
         -- top_down = false,
       },
     },
@@ -18,7 +19,6 @@ return {
       cmdline = {
         view = "cmdline",
         long_message_to_split = true,
-        lsp_doc_border = true,
       },
     })
   end,
