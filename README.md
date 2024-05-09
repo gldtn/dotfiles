@@ -1,8 +1,9 @@
 ## My dotfiles
 #### Use at your own risk 😎
 
-**Theme**: rose-pine(https://rosepinetheme.com/)
-**Windowmanager**: yabai(https://github.com/koekeishiya/yabai)
+**Theme**: [rose-pine](https://rosepinetheme.com/)
+
+**Windowmanager**: [yabai](https://github.com/koekeishiya/yabai)
 
 ### yabai + kitty + btop
 ![screenshot](shots/desktop.png)
