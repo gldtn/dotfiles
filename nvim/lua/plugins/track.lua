@@ -1,5 +1,6 @@
 return {
   "dharmx/track.nvim",
+  Lazy = true,
   cmd = { "Track", "Mark", "Unmark" },
   opts = function()
     require("track").setup({

@@ -70,8 +70,8 @@ return {
         section = { " ", " " },
       },
       sections = {
-        tracked = {
-          folded = false,
+        cached = {
+          folded = true,
           hidden = false,
         },
         untracked = {
