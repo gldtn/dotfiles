@@ -47,17 +47,17 @@ return {
       h5 = "pine",
       h6 = "foam",
     },
-    highlight_groupr = {
+    highlight_groups = {
       -- notify
-      NotifyINFOBody = { bg = "love" },
-      NotifyINFOBorder = { bg = "base" },
+      NotifyINFOBody = { bg = "base" },
       NotifyWARNBody = { bg = "base" },
-      NotifyWARNBorder = { bg = "base" },
       NotifyERRORBody = { bg = "base" },
-      NotifyERRORBorder = { bg = "base" },
       NotifyDEBUGBody = { bg = "base" },
+      NotifyTRACEBody = { bg = "base" },
+      NotifyINFOBorder = { bg = "base" },
+      NotifyWARNBorder = { bg = "base" },
+      NotifyERRORBorder = { bg = "base" },
       NotifyDEBUGBorder = { bg = "base" },
-      NotifyTRACEbody = { bg = "base" },
       NotifyTRACEBorder = { bg = "base" },
       -- telescope
       TelescopeBorder = { fg = "base", bg = "surface" },
