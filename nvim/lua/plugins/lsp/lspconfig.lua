@@ -70,6 +70,31 @@ return {
             end,
           })
         end,
+        ["lua_ls"] = function()
+          require("lspconfig").lua_ls.setup({
+            settings = {
+              Lua = {
+                hint = {
+                  enable = true,
+                  await = true,           -- If a function has been defined as @async, display an await hint when it is being called.
+                  setType = true,         -- Show a hint to display the type being applied at assignment operations.
+                  paramType = true,       -- Show a hint for parameter types at a function definition. Requires the parameters to be defined with @param
+                  paramName = "All",      -- All, Literal, Disable
+                  semicolon = "SameLine", -- All, SameLine, Disable
+                  arrayIndex = "Disable", -- Enable, Auto, Disable
+                },
+              },
+            },
+          })
+        end,
+        ["phpactor"] = function()
+          require("lspconfig").phpactor.setup({
+            init_options = {
+              ["language_server_worse_reflection.inlay_hints.enable"] = true,
+              ["language_server_worse_reflection.inlay_hints.types"] = true,
+            },
+          })
+        end,
       })
     end,
   },

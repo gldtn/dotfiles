@@ -1,5 +1,5 @@
 # Keep the line width from breaking
-column_width = 160 
+column_width = 180 
 quote_style = "AutoPreferDouble"
 call_parentheses = "Always"
 

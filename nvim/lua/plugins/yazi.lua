@@ -5,12 +5,12 @@ return
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  -- enabled = false,
   event = "VeryLazy",
   cmd = "Yazi",
   keys = {
-    -- 👇 in this section, choose your own keymappings!
     {
-      "\\",
+      "<leader>y",
       function()
         require("yazi").yazi()
       end,
@@ -28,7 +28,7 @@ return
   ---@type YaziConfig
   opts = {
     open_for_directories = true,
-    floating_window_scaling_factor = 0.75,
+    floating_window_scaling_factor = 0.8,
     yazi_floating_window_border = "none",
   },
 }

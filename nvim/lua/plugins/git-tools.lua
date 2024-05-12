@@ -1,7 +1,7 @@
 return {
   {
     "NeogitOrg/neogit",
-    branch = "nightly",
+    branch = "master",
     event = "BufReadPre",
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
