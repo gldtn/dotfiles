@@ -17,11 +17,13 @@ vim.g.maplocalleader = " "
 -- a good part of these keymaps was stolen from Lazyvim.
 
 -- Misc bindings
-map("n", "x", "\"_x", { noremap = true }) -- don't yank
+map({ "n", "v" }, "p", '"_dP')           -- don't yank on paste selection
+map("n", "x", '"_x', { noremap = true }) -- don't yank on single char delete
 map("n", "<M-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
 map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
 map({ "n", "v", "i" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "<M-a>", "gg0VG$", { desc = "Select all" })
+map("n", "<leader>q", "<cmd>qa!<cr>", { desc = "Quit without saving" })
 
 -- Identing; stay in indent mode
 map("v", "<", "<gv^")
