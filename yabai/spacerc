@@ -74,9 +74,10 @@ done
 
 # Space 7
 SPACE7=(
-	Zed
-  Code
-  Sublime Text
+    Zed
+    Zed Preview
+    Code
+    Sublime Text
 )
 
 for ((i = 1; i <= "${#SPACE7[@]}"; i++)); do

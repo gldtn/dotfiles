@@ -67,7 +67,7 @@ alias brew.lp="brew list --pinned"
 alias brew.lf="brew list --formula"
 alias brew.uc="brew update && brew upgrade --cask"
 alias brew.uf="brew update && brew upgrade --formula" # or brew outdated | xargs brew install
-alias brew.up="brew update && brew outdated && brew upgrade && brew upgrade --cask && brew cleanup"
+alias brew.up="brew update && brew outdated && brew upgrade && brew upgrade --cask && brew upgrade --fetch-HEAD && brew cleanup"
 
 # zsh manipulation
 alias :ez="nvim \${ZDOTDIR}"

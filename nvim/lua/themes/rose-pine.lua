@@ -18,7 +18,7 @@ return {
     },
 
     groups = {
-      border = "muted",
+      border = "overlay",
       link = "iris",
       panel = "surface",
 
@@ -47,7 +47,18 @@ return {
       h5 = "pine",
       h6 = "foam",
     },
+
     highlight_groups = {
+      -- dashboard
+      DashboardKey = { fg = "love" },
+      DashboardIcon = { fg = "rose" },
+      DashboardHeader = { fg = "gold" },
+      DashboardFooter = { fg = "muted" },
+      -- Neo-tree
+      NeoTreeNormal = { bg = "surface" },
+      NeoTreeDirectoryIcon = { fg = "love" },
+      NeotreeFloatTitle = { fg = "base", bg = "gold" },
+      NeoTreeFloatBorder = { fg = "surface", bg = "surface" },
       -- notify
       NotifyINFOBody = { bg = "base" },
       NotifyWARNBody = { bg = "base" },
@@ -60,18 +71,17 @@ return {
       NotifyDEBUGBorder = { bg = "base" },
       NotifyTRACEBorder = { bg = "base" },
       -- telescope
+      TelescopeTitle = { fg = "base", bg = "love" },
       TelescopeBorder = { fg = "base", bg = "surface" },
       TelescopeNormal = { fg = "subtle", bg = "surface" },
-      TelescopeSelection = { fg = "text", bg = "highlight_med" },
-      TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
-      TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
-      TelescopeTitle = { fg = "base", bg = "love" },
       TelescopePromptTitle = { fg = "base", bg = "gold" },
       TelescopePreviewTitle = { fg = "base", bg = "foam" },
       TelescopePromptNormal = { fg = "text", bg = "overlay" },
+      TelescopeSelection = { fg = "text", bg = "highlight_med" },
       TelescopePromptBorder = { fg = "overlay", bg = "overlay" },
+      TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
+      TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
     },
-
   }),
   vim.cmd("colorscheme rose-pine")
 }

@@ -1,6 +1,7 @@
 return {
   "olimorris/persisted.nvim",
-  event = "VeryLazy",
+  lazy = true,
+  -- event = "VeryLazy",
   opts = function()
     require("persisted").setup({
       -- NOTE: enable if necessary, still testing defaults!

@@ -2,18 +2,14 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "main",
-  enabled = false,
   dependencies = {
     "MunifTanjim/nui.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
   },
   lazy = true,
-  keys = {
-    { "\\",         "<cmd>Neotree toggle float<cr>", desc = "Float file explorer" },
-    { "<leader>\\", "<cmd>Neotree toggle right<cr>", desc = "Right file explorer" },
-  },
-
+  cmd = { "Neotree" },
+  -- enabled = false,
   init = function()
     vim.api.nvim_create_autocmd("BufEnter", {
       group = vim.api.nvim_create_augroup("load_neo_tree", {}),
@@ -35,7 +31,7 @@ return {
       open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy" },
       window = {
         position = "float",
-        width = 35,
+        width = 40,
       },
       popup_border_style = "rounded",
       filesystem = {
@@ -97,8 +93,6 @@ return {
       },
       -- Loads neo-tree when openning a directory
       vim.api.nvim_create_augroup("load_neo_tree", {}),
-      -- Match Telescope border
-      vim.cmd([[highlight link NeoTreeFloatBorder TelescopeBorder]])
     })
   end,
 }

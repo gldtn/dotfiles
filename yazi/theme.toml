@@ -1,5 +1,3 @@
-# vim:fileencoding=utf-8:foldmethod=marker
-
 # : Manager {{{
 
 [manager]
@@ -24,7 +22,7 @@ tab_inactive = { fg = "#e0def4", bg = "#2A273F" }
 tab_width = 1
 
 # Border
-border_symbol = "│"
+border_symbol = "▌"
 border_style = { fg = "#524f67" }
 
 # Highlighting
@@ -36,8 +34,8 @@ syntect_theme = "~/.config/yazi/rose-pine.tmTheme"
 # : Status {{{
 
 [status]
-separator_open = ""
-separator_close = ""
+separator_open = " "
+separator_close = " "
 separator_style = { fg = "#2A273F", bg = "#2A273F" }
 
 # Mode
