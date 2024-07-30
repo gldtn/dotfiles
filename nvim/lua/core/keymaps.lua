@@ -24,11 +24,14 @@ map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
 map({ "n", "v", "i" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "<M-a>", "gg0VG$", { desc = "Select all" })
 map("n", "<leader>q", "<cmd>qa!<cr>", { desc = "Quit without saving" })
+<<<<<<< HEAD
 
 -- stylua: ignore
 map("n", "<leader>th", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "✨lsp toggle inlay hints" })
+=======
+>>>>>>> origin/main
 
 -- Identing; stay in indent mode
 map("v", "<", "<gv^")

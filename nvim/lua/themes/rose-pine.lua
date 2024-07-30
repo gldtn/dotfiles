@@ -51,6 +51,7 @@ return {
     highlight_groups = {
       -- dashboard
       DashboardKey = { fg = "love" },
+<<<<<<< HEAD
       DashboardIcon = { fg = "rose" },
       DashboardHeader = { fg = "gold" },
       DashboardFooter = { fg = "muted" },
@@ -59,6 +60,11 @@ return {
       NeoTreeDirectoryIcon = { fg = "love" },
       NeotreeFloatTitle = { fg = "base", bg = "gold" },
       NeoTreeFloatBorder = { fg = "surface", bg = "surface" },
+=======
+      DashboardIcon = { fg = "gold" },
+      DashboardHeader = { fg = "iris" },
+      DashboardFooter = { fg = "foam" },
+>>>>>>> origin/main
       -- notify
       NotifyINFOBody = { bg = "base" },
       NotifyWARNBody = { bg = "base" },
