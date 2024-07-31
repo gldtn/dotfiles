@@ -24,14 +24,11 @@ map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
 map({ "n", "v", "i" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "<M-a>", "gg0VG$", { desc = "Select all" })
 map("n", "<leader>q", "<cmd>qa!<cr>", { desc = "Quit without saving" })
-<<<<<<< HEAD
 
 -- stylua: ignore
 map("n", "<leader>th", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "✨lsp toggle inlay hints" })
-=======
->>>>>>> origin/main
 
 -- Identing; stay in indent mode
 map("v", "<", "<gv^")
@@ -42,12 +39,12 @@ map("n", "O", "O<Esc>^")
 map("n", "o", "o<Esc>^")
 
 -- Move Lines
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+map("n", "<D-S-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+map("n", "<D-S-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+map("i", "<D-S-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "<D-S-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<D-S-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+map("v", "<D-S-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- Comments
 map("i", "<M-c>", "<C-o>gcc", { remap = true, desc = "Line comment" })
