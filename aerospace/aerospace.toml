@@ -1,31 +1,23 @@
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
+# Aerospace startup settings
 after-login-command = []
-# You can use it to add commands that run after AeroSpace startup.
 after-startup-command = []
-# Start AeroSpace at login
 start-at-login = true
+key-mapping.preset = 'qwerty'
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# Layouts settings
 accordion-padding = 50
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
 # Possible values: horizontal|vertical|auto
 default-root-container-orientation = 'vertical'
-
-# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
-key-mapping.preset = 'qwerty'
-
 # Mouse follows focus when focused monitor changes
-# Drop it from your config, if you don't like this behavior
-# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
-# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Gaps
 [gaps]
 inner.horizontal = 12
 inner.vertical =   12
@@ -34,41 +26,39 @@ outer.bottom =     8
 outer.top =        8
 outer.right =      8
 
-# 'main' binding mode declaration
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.main.binding]
 
-# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+# Exec commands
 alt-shift-ctrl-cmd-enter = 'exec-and-forget kitty --single-instance -d ~'
-alt-shift-ctrl-c = 'reload-config'
 
-#Keyclu[Restart services]: Reload Jankyborders
-alt-shift-ctrl-b = 'exec-and-forget brew services restart felixkratz/formulae/borders'
+#Keyclu[Restart services]: Reload
+alt-shift-ctrl-c = 'reload-config' # aerospace config
+alt-shift-ctrl-b = 'exec-and-forget brew services restart felixkratz/formulae/borders' # jankyborders
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#layout
+# Layouts
 alt-shift-ctrl-cmd-slash = 'layout tiles horizontal vertical'
 alt-shift-ctrl-cmd-comma = 'layout accordion horizontal vertical'
 alt-shift-ctrl-cmd-f = 'layout floating tiling'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-shift-h = 'focus left'
-alt-shift-j = 'focus down'
-alt-shift-k = 'focus up'
-alt-shift-l = 'focus right'
+# Focus
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#move
-alt-shift-ctrl-cmd-h = 'move left'
-alt-shift-ctrl-cmd-j = 'move down'
-alt-shift-ctrl-cmd-k = 'move up'
-alt-shift-ctrl-cmd-l = 'move right'
+# Move
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#resize
+# Resize
 alt-shift-ctrl-cmd-minus = 'resize smart -50'
 alt-shift-ctrl-cmd-equal = 'resize smart +50'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+# Workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -79,7 +69,7 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+# move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
 alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
 alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
@@ -90,12 +80,12 @@ alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
 alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+# workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+# move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+# mode
 alt-shift-semicolon = 'mode service'
 
 # 'service' binding mode declaration.
@@ -112,6 +102,7 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# monitor assignment
 [workspace-to-monitor-force-assignment]
 1 = 1
 2 = 1
