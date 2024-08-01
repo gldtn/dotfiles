@@ -29,45 +29,44 @@ outer.right =      8
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.main.binding]
 
-### Exec commands
+# Exec commands
 alt-shift-ctrl-cmd-enter = 'exec-and-forget kitty --single-instance -d ~'
 
-### Restart services: Reload
+# Restart services: Reload
 alt-shift-ctrl-c = 'reload-config' # aerospace config
 alt-shift-ctrl-b = 'exec-and-forget brew services restart felixkratz/formulae/borders' # jankyborders
 
-### Layouts
+# Layouts
 alt-shift-ctrl-cmd-slash = 'layout tiles horizontal vertical'
 alt-shift-ctrl-cmd-comma = 'layout accordion horizontal vertical'
 alt-shift-ctrl-cmd-f = 'layout floating tiling'
 
-### Focus
+### Windows management
+# Focus
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-### Move
+# Move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
-### Warp (Yabai Equivalent?)
+# Warp (Yabai Equivalent?)
 alt-shift-ctrl-h = 'join-with left'
 alt-shift-ctrl-j = 'join-with down'
 alt-shift-ctrl-k = 'join-with up'
 alt-shift-ctrl-l = 'join-with right'
 
-# alt-shift-ctrl-cmd-h = 'split horizontal'
-# alt-shift-ctrl-cmd-v = 'split vertical'
-# alt-shift-ctrl-cmd-o = 'split opposite'
-
-### Resize
+# Resize
 alt-shift-ctrl-cmd-minus = 'resize smart -50'
 alt-shift-ctrl-cmd-equal = 'resize smart +50'
+alt-shift-ctrl-cmd-b = 'balance-sizes'
 
-### Workspace
+### Workspace management
+# alternate workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -78,7 +77,7 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
-### move-node-to-workspace
+# move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
 alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
 alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
@@ -89,24 +88,23 @@ alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
 alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
 alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
-### workspace-back-and-forth
+# workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
 # move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-### mode
-alt-shift-semicolon = 'mode service'
+# Modes
+alt-shift-r = 'mode resize'
 
-### 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-[mode.service.binding]
+### Resize binding mode declaration.
+[mode.resize.binding]
+b = 'balance-sizes'
+minus = 'resize smart -50'
+equal = 'resize smart +50'
+f = 'flatten-workspace-tree' # reset layout
 esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
-#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
 
-### monitor assignment
+### Monitor assignment
 # NOTES: Seems like this needs to be in the end of the file
 [workspace-to-monitor-force-assignment]
 1 = 1
