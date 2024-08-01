@@ -51,9 +51,6 @@ local icon                    = {
   branch = " ",
   position = " ",
   scroll_bar = " ",
-  -- others
-  others1 = " ",
-  others2 = " ",
 }
 
 -- ------------------------------------
