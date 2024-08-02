@@ -1,7 +1,7 @@
 ### Aerospace startup settings
+start-at-login = true
 after-login-command = []
 after-startup-command = []
-start-at-login = true
 key-mapping.preset = 'qwerty'
 
 ### Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -11,12 +11,11 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 ### Layouts settings
 accordion-padding = 50
 default-root-container-layout = 'tiles'
-default-root-container-orientation = 'horizontal'
+default-root-container-orientation = 'auto'
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-### Gaps
 [gaps]
 inner.horizontal = 12
 inner.vertical =   12
@@ -25,47 +24,46 @@ outer.bottom =     8
 outer.top =        8
 outer.right =      8
 
-### 'main' binding mode must be always presented
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.main.binding]
 
-# Exec commands
+cmd-h = [] # Disable "hide application"
+cmd-alt-h = [] # Disable "hide others"
+
+# exec commands
 alt-shift-ctrl-cmd-enter = 'exec-and-forget kitty --single-instance -d ~'
 
-# Restart services: Reload
 alt-shift-ctrl-c = 'reload-config' # aerospace config
 alt-shift-ctrl-b = 'exec-and-forget brew services restart felixkratz/formulae/borders' # jankyborders
 
-# Layouts
+# layouts
 alt-shift-ctrl-cmd-slash = 'layout tiles horizontal vertical'
 alt-shift-ctrl-cmd-comma = 'layout accordion horizontal vertical'
 alt-shift-ctrl-cmd-f = 'layout floating tiling'
 
-### Windows management
-# Focus
+# focus
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
+alt-f = 'fullscreen'
 
-# Move
+# move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
-# Warp (Yabai Equivalent?)
+# warp (Yabai Equivalent?)
 alt-shift-ctrl-h = 'join-with left'
 alt-shift-ctrl-j = 'join-with down'
 alt-shift-ctrl-k = 'join-with up'
 alt-shift-ctrl-l = 'join-with right'
 
-# Resize
-alt-shift-ctrl-cmd-minus = 'resize smart -50'
-alt-shift-ctrl-cmd-equal = 'resize smart +50'
+# resize
+alt-shift-ctrl-cmd-minus = 'resize smart -150'
+alt-shift-ctrl-cmd-equal = 'resize smart +150'
 alt-shift-ctrl-cmd-b = 'balance-sizes'
 
-### Workspace management
 # alternate workspace
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
@@ -98,14 +96,14 @@ alt-shift-r = 'mode resize'
 
 ### Resize binding mode declaration.
 [mode.resize.binding]
+esc = 'mode main'
 b = 'balance-sizes'
 minus = 'resize smart -50'
 equal = 'resize smart +50'
 f = 'flatten-workspace-tree' # reset layout
-esc = ['reload-config', 'mode main']
 
 ### Monitor assignment
-# NOTES: Seems like this needs to be in the end of the file
+# This seems like it needs to after workspace bindings
 [workspace-to-monitor-force-assignment]
 1 = 1
 2 = 1
@@ -116,3 +114,7 @@ esc = ['reload-config', 'mode main']
 7 = 3
 8 = 3
 9 = 3
+
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = 'layout floating'
