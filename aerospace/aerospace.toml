@@ -103,7 +103,7 @@ equal = 'resize smart +50'
 f = 'flatten-workspace-tree' # reset layout
 
 ### Monitor assignment
-# This seems like it needs to after workspace bindings
+# This seems like it needs to after be workspace bindings
 [workspace-to-monitor-force-assignment]
 1 = 1
 2 = 1
