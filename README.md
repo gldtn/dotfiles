@@ -3,12 +3,12 @@
 
 **Theme**: [rose-pine](https://rosepinetheme.com/)
 
-**Windowmanager**: [yabai](https://github.com/koekeishiya/yabai)
+**Windowmanager**: [Aerospace](https://github.com/nikitabobko/AeroSpace)
 
-### yabai + kitty + btop
+### aerospace + kitty + btop
 ![screenshot](shots/desktop.png)
 
-### nvim
+### nvim + feline
 ![screenshot](shots/nvim.png)
 
 ### Credits
