@@ -24,21 +24,23 @@ outer.bottom =     8
 outer.top =        8
 outer.right =      8
 
+#[key-mapping.key-notation-to-key-code]
+#hyper = 'ctrl-alt-shift-cmd'
 [mode.main.binding]
 
 cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 # exec commands
-alt-shift-ctrl-cmd-enter = 'exec-and-forget kitty --single-instance -d ~'
+ctrl-alt-shift-cmd-enter = 'exec-and-forget kitty --single-instance -d ~'
 
 alt-shift-ctrl-c = 'reload-config' # aerospace config
 alt-shift-ctrl-b = 'exec-and-forget brew services restart felixkratz/formulae/borders' # jankyborders
 
 # layouts
-alt-shift-ctrl-cmd-slash = 'layout tiles horizontal vertical'
-alt-shift-ctrl-cmd-comma = 'layout accordion horizontal vertical'
-alt-shift-ctrl-cmd-f = 'layout floating tiling'
+ctrl-alt-shift-cmd-slash = 'layout tiles horizontal vertical'
+ctrl-alt-shift-cmd-comma = 'layout accordion horizontal vertical'
+ctrl-alt-shift-cmd-f = 'layout floating tiling'
 
 # focus
 alt-h = 'focus left'
@@ -60,9 +62,9 @@ alt-shift-ctrl-k = 'join-with up'
 alt-shift-ctrl-l = 'join-with right'
 
 # resize
-alt-shift-ctrl-cmd-minus = 'resize smart -150'
-alt-shift-ctrl-cmd-equal = 'resize smart +150'
-alt-shift-ctrl-cmd-b = 'balance-sizes'
+ctrl-alt-shift-cmd-minus = 'resize smart -150'
+ctrl-alt-shift-cmd-equal = 'resize smart +150'
+ctrl-alt-shift-cmd-b = 'balance-sizes'
 
 # alternate workspace
 alt-1 = 'workspace 1'
@@ -88,8 +90,8 @@ alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
 # workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
-# move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-right = 'move-node-to-monitor right'
+alt-shift-left = 'move-node-to-monitor left'
 
 # Modes
 alt-shift-r = 'mode resize'
