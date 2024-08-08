@@ -12,11 +12,19 @@ return {
   {
     "rose-pine/neovim",
     lazy = false,
-    enabled = true,
+    enabled = false,
     priority = 1000,
     name = "rose-pine",
     config = function()
       require("themes.rose-pine")
     end,
   },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    enabled = true,
+    config = function()
+      require("themes.cyberdream")
+    end,
+  }
 }

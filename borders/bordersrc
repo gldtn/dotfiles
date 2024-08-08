@@ -39,13 +39,13 @@ get_hex() {
 }
 
 # set color
-act_color="tkpurple"
+act_color="love"
 ina_color="base"
 bg_color="love"
 
 OPTIONS=(
 	hidpi=on
-	width=5.0
+	width=6.0
 	style=round
 	# blur_radius=80.0
 	# background_color="0xff$(get_hex $bg_color)"
