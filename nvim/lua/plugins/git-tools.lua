@@ -70,7 +70,7 @@ return {
       signs = {
         -- { CLOSED, OPENED }
         hunk = { "", "" },
-        item = { " ", " " }, -- 
+        -- item = { "  ", " " }, -- 
         section = { " ", " " },
       },
       sections = {

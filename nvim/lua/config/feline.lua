@@ -7,22 +7,26 @@ local get_colors              = require("feline.providers.vi_mode")
 -- theme
 -- ------------------------------------
 -- require rose pine theme palette
-local p                       = require("rose-pine.palette")
+-- local p                       = require("rose-pine.palette")
+local p                       = require("cyberdream.colors").default
 
 local theme                   = {
-  bg = p.base,
-  fg = p.subtle,
-  love = p.love,
-  gold = p.gold,
-  rose = p.rose,
-  pine = p.pine,
-  foam = p.foam,
-  iris = p.iris,
-  subtle = p.subtle,
-  icon_fg = p.overlay,
-  icon_fg_alt = p.iris,
-  component_fg = p.subtle,
-  component_bg = p.overlay,
+  bg = "NONE",
+  fg = p.bgHighlight,
+  grey = p.grey,
+  blue = p.blue,
+  green = p.green,
+  cyan = p.cyan,
+  red = p.red,
+  yellow = p.yellow,
+  magenta = p.magenta,
+  pink = p.pink,
+  orange = p.orange,
+  purple = p.purple,
+  icon_fg = p.bgAlt,
+  icon_fg_alt = p.cyan,
+  component_fg = p.grey,
+  component_bg = p.bgAlt,
 }
 
 -- ------------------------------------
@@ -30,18 +34,18 @@ local theme                   = {
 -- ------------------------------------
 local color                   = {
   -- components icon color
-  branch     = "foam",
-  position   = "foam",
-  scroll_bar = "gold", -- currently not used
+  branch     = "green",
+  position   = "blue",
+  scroll_bar = "red", -- currently not used
   -- git changes
-  git_add    = "foam",
-  git_delete = "love",
-  git_change = "gold",
+  git_add    = "green",
+  git_delete = "red",
+  git_change = "cyan",
   -- diagnostics
-  errors     = "love",
-  warnings   = "rose",
-  hints      = "pine",
-  info       = "foam",
+  errors     = "red",
+  warnings   = "orange",
+  hints      = "yellow",
+  info       = "blue",
 }
 
 -- ------------------------------------
@@ -51,6 +55,7 @@ local icon                    = {
   branch = " ",
   position = " ",
   scroll_bar = " ",
+  lsp = " ",
 }
 
 -- ------------------------------------
@@ -65,21 +70,21 @@ local default_hl              = {
 -- mode colors
 -- ------------------------------------
 local mode_theme              = {
-  ["NORMAL"] = theme.gold,
-  ["OP"] = theme.pine,
-  ["INSERT"] = theme.love,
-  ["VISUAL"] = theme.iris,
-  ["LINES"] = theme.iris,
-  ["BLOCK"] = theme.iris,
-  ["REPLACE"] = theme.love,
-  ["V-REPLACE"] = theme.love,
-  ["ENTER"] = theme.subtle,
-  ["MORE"] = theme.subtle,
-  ["SELECT"] = theme.subtle,
-  ["SHELL"] = theme.rose,
-  ["TERM"] = theme.rose,
-  ["NONE"] = theme.subtle,
-  ["COMMAND"] = theme.rose,
+  ["NORMAL"] = theme.orange,
+  ["OP"] = theme.blue,
+  ["INSERT"] = theme.red,
+  ["VISUAL"] = theme.magenta,
+  ["LINES"] = theme.purple,
+  ["BLOCK"] = theme.pink,
+  ["REPLACE"] = theme.red,
+  ["V-REPLACE"] = theme.red,
+  ["ENTER"] = theme.yellow,
+  ["MORE"] = theme.yellow,
+  ["SELECT"] = theme.yellow,
+  ["SHELL"] = theme.magenta,
+  ["TERM"] = theme.magenta,
+  ["NONE"] = theme.grey,
+  ["COMMAND"] = theme.red,
 }
 
 local modes                   = setmetatable({
@@ -294,7 +299,7 @@ component.diagnostic_info     = {
 component.lsp                 = {
   provider = "lsp_client_names",
   icon = {
-    str = "  ",
+    str = icon.lsp,
     hl = { fg = "icon_fg_alt" },
   },
   hl = default_hl,
@@ -374,14 +379,14 @@ component.scroll_bar_icon = {
   hl = function()
     return {
       fg = "icon_fg",
-      bg = get_colors.get_mode_color(),
+      bg = color.scroll_bar,
     }
   end,
   left_sep = {
     str = left_separator,
     hl = function()
       return {
-        fg = get_colors.get_mode_color(),
+        fg = color.scroll_bar,
       }
     end,
   }
@@ -392,7 +397,7 @@ component.scroll_bar_position = {
   hl = function()
     return {
       style = "bold",
-      fg = get_colors.get_mode_color(),
+      fg = color.scroll_bar,
       bg = "component_bg",
     }
   end,

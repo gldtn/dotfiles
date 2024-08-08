@@ -95,14 +95,23 @@ alt-shift-left = 'move-node-to-monitor left'
 
 # Modes
 alt-shift-r = 'mode resize'
+alt-shift-w = 'mode warp'
 
-### Resize binding mode declaration.
+### Resize
 [mode.resize.binding]
 esc = 'mode main'
 b = 'balance-sizes'
 minus = 'resize smart -50'
 equal = 'resize smart +50'
 f = 'flatten-workspace-tree' # reset layout
+
+### Warp
+[mode.warp.binding]
+h = 'join-with left'
+j = 'join-with down'
+k = 'join-with up'
+l = 'join-with right'
+esc = 'mode main'
 
 ### Monitor assignment
 # This seems like it needs to after be workspace bindings
