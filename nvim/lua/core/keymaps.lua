@@ -17,7 +17,7 @@ vim.g.maplocalleader = " "
 -- a good part of these keymaps was stolen from Lazyvim.
 
 -- Misc bindings
-map({ "n", "v" }, "p", '"_dP')           -- don't yank on paste selection
+map({ "n", "v" }, "p", '"_dP') -- don't yank on paste selection
 map("n", "x", '"_x', { noremap = true }) -- don't yank on single char delete
 map("n", "<M-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
 map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
@@ -82,10 +82,8 @@ map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Trouble Toggle" })
 map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Trouble Toggle Quickfix" })
 map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Trouble Toggle Location List" })
 map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { desc = "Trouble Toggle LSP References" })
-map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<cr>",
-  { desc = "Trouble Toggle LSP Document Diagnostics" }) -- stylua: ignore
-map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>",
-  { desc = "Trouble Toggle LSP Workspace Diagnostics" })
+map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<cr>", { desc = "Trouble Toggle LSP Document Diagnostics" }) -- stylua: ignore
+map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", { desc = "Trouble Toggle LSP Workspace Diagnostics" })
 
 -- Track.nvim
 map("n", "<c-space>", "<cmd>Track views<cr>", { desc = "List marked files" })
