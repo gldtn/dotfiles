@@ -37,8 +37,6 @@ return {
 			options = { try_as_border = true },
 		},
 	},
-	{ "echasnovski/mini.hipatterns", version = "*" },
-
 	-- [ Todo Comments ]
 	-- highlight TODO, FIXME, etc. in comments
 	{
