@@ -37,6 +37,14 @@ return {
 			options = { try_as_border = true },
 		},
 	},
+	-- [ TS Comments ]
+	-- Add comments based on the type of file
+	{
+		"folke/ts-comments.nvim",
+		opts = {},
+		event = "VeryLazy",
+		enabled = vim.fn.has("nvim-0.10.0") == 1,
+	},
 	-- [ Todo Comments ]
 	-- highlight TODO, FIXME, etc. in comments
 	{

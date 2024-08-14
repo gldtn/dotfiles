@@ -16,6 +16,7 @@ return {
 		"saadparwaiz1/cmp_luasnip", -- auto-completion of snippets
 
 		-- Icons
+		"luckasRanarison/tailwind-tools.nvim",
 		"onsails/lspkind-nvim", -- icons for the popup menu
 	},
 
@@ -81,17 +82,23 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
 				expandable_indicator = true,
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)
+					-- Apply tailwind-tools formatting first
+					vim_item = require("tailwind-tools.cmp").lspkind_format(entry, vim_item)
+
+					-- Then apply your existing lspkind formatting
 					local kind = require("lspkind").cmp_format({
 						maxwidth = 50,
 						ellipsis_char = "...",
-						show_labelDetails = true,
+						show_label_details = true,
 						symbol_map = { Copilot = "" },
 					})(entry, vim_item)
+
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "
 					kind.menu = "    (" .. (strings[2] or "") .. ")"
