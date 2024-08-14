@@ -57,7 +57,7 @@ return {
 					["F"] = "PullPopup",
 				},
 				status = {
-					["<c-s"] = "StageUnstaged",
+					["<c-s>"] = "StageUnstaged",
 					["<c-g><c-s>"] = "StageAll",
 				},
 				rebase_editor = {
