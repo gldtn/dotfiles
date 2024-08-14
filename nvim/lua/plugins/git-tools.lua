@@ -89,7 +89,7 @@ return {
 			},
 			commit_editor = { show_staged_diff = false },
 			-- commit_view = { kind = "floating" },
-			-- popup = { kind = "floating", },
+			-- popup = { kind = "floating" },
 			integrations = {
 				-- telescope = true, -- use telescope instead of vim.ui.select
 				diffview = true,
