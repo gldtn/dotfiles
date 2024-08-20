@@ -9,7 +9,9 @@ local get_colors = require("feline.providers.vi_mode")
 local p = require("cyberdream.colors").default
 
 local theme = {
-	bg = "NONE",
+	bg = p.bg,
+	bgAlt = p.bgAlt,
+	white = p.fg,
 	fg = p.bgHighlight,
 	grey = p.grey,
 	blue = p.blue,
@@ -21,10 +23,8 @@ local theme = {
 	pink = p.pink,
 	orange = p.orange,
 	purple = p.purple,
-	icon_fg = p.bgAlt,
-	icon_fg_alt = p.cyan,
 	component_fg = p.grey,
-	component_bg = p.bgAlt,
+	component_bg = p.bg,
 }
 
 -- ------------------------------------
@@ -32,9 +32,22 @@ local theme = {
 -- ------------------------------------
 local color = {
 	-- components icon color
-	branch = "green",
-	position = "blue",
-	scroll_bar = "red", -- currently not used
+	modeBg = "bg",
+	-- branch
+	branchBg = "bg",
+	branchIcon = "cyan",
+	branchText = "cyan",
+	-- fileinfo
+	fileinfoBg = "bg",
+	fileinfoText = "white",
+	-- position
+	positionBg = "bg",
+	positionIcon = "magenta",
+	positionText = "magenta",
+	-- scrollbar
+	scrollbarBg = "bg",
+	scrollbarIcon = "red",
+	scrollbarText = "red",
 	-- git changes
 	git_add = "green",
 	git_delete = "red",
@@ -51,9 +64,9 @@ local color = {
 -- ------------------------------------
 local icon = {
 	branch = " ",
-	position = " ",
-	scroll_bar = " ",
-	lsp = " ",
+	position = " ",
+	scrollbar = " ",
+	lsp = " ",
 }
 
 -- ------------------------------------
@@ -70,7 +83,7 @@ local default_hl = {
 local mode_theme = {
 	["NORMAL"] = theme.orange,
 	["OP"] = theme.blue,
-	["INSERT"] = theme.red,
+	["INSERT"] = theme.green,
 	["VISUAL"] = theme.magenta,
 	["LINES"] = theme.purple,
 	["BLOCK"] = theme.pink,
@@ -114,28 +127,28 @@ local modes = setmetatable({
 
 -- mode icons
 local unicodes = {
-	n = "",
-	i = "",
+	n = "", --"",
+	i = "", -- "",
 	c = "",
 	R = "",
 	v = "",
 	V = "",
-	[""] = "",
+	[""] = "󰫙",
 }
 
 -- Components
 local component = {}
 
 -- components separator
-local left_separator = "left_rounded"
-local right_separator = "right_rounded"
+local left_separator = ""
+local right_separator = ""
 
 -- Spacer component
 component.spacer = {
-	provider = " ",
+	provider = "  ",
 	hl = {
-		fg = "NONE",
-		bg = "NONE",
+		fg = "bg",
+		bg = "bg",
 	},
 }
 
@@ -164,8 +177,8 @@ component.vim_mode_icon = {
 	end,
 	hl = function()
 		return {
-			fg = "icon_fg",
-			bg = get_colors.get_mode_color(),
+			fg = get_colors.get_mode_color(),
+			bg = color.modeBg,
 			style = "bold",
 		}
 	end,
@@ -173,7 +186,7 @@ component.vim_mode_icon = {
 		return {
 			str = left_separator,
 			hl = {
-				fg = get_colors.get_mode_color(),
+				fg = color.modeBg,
 			},
 		}
 	end,
@@ -198,8 +211,8 @@ component.git_branch = {
 			local branch = vim.b.gitsigns_head or ""
 			if branch ~= "" then
 				return {
-					fg = "icon_fg",
-					bg = color.branch,
+					fg = color.branchIcon,
+					bg = color.branchBg,
 				}
 			else
 				return nil
@@ -207,7 +220,7 @@ component.git_branch = {
 		end,
 	},
 	hl = {
-		fg = color.branch,
+		fg = color.branchText,
 		bg = "component_bg",
 		style = "bold",
 	},
@@ -217,7 +230,7 @@ component.git_branch = {
 			return {
 				str = left_separator,
 				hl = {
-					fg = color.branch,
+					fg = color.branchBg,
 				},
 			}
 		else
@@ -298,13 +311,41 @@ component.diagnostic_info = {
 -- ------------------------------------
 -- lsp client info
 -- ------------------------------------
+local lsp_icons = {
+	["html"] = "  ",
+	["gopls"] = "  ",
+	["cssls"] = "  ",
+	["clangd"] = "פּ ",
+	["lua_ls"] = "  ",
+	["default"] = " ",
+	["bashls"] = "  ",
+	["pyright"] = "  ",
+	["copilot"] = "  ",
+	["phpactor"] = "  ",
+	["tailwindcss"] = "󱏿  ",
+	["intelephense"] = "  ",
+	["rust_analyzer"] = "  ",
+}
+-- provider
+local function lsp_icon_provider()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	if #clients == 0 then
+		return ""
+	end
+
+	local icons = ""
+	for _, client in pairs(clients) do
+		local lsp_icon = lsp_icons[client.name] or lsp_icons["default"]
+		icons = icons .. lsp_icon
+	end
+
+	return icons
+end
+-- component
 component.lsp = {
-	provider = "lsp_client_names",
-	icon = {
-		str = icon.lsp,
-		hl = { fg = "icon_fg_alt" },
-	},
-	hl = default_hl,
+	provider = lsp_icon_provider,
+	icon = nil, -- Remove the static icon since the provider now handles it
+	-- hl = { fg = color.lspIcon },
 	left_sep = left_separator,
 	right_sep = right_separator,
 }
@@ -317,7 +358,7 @@ component.file_info = {
 		name = "file_info",
 		opts = { type = "relative" },
 	},
-	hl = default_hl,
+	hl = { fg = color.fileinfoText, bg = color.fileinfoBg },
 	left_sep = left_separator,
 	right_sep = right_separator,
 }
@@ -349,18 +390,18 @@ component.cursor_position = {
 	icon = {
 		str = icon.position,
 		hl = {
-			fg = "icon_fg",
-			bg = color.position,
+			fg = color.positionIcon,
+			bg = color.positionBg,
 		},
 	},
 	hl = {
-		fg = color.position,
+		fg = color.positionText,
 		bg = "component_bg",
 	},
 	left_sep = {
 		str = left_separator,
 		hl = {
-			fg = color.position,
+			fg = color.positionBg,
 		},
 	},
 	right_sep = right_separator,
@@ -376,19 +417,19 @@ end
 -- icon
 component.scroll_bar_icon = {
 	provider = function()
-		return icon.scroll_bar
+		return icon.scrollbar
 	end,
 	hl = function()
 		return {
-			fg = "icon_fg",
-			bg = color.scroll_bar,
+			fg = color.scrollbarIcon,
+			bg = color.scrollbarBg,
 		}
 	end,
 	left_sep = {
 		str = left_separator,
 		hl = function()
 			return {
-				fg = color.scroll_bar,
+				fg = color.scrollbarBg,
 			}
 		end,
 	},
@@ -399,13 +440,12 @@ component.scroll_bar_position = {
 	hl = function()
 		return {
 			style = "bold",
-			fg = color.scroll_bar,
+			fg = color.scrollbarText,
 			bg = "component_bg",
 		}
 	end,
 	right_sep = right_separator,
 }
-
 vim.api.nvim_set_hl(0, "StatusLine", { bg = theme.bg, fg = theme.fg })
 feline.setup({
 	components = {
@@ -433,7 +473,7 @@ feline.setup({
 			-- right
 			{
 				-- component.file_type,
-				component.spacer,
+				-- component.copilot_status,
 				component.lsp,
 				component.spacer,
 				component.cursor_position,

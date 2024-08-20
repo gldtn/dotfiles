@@ -15,15 +15,27 @@ get_hex() {
 	iris) echo "C4A7E7" ;;
 	base) echo "191724" ;;
 
+    # cyberdream
+    cblue) echo "5ea1ff" ;;
+    cgreen) echo "5eff6c" ;;
+    ccyan) echo "5ef1ff" ;;
+    cred) echo "ff6e5e" ;;
+    cyellow) echo "f1ff5e" ;;
+    cmagenta) echo "ff5ef1" ;;
+    cpink) echo "ff5ea0" ;;
+    corange) echo "ffbd5e" ;;
+    cpurple) echo "bd5eff" ;;
+    cbg) echo "16181a" ;;
+
 	# dracula theme
-	cyan) echo "8BE9FD" ;;
-	green) echo "50FA7B" ;;
-	orange) echo "FFB86C" ;;
-	pink) echo "FF79C6" ;;
-	purple) echo "BD93F9" ;;
-	red) echo "FF5555" ;;
-	yellow) echo "F1FA8C" ;;
-	current) echo "44475A" ;;
+	dcyan) echo "8BE9FD" ;;
+	dgreen) echo "50FA7B" ;;
+	dorange) echo "FFB86C" ;;
+	dpink) echo "FF79C6" ;;
+	dpurple) echo "BD93F9" ;;
+	dred) echo "FF5555" ;;
+	dyellow) echo "F1FA8C" ;;
+	dcurrent) echo "44475A" ;;
 
 	# tokyonight theme
 	tkdblue) echo "82AAFF" ;;
@@ -39,9 +51,9 @@ get_hex() {
 }
 
 # set color
-act_color="love"
-ina_color="base"
-bg_color="love"
+act_color="cred"
+ina_color="cbg"
+bg_color="corange"
 
 OPTIONS=(
 	hidpi=on
