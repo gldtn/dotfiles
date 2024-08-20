@@ -5,21 +5,28 @@ local actions = require("telescope.actions")
 telescope.setup({
 	defaults = {
 		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.65,
+				results_width = 0.35,
+			},
+			vertical = {
+				mirror = false,
+			},
 			width = 0.80,
-			height = 0.80,
-			preview_width = 0.6,
+			height = 0.75,
 		},
-		prompt_prefix = "  ",
-		selection_caret = "   ",
-		entry_prefix = "    ",
+		prompt_prefix = "   ",
+		selection_caret = " ",
+		entry_prefix = " ",
 		show_line = false,
 		dynamic_preview_title = true,
 		sorting_strategy = "ascending",
 		set_env = { ["COLORTERM"] = "truecolor" },
 		-- borderchars = {
-		--   prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-		--   results = { " ", " ", " ", " ", " ", " ", " ", " " },
-		--   preview = { " ", "", "", "▌", "▌", "", "", "▌" },
+		-- 	prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
+		-- 	results = { " ", " ", " ", " ", " ", " ", " ", " " },
+		-- 	preview = { " ", "", "", "▌", "▌", "", "", "▌" },
 		-- },
 		mappings = {
 			i = {
