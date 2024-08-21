@@ -5,21 +5,21 @@ local actions = require("telescope.actions")
 telescope.setup({
 	defaults = {
 		layout_config = {
+			width = 0.80,
+			height = 0.75,
+			vertical = {
+				mirror = false,
+			},
 			horizontal = {
 				prompt_position = "top",
 				preview_width = 0.65,
 				results_width = 0.35,
 			},
-			vertical = {
-				mirror = false,
-			},
-			width = 0.80,
-			height = 0.75,
 		},
-		prompt_prefix = "   ",
-		selection_caret = " ",
-		entry_prefix = " ",
 		show_line = false,
+		entry_prefix = " ",
+		selection_caret = " ",
+		prompt_prefix = "   ",
 		dynamic_preview_title = true,
 		sorting_strategy = "ascending",
 		set_env = { ["COLORTERM"] = "truecolor" },
