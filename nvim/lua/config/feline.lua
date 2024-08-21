@@ -197,54 +197,26 @@ component.vim_mode_icon = {
 -- ------------------------------------
 
 component.git_branch = {
-	provider = function()
-		local branch = vim.b.gitsigns_head or ""
-		if branch ~= "" then
-			return " " .. branch
-		else
-			return ""
-		end
-	end,
+	provider = "git_branch",
 	icon = {
 		str = icon.branch,
-		hl = function()
-			local branch = vim.b.gitsigns_head or ""
-			if branch ~= "" then
-				return {
-					fg = color.branchIcon,
-					bg = color.branchBg,
-				}
-			else
-				return nil
-			end
-		end,
+		hl = {
+			fg = color.branchIcon,
+			bg = color.branchBg,
+		},
 	},
 	hl = {
 		fg = color.branchText,
 		bg = "component_bg",
 		style = "bold",
 	},
-	left_sep = function()
-		local branch = vim.b.gitsigns_head or ""
-		if branch ~= "" then
-			return {
-				str = left_separator,
-				hl = {
-					fg = color.branchBg,
-				},
-			}
-		else
-			return ""
-		end
-	end,
-	right_sep = function()
-		local branch = vim.b.gitsigns_head or ""
-		if branch ~= "" then
-			return right_separator
-		else
-			return ""
-		end
-	end,
+	left_sep = {
+		str = left_separator,
+		hl = {
+			fg = color.branchBg,
+		},
+	},
+	right_sep = { right_separator },
 }
 
 -- ------------------------------------
@@ -344,7 +316,7 @@ end
 -- component
 component.lsp = {
 	provider = lsp_icon_provider,
-	icon = nil, -- Remove the static icon since the provider now handles it
+	icon = nil, -- Remove the static icon
 	-- hl = { fg = color.lspIcon },
 	left_sep = left_separator,
 	right_sep = right_separator,
