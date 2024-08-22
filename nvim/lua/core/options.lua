@@ -14,7 +14,7 @@ local options = {
 	textwidth = 160, -- Set text width to 1000
 	cursorline = true, -- Highlight current line
 	formatoptions = "tc", -- Autoformat settings
-	number = true, -- Enable line numbers
+	-- number = true, -- Enable line numbers
 	relativenumber = true, -- Enable relative numbers
 
 	-- Search settings

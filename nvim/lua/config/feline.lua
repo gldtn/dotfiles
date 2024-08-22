@@ -1,11 +1,8 @@
--- require feline
+-- [ require feline & mode colors ]
 local feline = require("feline")
--- get mode colors
 local get_colors = require("feline.providers.vi_mode")
 
--- ------------------------------------
--- theme
--- ------------------------------------
+-- [ theme ]
 local p = require("cyberdream.colors").default
 
 local theme = {
@@ -27,9 +24,7 @@ local theme = {
 	component_bg = p.bg,
 }
 
--- ------------------------------------
--- components color
--- ------------------------------------
+-- [ components color ]
 local color = {
 	-- components icon color
 	modeBg = "bg",
@@ -59,9 +54,7 @@ local color = {
 	info = "blue",
 }
 
--- ------------------------------------
--- components icon
--- ------------------------------------
+-- [ components icon ]
 local icon = {
 	branch = " ",
 	position = " ",
@@ -69,17 +62,13 @@ local icon = {
 	lsp = " ",
 }
 
--- ------------------------------------
--- default highlight
--- ------------------------------------
+-- [ default highlight ]
 local default_hl = {
 	fg = "component_fg",
 	bg = "component_bg",
 }
 
--- ------------------------------------
--- mode colors
--- ------------------------------------
+-- [ modes ]
 local mode_theme = {
 	["NORMAL"] = theme.orange,
 	["OP"] = theme.blue,
@@ -136,14 +125,14 @@ local unicodes = {
 	[""] = "󰫙",
 }
 
--- Components
+-- components
 local component = {}
 
 -- components separator
 local left_separator = ""
 local right_separator = ""
 
--- Spacer component
+-- spacer component
 component.spacer = {
 	provider = "  ",
 	hl = {
@@ -417,7 +406,7 @@ component.time_clock = {
 	right_sep = right_separator,
 }
 
--- [ Lazy ]
+-- [ lazy updates ]
 local has_lazy = function()
 	local lazy_installed, _ = pcall(require, "lazy")
 	return lazy_installed
