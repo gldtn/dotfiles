@@ -8,15 +8,15 @@
 
 ### aerospace + kitty
 
-![Desktop](/Users/gldtn/Pictures/shots/desktop.png)
+![Desktop](shots/desktop.png)
 
 ### nvim
 
-![nvim](/Users/gldtn/Pictures/shots/nvim.png)
+![nvim](shots/nvim.png)
 
 ### nvim + feline statusline
 
-![Feline](/Users/gldtn/Pictures/shots/feline.png)
+![Feline](shots/feline.png)
 
 ### Credits
 
