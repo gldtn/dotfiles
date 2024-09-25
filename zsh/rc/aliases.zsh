@@ -30,6 +30,11 @@ alias :le="printenv" # list set environment
 # Python
 alias python="python3"
 
+# FastFetch
+alias ff="clear && fastfetch"
+alias fs="clear && fastfetch --config ~/.config/fastfetch/icons.jsonc"
+alias fa="clear && fastfetch --config ~/.config/fastfetch/arrows.jsonc"
+
 # Laravel
 alias pasc="php artisan db:seed --class=@"
 alias pamfs="php artisan migrate:fresh --seed"

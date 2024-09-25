@@ -16,6 +16,7 @@ return {
 				css = { "prettierd" },
 				html = { "prettierd" },
 				yaml = { "prettierd" },
+				json = { "prettierd" },
 				markdown = { "prettierd" },
 				javascript = { "prettierd" },
 				python = { "isort", "black" },
