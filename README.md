@@ -6,13 +6,17 @@
 
 **Windowmanager**: [Aerospace](https://github.com/nikitabobko/AeroSpace)
 
-### aerospace + kitty + btop
+### aerospace + kitty
 
-![screenshot](shots/desktop.png)
+![Desktop](/Users/gldtn/Pictures/shots/desktop.png)
 
-### nvim + feline
+### nvim
 
-![screenshot](shots/nvim.png)
+![nvim](/Users/gldtn/Pictures/shots/nvim.png)
+
+### nvim + feline statusline
+
+![Feline](/Users/gldtn/Pictures/shots/feline.png)
 
 ### Credits
 
