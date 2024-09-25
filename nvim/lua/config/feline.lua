@@ -26,7 +26,7 @@ local theme = {
 
 -- [ components color ]
 local color = {
-	-- components icon color
+	-- mode
 	modeBg = "bg",
 	-- branch
 	branchBg = "bg",
@@ -57,8 +57,8 @@ local color = {
 -- [ components icon ]
 local icon = {
 	branch = " ",
-	position = " ",
-	scrollbar = " ",
+	position = "",
+	scrollbar = "",
 	lsp = " ",
 }
 
@@ -259,19 +259,21 @@ component.diagnostic_info = {
 
 -- [ lsp client info ]
 local lsp_icons = {
-	["html"] = "  ",
-	["gopls"] = "  ",
-	["cssls"] = "  ",
-	["clangd"] = "פּ ",
-	["lua_ls"] = "  ",
-	["default"] = " ",
-	["bashls"] = "  ",
-	["pyright"] = "  ",
-	["copilot"] = "  ",
-	["phpactor"] = "  ",
-	["tailwindcss"] = "󱏿  ",
-	["intelephense"] = "  ",
-	["rust_analyzer"] = "  ",
+	["html"] = "",
+	["gopls"] = "",
+	["cssls"] = "",
+	["taplo"] = "",
+	["jsonls"] = "",
+	["clangd"] = "󰙱",
+	["lua_ls"] = "",
+	["bashls"] = "",
+	["default"] = "",
+	["pyright"] = "",
+	["copilot"] = "",
+	["phpactor"] = "",
+	["tailwindcss"] = "󱏿",
+	["rust_analyzer"] = "",
+	-- ["intelephense"] = "",
 }
 -- provider
 local function lsp_icon_provider()
@@ -283,7 +285,7 @@ local function lsp_icon_provider()
 	local icons = ""
 	for _, client in pairs(clients) do
 		local lsp_icon = lsp_icons[client.name] or lsp_icons["default"]
-		icons = icons .. lsp_icon
+		icons = icons .. " " .. lsp_icon .. " "
 	end
 
 	return icons
@@ -470,9 +472,9 @@ feline.setup({
 			{
 				-- component.file_type,
 				-- component.copilot_status,
-				component.lazy,
-				component.spacer,
 				component.lsp,
+				component.spacer,
+				component.lazy,
 				component.spacer,
 				-- component.time_clock,
 				-- component.spacer,

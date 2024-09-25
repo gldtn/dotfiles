@@ -6,7 +6,7 @@
 #    feature for anything you turn on.
 # Author: thevdude 
 # Source: http://crunchbang.org/forums/viewtopic.php?pid=147530#p147530
-
+clear
 initializeANSI()
 {
  esc=""

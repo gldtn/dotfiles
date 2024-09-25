@@ -18,14 +18,14 @@ return {
       ╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝      
     ]]
 
-    -- Add 12 empty lines above and below the logo
+    -- Add 10 empty lines above and below the logo
     logo = string.rep("\n", 10) .. logo .. "\n\n"
 
     -- Configure dashboard-nvim
     local opts = {
       theme = "doom",
       hide = {
-        -- this is taken care of by lualine
+        -- this is taken care of by feline
         -- enabling this messes up the actual laststatus setting after loading a file
         statusline = false,
       },

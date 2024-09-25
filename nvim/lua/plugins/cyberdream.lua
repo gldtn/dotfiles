@@ -15,12 +15,12 @@ return {
 					return {
 						TelescopeBorder = { fg = colours.bgAlt },
 						TelescopeMatching = { fg = colours.cyan },
-						TelescopePromptPrefix = { fg = colours.blue },
 						TelescopePromptCounter = { fg = colours.bg },
+						TelescopePromptPrefix = { fg = colours.blue },
 						TelescopeSelectionCaret = { fg = colours.pink },
-						TelescopePreviewTitle = { fg = colours.bgAlt, bg = colours.green, bold = true },
-						TelescopeResultsTitle = { fg = colours.blue, bg = colours.bgAlt, bold = true },
 						TelescopePromptTitle = { fg = colours.bgAlt, bg = colours.blue, bold = true },
+						TelescopeResultsTitle = { fg = colours.blue, bg = colours.bgAlt, bold = true },
+						TelescopePreviewTitle = { fg = colours.bgAlt, bg = colours.green, bold = true },
 					}
 				end,
 			},
