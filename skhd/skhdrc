@@ -1,4 +1,18 @@
 # SKHD:KeyClu CONFIGURATION FILE
+#----------------------------------------------------------------------------------------
+# Launch Apps hotkeys
+#----------------------------------------------------------------------------------------
+
+#KeyClu[Launch apps]: Zed
+hyper - c : open -na /Applications/ChatGPT.app
+#KeyClu[Launch apps]: Mpv
+hyper - m : open -na /Applications/mpv.app #$(pbpaste)
+#KeyClu[Launch apps]: Kitty instance
+hyper - return : kitty --single-instance -d ~
+#KeyClu[Launch apps]: Kitty, insert east
+hyper - r : yabai -m window --insert east && kitty --single-instance -d ~
+#KeyClu[Launch apps]: Kitty, insert South
+hyper - d : yabai -m window --insert south && kitty --single-instance -d ~
 
 #----------------------------------------------------------------------------------------
 # Change focused space
@@ -28,13 +42,13 @@ alt - 9 : yabai -m space --focus 9
 #----------------------------------------------------------------------------------------
 
 #KeyClu[Focus window]: West
-alt + shift - h : yabai -m window --focus west || yabai -m display --focus west
+alt - h : yabai -m window --focus west || yabai -m display --focus west
 #KeyClu[Focus window]: South
-alt + shift - j : yabai -m window --focus south || yabai -m display --focus south
+alt - j : yabai -m window --focus south || yabai -m display --focus south
 #KeyClu[Focus window]: North
-alt + shift - k : yabai -m window --focus north || yabai -m display --focus north
+alt - k : yabai -m window --focus north || yabai -m display --focus north
 #KeyClu[Focus window]: East
-alt + shift - l : yabai -m window --focus east || yabai -m display --focus east
+alt - l : yabai -m window --focus east || yabai -m display --focus east
 
 #----------------------------------------------------------------------------------------
 # Move windows between spaces & follow focus
@@ -87,9 +101,9 @@ meh - 9 : yabai -m window --space 9
 #----------------------------------------------------------------------------------------
 
 #KeyClu[Rotate windows]: Flip the tree horizontally
-alt - x : yabai -m space --mirror x-axis
+alt + shift - x : yabai -m space --mirror x-axis
 #KeyClu[Rotate windows]: Flip the tree vertically
-alt - y : yabai -m space --mirror y-axis
+alt + shift - y : yabai -m space --mirror y-axis
 #KeyClu[Rotate windows]: Rotate clock-wise
 alt - r : yabai -m space --rotate 270
 #KeyClu[Rotate windows]: Rotate counter clock
@@ -100,13 +114,13 @@ alt + shift - r : yabai -m space --rotate 90
 #----------------------------------------------------------------------------------------
 
 #KeyClu[Resize window]: West
-ctrl + shift - h : yabai3 resize shrink width 96
+ctrl + shift - h : yabai -m window --resize left:-160:0 \ yabai -m window --resize right:-160:0
 #KeyClu[Resize window]: South
-ctrl + shift - j : yabai3 resize grow height 64
+ctrl + shift - j : yabai -m window --resize bottom:0:160 \ yaabi -m window --resize top:0:160
 #KeyClu[Resize window]: North
-ctrl + shift - k : yabai3 resize shrink height 64
+ctrl + shift - k : yabai -m window --resize top:0:-160 \ yabai - m window --resize bottom:0:-160
 #KeyClu[Resize window]: East
-ctrl + shift - l : yabai3 resize grow width 96
+ctrl + shift - l : yabai -m window --resize right:160:0 \ yabai -m window --resize left:160:0
 #KeyClu[Resize window]: Balance
 ctrl + shift - 0 : yabai -m space --balance
 
@@ -197,21 +211,6 @@ alt + shift - e : yabai -m window --display east; yabai -m display --focus east
 alt + shift - s : yabai -m window --display south; yabai -m display --focus south
 #KeyClu[Display Management]: Move window display; west
 alt + shift - w : yabai -m window --display west; yabai -m display --focus west
-
-#----------------------------------------------------------------------------------------
-# Launch Apps hotkeys
-#----------------------------------------------------------------------------------------
-
-#KeyClu[Launch apps]: Zed
-hyper - c : zed
-#KeyClu[Launch apps]: Mpv
-hyper - m : open -na /Applications/mpv.app #$(pbpaste)
-#KeyClu[Launch apps]: Kitty instance
-hyper - return : kitty --single-instance -d ~
-#KeyClu[Launch apps]: Kitty, insert east
-hyper - l : yabai -m window --insert east && kitty --single-instance -d ~
-#KeyClu[Launch apps]: Kitty, insert South
-hyper - j : yabai -m window --insert south && kitty --single-instance -d ~
 
 #----------------------------------------------------------------------------------------
 # Disabled
