@@ -38,19 +38,6 @@ alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
 
 #----------------------------------------------------------------------------------------
-# Focus windows
-#----------------------------------------------------------------------------------------
-
-#KeyClu[Focus window]: West
-alt - h : yabai -m window --focus west || yabai -m display --focus west
-#KeyClu[Focus window]: South
-alt - j : yabai -m window --focus south || yabai -m display --focus south
-#KeyClu[Focus window]: North
-alt - k : yabai -m window --focus north || yabai -m display --focus north
-#KeyClu[Focus window]: East
-alt - l : yabai -m window --focus east || yabai -m display --focus east
-
-#----------------------------------------------------------------------------------------
 # Move windows between spaces & follow focus
 #----------------------------------------------------------------------------------------
 
@@ -97,6 +84,45 @@ meh - 8 : yabai -m window --space 8
 meh - 9 : yabai -m window --space 9
 
 #----------------------------------------------------------------------------------------
+# Focus windows
+#----------------------------------------------------------------------------------------
+
+#KeyClu[Focus window]: West
+alt - h : yabai -m window --focus west || yabai -m display --focus west
+#KeyClu[Focus window]: South
+alt - j : yabai -m window --focus south || yabai -m display --focus south
+#KeyClu[Focus window]: North
+alt - k : yabai -m window --focus north || yabai -m display --focus north
+#KeyClu[Focus window]: East
+alt - l : yabai -m window --focus east || yabai -m display --focus east
+
+#----------------------------------------------------------------------------------------
+# Swap windows
+# ----------------------------------------------------------------------------------------
+
+#KeuClu[Swap windows]: Swap west
+hyper - h : yabai -m window --swap west
+#KeyClu[Swap windows]: Swap south
+hyper - j : yabai -m window --swap south
+#KeyClu[Swap windows]: Swap north
+hyper - k : yabai -m window --swap north
+#KeyClu[Swap windows]: Swap east
+hyper - l : yabai -m window --swap east
+
+#----------------------------------------------------------------------------------------
+# Warp windows
+#----------------------------------------------------------------------------------------
+
+#KeyClu[Warp window]: West
+meh - h : yabai -m window --warp west || $(yabai -m window --display west yabai -m display --focus west)
+#keyclu[warp window]: south
+meh - j : yabai -m window --warp south || $(yabai -m window --display south yabai -m display --focus south)
+#KeyClu[Warp window]: North
+meh - k : yabai -m window --warp north || $(yabai -m window --display north yabai -m display --focus north)
+#KeyClu[Warp window]: East
+meh - l : yabai -m window --warp east || $(yabai -m window --display east yabai -m display --focus east)
+
+#----------------------------------------------------------------------------------------
 # Rotate windows axis
 #----------------------------------------------------------------------------------------
 
@@ -123,19 +149,6 @@ ctrl + shift - k : yabai -m window --resize top:0:-160 \ yabai - m window --resi
 ctrl + shift - l : yabai -m window --resize right:160:0 \ yabai -m window --resize left:160:0
 #KeyClu[Resize window]: Balance
 ctrl + shift - 0 : yabai -m space --balance
-
-#----------------------------------------------------------------------------------------
-# Warp windows
-#----------------------------------------------------------------------------------------
-
-#KeyClu[Warp window]: West
-meh - h : yabai -m window --warp west || $(yabai -m window --display west yabai -m display --focus west)
-#keyclu[warp window]: south
-meh - j : yabai -m window --warp south || $(yabai -m window --display south yabai -m display --focus south)
-#KeyClu[Warp window]: North
-meh - k : yabai -m window --warp north || $(yabai -m window --display north yabai -m display --focus north)
-#KeyClu[Warp window]: East
-meh - l : yabai -m window --warp east || $(yabai -m window --display east yabai -m display --focus east)
 
 #----------------------------------------------------------------------------------------
 # Focus first/recent/last space
