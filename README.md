@@ -4,11 +4,12 @@
 
 **Theme**: [cyberdream](https://github.com/scottmckendry/cyberdream.nvim)
 
-**Windowmanager**: [Aerospace](https://github.com/nikitabobko/AeroSpace)
+**Windowmanager**: [Yabai](https://github.com/koekeishiya/yabai)
 
-### aerospace + kitty
+### Yabai + kitty
 
 ![Desktop](shots/desktop.png)
+Aerospace shown here!
 
 ### nvim
 

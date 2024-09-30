@@ -13,6 +13,16 @@ return {
 				variant = "auto",
 				overrides = function(colours)
 					return {
+						-- italics
+						Keyword = { italic = true },
+						-- Constant = { italic = true },
+						Function = { italic = true },
+						Identifier = { italic = true },
+						-- non-italics
+						Unit = { italic = false },
+						Error = { italic = false },
+						Number = { italic = false },
+						-- Telescope colors
 						TelescopeBorder = { fg = colours.bgAlt },
 						TelescopeMatching = { fg = colours.cyan },
 						TelescopePromptCounter = { fg = colours.bg },
@@ -25,7 +35,6 @@ return {
 				end,
 			},
 		})
-
 		vim.cmd("colorscheme cyberdream")
 	end,
 }
