@@ -9,7 +9,7 @@
 ### Yabai + kitty
 
 ![Desktop](shots/desktop.png)
-Aerospace shown here!
+Aerospace shown o fastfetch!
 
 ### nvim
 
