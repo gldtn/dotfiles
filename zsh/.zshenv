@@ -20,7 +20,7 @@ export BROWSER="chrome"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export SHELL_SESSIONS_DISABLE=1 # Disable sessions MacOS
-export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgrep/"
+export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgrep/.ripgreprc"
 
 ### Programs related PATH ###
 
