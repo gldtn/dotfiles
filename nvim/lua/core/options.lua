@@ -1,4 +1,6 @@
 local options = {
+	-- General settings
+
 	-- Ident settings
 	tabstop = 4, -- Number of spaces that a <tab> uses
 	title = true, -- Set the title of the window to the file name

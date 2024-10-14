@@ -10,9 +10,9 @@ return {
 		},
 		cmd = "Neogit",
 		keys = {
-			{ "<leader>gg", "<cmd>Neogit<CR>", desc = "Neogit" },
+			{ "<leader>Gg", "<cmd>Neogit<CR>", desc = "Neogit" },
 			{
-				"<leader>gf",
+				"<leader>Gf",
 				function()
 					require("neogit").action("log", "log_current", { "--", vim.fn.expand("%") })()
 				end,

@@ -38,8 +38,6 @@ return {
 			options = { try_as_border = true },
 		},
 	},
-	-- mini icons
-	{ "echasnovski/mini.icons", version = false, config = true },
 	-- mini starter
 	{ "echasnovski/mini.pairs", version = false, config = true },
 

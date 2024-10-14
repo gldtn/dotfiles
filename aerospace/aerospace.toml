@@ -5,8 +5,8 @@ after-startup-command = []
 key-mapping.preset = 'qwerty'
 
 ### Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
 
 ### Layouts settings
 accordion-padding = 50
@@ -37,14 +37,14 @@ cmd-h = []     # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 # exec commands
-ctrl-alt-shift-cmd-enter = [
-    'exec-and-forget kitty --single-instance -d ~',
-    'split horizontal',
-]
-ctrl-alt-shift-cmd-backspace = [
-    'exec-and-forget kitty --single-instance -d ~',
-    'split opposite',
-]
+# ctrl-alt-shift-cmd-enter = [
+#   'exec-and-forget kitty --single-instance -d ~',
+#   'split horizontal',
+# ]
+# ctrl-alt-shift-cmd-backspace = [
+#   'exec-and-forget kitty --single-instance -d ~',
+#   'split opposite',
+# ]
 
 ctrl-alt-shift-cmd-c = 'reload-config'                                                 # aerospace config
 alt-shift-ctrl-b = 'exec-and-forget brew services restart felixkratz/formulae/borders' # jankyborders
@@ -68,8 +68,8 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
 # warp (Yabai Equivalent?)
-ctrl-alt-shift-cmd-h = 'split horizontal'
-ctrl-alt-shift-cmd-v = 'split vertical'
+# ctrl-alt-shift-cmd-h = 'split horizontal'
+# ctrl-alt-shift-cmd-v = 'split vertical'
 #alt-shift-ctrl-k = 'join-with up'
 #alt-shift-ctrl-l = 'join-with right'
 
