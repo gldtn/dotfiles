@@ -2,19 +2,20 @@ return {
 	"olimorris/persisted.nvim",
 	lazy = true,
 	event = "BufReadPre",
-	opts = function()
-		require("persisted").setup({
-			-- NOTE: enable if necessary, still testing defaults!
-			-- allowed_dirs = {
-			--   "~/.config",
-			-- },
-			-- autoload = true,
-			-- on_autoload_no_session = function()
-			--   vim.notify("No existing session to load.")
-			-- end
+	config = function()
+		local persisted = require("persisted")
+		local utils = require("persisted.utils")
+		local allowed_dirs = {
+			"~/code",
+			"~/.config",
+		}
+		persisted.setup({
+			should_save = function()
+				return utils.dirs_match(vim.fn.getcwd(), allowed_dirs)
+			end,
 		})
 		-- mappings
 		local map = require("core.util").map
-		map("n", "<leader>ls", "<cmd>Telescope persisted<cr>", { desc = "List Sessions" })
+		map("n", "<S-s>", "<cmd>Telescope persisted<cr>", { desc = "List Sessions" })
 	end,
 }

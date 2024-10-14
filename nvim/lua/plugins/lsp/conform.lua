@@ -12,7 +12,9 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				php = { "pint" },
+				zls = { "zig fmt" },
 				lua = { "stylua" },
+				toml = { "taplo" },
 				css = { "prettierd" },
 				html = { "prettierd" },
 				yaml = { "prettierd" },

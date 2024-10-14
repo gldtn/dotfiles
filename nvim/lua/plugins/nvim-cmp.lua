@@ -5,11 +5,13 @@ return {
 	dependencies = {
 		-- Auto-completion sources
 		"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+		"hrsh7th/cmp-cmdline", -- command-line completion
 		"hrsh7th/cmp-buffer", -- source for the text in buffer
 		"hrsh7th/cmp-path", -- source files system paths
 
 		-- Extra sources
 		"zbirenbaum/copilot-cmp", -- copilot source for nvim-cmp
+		"folke/lazydev.nvim", -- workspace libraries
 
 		-- Snippets
 		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" }, -- snippets engine
@@ -65,7 +67,10 @@ return {
 			},
 			sources = {
 				{ name = "nvim_lsp" },
+				{ name = "lazydev" },
 				{ name = "copilot" },
+				{ name = "cmdline" },
+				{ name = "FzfLua" },
 				{ name = "buffer" },
 				{ name = "path" },
 			},
@@ -91,6 +96,9 @@ return {
 					-- Apply tailwind-tools formatting first
 					vim_item = require("tailwind-tools.cmp").lspkind_format(entry, vim_item)
 
+					-- Apply nvim-highlight-colors formatting
+					local color_item = require("nvim-highlight-colors").format(entry, { kind = vim_item })
+
 					-- Then apply your existing lspkind formatting
 					local kind = require("lspkind").cmp_format({
 						maxwidth = 50,
@@ -98,6 +106,10 @@ return {
 						show_label_details = true,
 						symbol_map = { Copilot = "" },
 					})(entry, vim_item)
+					if color_item.abbr_hl_group then
+						kind.kind_hl_group = color_item.abbr_hl_group
+						kind.kind = color_item.abbr
+					end
 
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "

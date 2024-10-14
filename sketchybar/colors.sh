@@ -1,68 +1,96 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-#
-#
-# Catppuccin Macchiato palette
-#
-#
+getcolor() {
+    color_name=$1
+    opacity=$2
 
-export BASE=0xff24273a
-export MANTLE=0xff1e2030
-export CRUST=0xff181926
+    # Opacity values
+    local o100=0xff
+    local o95=0xf2
+    local o85=0xd9
+    local o75=0xbf
+    local o50=0x80
+    local o35=0x59
+    local o25=0x40
+    local o10=0x1a
+    local o0=0x00
 
-export TEXT=0xffcad3f5
-export SUBTEXT0=0xffb8c0e0
-export SUBTEXT1=0xffa5adcb
+    #Cyberdream
+    local bg=#16181a
+    local fg=#ffffff
+    local red=#ff6e5e
+    local grey=#7b8496
+    local pink=#ff5ea0
+    local cyan=#5ef1ff
+    local blue=#5ea1ff
+    local bgAlt=#1e2124
+    local green=#5eff6c
+    local yellow=#f1ff5e
+    local orange=#ffbd5e
+    local purple=#bd5eff
+    local magenta=#ff5ef1
+    local bgHighlight=#3c4048
 
-export SURFACE0=0xff363a4f
-export SURFACE1=0xff494d64
-export SURFACE2=0xff5b6078
+    case $opacity in
+    0) local opacity=$o0 ;;
+    10) local opacity=$o10 ;;
+    35) local opacity=$o35 ;;
+    25) local opacity=$o25 ;;
+    50) local opacity=$o50 ;;
+    75) local opacity=$o75 ;;
+    85) local opacity=$o85 ;;
+    95) local opacity=$o95 ;;
+    *) local opacity=$o100 ;;
+    esac
 
-export OVERLAY0=0xff6e738d
-export OVERLAY1=0xff8087a2
-export OVERLAY2=0xff939ab7
+    case $color_name in
+    bg) local color=$bg ;;
+    fg) local color=$fg ;;
+    red) local color=$red ;;
+    pink) local color=$pink ;;
+    grey) local color=$grey ;;
+    blue) local color=$blue ;;
+    cyan) local color=$cyan ;;
+    green) local color=$green ;;
+    bgAlt) local color=$bgAlt ;;
+    yellow) local color=$yellow ;;
+    orange) local color=$orange ;;
+    purple) local color=$purple ;;
+    magenta) local color=$magenta ;;
+    bgHighlight) local color=$bgHighlight ;;
+    *)
+        echo "Invalid color name: $color_name" >&2
+        return 1
+        ;;
+    esac
 
-export BLUE=0xff8aadf4
-export LAVENDER=0xffb7bdf8
-export SAPPHIRE=0xff7dc4e4
-export SKY=0xff91d7e3
-export TEAL=0xff8bd5ca
-export GREEN=0xffa6da95
-export YELLOW=0xffeed49f
-export PEACH=0xfff5a97f
-export MAROON=0xffee99a0
-export RED=0xffed8796
-export MAUVE=0xffc6a0f6
-export PINK=0xfff5bde6
-export FLAMINGO=0xfff0c6c6
-export ROSEWATER=0xfff4dbd6
-
-# SPOTIFY
-export WHITE=0xffcad3f5
-export BLACK=0xff181926
-export POPUP_BACKGROUND_COLOR=$BASE
-export POPUP_BORDER_COLOR=$WHITE
-
-
-export RANDOM_CAT_COLOR=("$BLUE" "$LAVENDER" "$SAPPHIRE" "$SKY" "$TEAL" "$GREEN" "$YELLOW" "$PEACH" "$MAROON" "$RED" "$MAUVE" "$PINK" "$FLAMINGO" "$ROSEWATER")
-
-function getRandomCatColor() {
-  echo "${RANDOM_CAT_COLOR[ $RANDOM % ${#RANDOM_CAT_COLOR[@]} ]}"
+    echo $opacity"${color:1}"
 }
 
-#
-# LEGACY COLORS
-#
-# Color Palette
-export GREY=0xff939ab7
-export TRANSPARENT=0x00000000
+# Declare and export variables
+de() {
+    local var_name=$1
+    local value=$2
+    eval "${var_name}='$value'"
+    eval "export $var_name"
+}
 
-# General bar colors
-export TEXT=0xffCAD3F5
-export BAR_COLOR=0xff3b4252
-export ICON_COLOR=$TEXT # Color of all icons
-export LABEL_COLOR=$TEXT # Color of all labels
-export LABEL_BG=0xff57627A # Label background color
-export HIDDEN_LABEL_BG=$BAR_COLOR # Hidden label background
-export SPOTIFY_GREEN=0xff1ED761
-export ICON_HIGHLIGHT_COLOR=0xff8CABC8
+# Bar
+de BAR_COLOR="$(getcolor bg 85)"
+de BAR_BORDER_COLOR="$(getcolor bgAlt 0)"
+# Backgrounds
+de HIGHLIGHT="$(getcolor orange)"
+de HIGHLIGHT_75="$(getcolor orange 75)"
+de HIGHLIGHT_50="$(getcolor orange 50)"
+de HIGHLIGHT_25="$(getcolor orange 25)"
+de HIGHLIGHT_10="$(getcolor orange 10)"
+# Icons
+de ICON_COLOR="$(getcolor purple)"
+de ICON_COLOR_INACTIVE="$(getcolor fg 50)"
+# Labels
+de LABEL_COLOR="$(getcolor fg 75)"
+# Popups
+de SHADOW_COLOR="$(getcolor bgAlt)"
+de TRANSPARENT="$(getcolor bgAlt 0)"
+de POPUP_BORDER_COLOR="$(getcolor bgAlt 0)"
+de POPUP_BACKGROUND_COLOR="$(getcolor bgAlt 50)"

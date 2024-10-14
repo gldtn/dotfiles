@@ -12,7 +12,7 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>ac", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+		{ "<leader>ac", "<cmd>T<CR>", desc = "ChatGPT" },
 		{ "<leader>ae", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction", mode = { "n", "v" } },
 		{ "<leader>ag", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction", mode = { "n", "v" } },
 		{ "<leader>at", "<cmd>ChatGPTRun translate<CR>", desc = "Translate", mode = { "n", "v" } },

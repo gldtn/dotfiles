@@ -5,15 +5,15 @@ local actions = require("telescope.actions")
 telescope.setup({
 	defaults = {
 		layout_config = {
-			width = 0.80,
+			width = 0.75,
 			height = 0.75,
 			vertical = {
 				mirror = false,
 			},
 			horizontal = {
 				prompt_position = "top",
-				preview_width = 0.65,
-				results_width = 0.35,
+				preview_width = 0.75,
+				results_width = 0.25,
 			},
 		},
 		show_line = false,
