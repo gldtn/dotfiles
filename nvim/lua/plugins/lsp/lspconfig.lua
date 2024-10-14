@@ -10,10 +10,10 @@ return {
 		config = function()
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Open diagnostic" })
-			vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic" })
-			vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
-			vim.keymap.set("n", "<leader>db", vim.diagnostic.setloclist, { desc = "Buffer diagnostics" })
+			vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Open diagnostic (LSP)" })
+			vim.keymap.set("n", "<leader>lp", vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic (LSP)" })
+			vim.keymap.set("n", "<leader>ln", vim.diagnostic.goto_next, { desc = "Goto next diagnostic (LSP)" })
+			vim.keymap.set("n", "<leader>lb", vim.diagnostic.setloclist, { desc = "Buffer diagnostics (LSP)" })
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
@@ -50,7 +50,6 @@ return {
 		dependencies = { "mason.nvim" },
 
 		config = function()
-			-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 			require("neodev").setup({})
 
 			require("mason-lspconfig").setup({
@@ -59,11 +58,9 @@ return {
 					"zls",
 					"html",
 					"cssls",
-					"shfmt",
 					"lua_ls",
 					"bashls",
 					"phpactor",
-					"shellcheck",
 					"tailwindcss",
 				},
 			})
@@ -78,8 +75,10 @@ return {
 								bufnr = bufnr,
 							})
 						end,
+						capabilities = require("cmp_nvim_lsp").default_capabilities(),
 					})
 				end,
+				-- Additional server configurations
 				["lua_ls"] = function()
 					require("lspconfig").lua_ls.setup({
 						settings = {
@@ -106,6 +105,19 @@ return {
 						init_options = {
 							["language_server_worse_reflection.inlay_hints.enable"] = true,
 							["language_server_worse_reflection.inlay_hints.types"] = true,
+						},
+					})
+				end,
+				["zls"] = function()
+					require("lspconfig").zls.setup({
+						cmd = { "/usr/local/bin/zls" },
+						settings = {
+							zls = {
+								-- Enable the zls formatter
+								format = {
+									enable = true,
+								},
+							},
 						},
 					})
 				end,

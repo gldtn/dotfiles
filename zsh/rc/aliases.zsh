@@ -57,8 +57,8 @@ ezargs="--icons --git-ignore -I='$(awk '{$1=$1} NF{printf "%s|", $0}' "${ZDOTDIR
 alias ls="eza -Galh $ezargs" # all files and dirs; long format/grid
 alias la="eza -a $ezargs" # all files and dirs
 alias tr="eza -aT $ezargs" # tree listing
-alias ll='eza -ld .* | grep "^l"' # list links
-alias l.='eza -a --git-ignore | egrep "^\."'
+alias ll='eza -l --all --show-symlinks | grep "^l"'
+alias l.='eza -la --git-ignore --group-directories-first | egrep "^\."'
 
 
 # Colorize grep output (good for log files)

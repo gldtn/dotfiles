@@ -1,26 +1,26 @@
 ## App management
 
 # STICKY apps
-STICKY=(
-    mpv
-    VLC
-    Plex
-    IINA
-    AltTab
-    Superkey
-    Hyperkey
-    Bitwarden
-    1Password
-    ColorSlurp
-    Authy Desktop
-    SpaceLauncher
-    System Settings
-    System Preferences
-)
-
-for ((i = 1; i <= "${#STICKY[@]}"; i++)); do
-    yabai -m rule --add label="sticky_${STICKY[(($i - 1))]}" app="^${STICKY[(($i - 1))]}.*$" sticky=on
-done
+# STICKY=(
+#     mpv
+#     VLC
+#     Plex
+#     IINA
+#     AltTab
+#     Superkey
+#     Hyperkey
+#     Bitwarden
+#     1Password
+#     ColorSlurp
+#     Authy Desktop
+#     SpaceLauncher
+#     System Settings
+#     System Preferences
+# )
+#
+# for ((i = 1; i <= "${#STICKY[@]}"; i++)); do
+#     yabai -m rule --add label="sticky_${STICKY[(($i - 1))]}" app="^${STICKY[(($i - 1))]}.*$" sticky=on
+# done
 
 # FLOATING apps
 UNMANAGED=(
@@ -79,7 +79,7 @@ done
 
 # App rules - Use $( yabai -m query --windows | jq '.[].app' ) to find app name
 # Automatically float non-resizable windows, such as palettes, system settings etc.
-yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
+# yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
 
 # Apps notifications (testing..)
 
@@ -88,21 +88,21 @@ yabai -m signal --add event=window_created action='yabai -m query --windows --wi
 #yabai -m rule --add label="Settings" app="^PhpStorm$" title="Settings|CLI Interpreters|Keyboard Shortcut" manage=off
 
 # make JetBrains products popup windows float
-apps='^(PhpStorm|PhpStorm-EAP|IntelliJ IDEA|WebStorm|GoLand|PyCharm)$'
-yabai -m rule --add app="JetBrains Toolbox" manage=off
-yabai -m rule --add app="${apps}" manage=off
-yabai -m rule --add app="${apps}" title="( – )" manage=on
-
-yabai -m rule --add app="^Inkscape$" title!="Inkscape" manage=off
-yabai -m rule --add app="^Inkscape$" title="Inkscape. Draw freely." manage=off
-yabai -m rule --add app="Zed Preview" title="^Open$" manage=off
+# apps='^(PhpStorm|PhpStorm-EAP|IntelliJ IDEA|WebStorm|GoLand|PyCharm)$'
+# yabai -m rule --add app="JetBrains Toolbox" manage=off
+# yabai -m rule --add app="${apps}" manage=off
+# yabai -m rule --add app="${apps}" title="( – )" manage=on
+#
+# yabai -m rule --add app="^Inkscape$" title!="Inkscape" manage=off
+# yabai -m rule --add app="^Inkscape$" title="Inkscape. Draw freely." manage=off
+# yabai -m rule --add app="Zed Preview" title="^Open$" manage=off
 
 # Browsers
-yabai -m rule --add app="^Safari$" title!="^Safari$" manage=off
-yabai -m rule --add app="^DuckDuckGo$" title!="^New Tab$" manage=off
+# yabai -m rule --add app="^Safari$" title!="^Safari$" manage=off
+# yabai -m rule --add app="^DuckDuckGo$" title!="^New Tab$" manage=off
 #yabai -m rule --add app="^Google Chrome$" title!="^New Tab$" manage=off
 #yabai -m rule --add app="^Firefox$" title!="Mozilla Firefox" manage=off
 
 # Email apps
-yabai -m rule --add label="Mimestream" app="^Mimestream$" title!="Inbox.*" manage=off
-yabai -m rule --add label="Thunderbird Daily" app="^Thunderbird Daily$" title!="Inbox.*" manage=off
+# yabai -m rule --add label="Mimestream" app="^Mimestream$" title!="Inbox.*" manage=off
+# yabai -m rule --add label="Thunderbird Daily" app="^Thunderbird Daily$" title!="Inbox.*" manage=off

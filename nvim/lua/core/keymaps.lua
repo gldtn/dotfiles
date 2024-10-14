@@ -21,7 +21,7 @@ map({ "n", "v" }, "p", '"_dP') -- don't yank on paste selection
 map("n", "x", '"_x', { noremap = true }) -- don't yank on single char delete
 map("n", "<M-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
 map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
-map({ "n", "v", "i" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+map({ "n", "v", "i" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "<M-a>", "gg0VG$", { desc = "Select all" })
 map("n", "<leader>q", "<cmd>qa!<cr>", { desc = "Quit without saving" })
 
@@ -77,13 +77,13 @@ map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
--- Trouble.nvim
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Trouble Toggle" })
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Trouble Toggle Quickfix" })
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Trouble Toggle Location List" })
-map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { desc = "Trouble Toggle LSP References" })
-map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<cr>", { desc = "Trouble Toggle LSP Document Diagnostics" }) -- stylua: ignore
-map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", { desc = "Trouble Toggle LSP Workspace Diagnostics" })
+-- -- Trouble.nvim
+-- map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { desc = "Trouble Toggle" })
+-- map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { desc = "Trouble Toggle Quickfix" })
+-- map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { desc = "Trouble Toggle Location List" })
+-- map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { desc = "Trouble Toggle LSP References" })
+-- map("n", "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<cr>", { desc = "Trouble Toggle LSP Document Diagnostics" }) -- stylua: ignore
+-- map("n", "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", { desc = "Trouble Toggle LSP Workspace Diagnostics" })
 
 -- Track.nvim
 map("n", "<c-space>", "<cmd>Track views<cr>", { desc = "List marked files" })

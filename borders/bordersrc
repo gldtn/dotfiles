@@ -57,7 +57,7 @@ bg_color="corange"
 
 OPTIONS=(
 	hidpi=on
-	width=6.0
+	width=4.0
 	style=round
 	# blur_radius=80.0
 	# background_color="0xff$(get_hex $bg_color)"

@@ -1,17 +1,17 @@
 return {
 	"folke/trouble.nvim",
 	lazy = true,
-	cmd = { "TroubleToggle", "Trouble" },
+	cmd = { "Trouble" },
 	dependencies = { "echasnovski/mini.icons", version = false },
 	opts = {
 		opts = { use_diagnostic_signs = true },
 	},
-	-- keys = {
-	--   { "<leader>xx", "<cmd>TroubleToggle<cr>",                           desc = "Trouble Toggle" },
-	--   { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",                  desc = "Trouble Toggle Quickfix" },
-	--   { "<leader>xl", "<cmd>TroubleToggle loclist<cr>",                   desc = "Trouble Toggle Location List" },
-	--   { "gR",         "<cmd>TroubleToggle lsp_references<cr>",            desc = "Trouble Toggle LSP References" },
-	--   { "<leader>xd", "<cmd>TroubleToggle lsp_document_diagnostics<cr>",  desc = "Trouble Toggle LSP Document Diagnostics" },
-	--   { "<leader>xw", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", desc = "Trouble Toggle LSP Workspace Diagnostics" },
-	-- },
+	keys = {
+		{ "<leader>xd", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnotics Toggle" },
+		{ "<leader>xD", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer diagnostics" },
+		{ "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix list" },
+		{ "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Location list" },
+		{ "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols" },
+		{ "gR", "<cmd>Trouble lsp toggle focus=false win.postion=right<cr>", desc = "LSP definitions / references / ..." },
+	},
 }

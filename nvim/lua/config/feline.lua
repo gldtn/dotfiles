@@ -259,6 +259,7 @@ component.diagnostic_info = {
 
 -- [ lsp client info ]
 local lsp_icons = {
+	["zls"] = "",
 	["html"] = "",
 	["gopls"] = "",
 	["cssls"] = "",
@@ -492,20 +493,21 @@ feline.setup({
 	},
 	force_inactive = {
 		filetypes = {
-			"^packer$",
-			"^NvimTree$",
-			"^trouble$",
-			"^Outline$",
 			"^qf$",
-			"^help$",
-			"^TelescopePrompt$",
 			"^git$",
-			"^lspinfo$",
-			"^mason$",
+			"^help$",
 			"^lazy$",
-			"^neo%-tree$",
+			"^alpha$",
+			"^mason$",
+			"^packer$",
 			"^Neogit*",
+			"^trouble$",
+			"^lspinfo$",
+			"^Outline$",
+			"^NvimTree$",
+			"^neo%-tree$",
 			"^dashboard$",
+			"^TelescopePrompt$",
 		},
 		buftypes = {
 			"terminal",

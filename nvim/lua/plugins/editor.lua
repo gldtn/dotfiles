@@ -5,6 +5,7 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
+		enabled = false,
 		opts = {},
 	},
 	-- [ Ident Blankline ]
@@ -26,8 +27,8 @@ return {
 			},
 		},
 	},
-	-- [ Mini Indent Scope ]
-	-- highlight the indent scope
+	-- [ Mini Collection ]
+	-- indent scope
 	{
 		"echasnovski/mini.indentscope",
 		version = false,
@@ -37,6 +38,11 @@ return {
 			options = { try_as_border = true },
 		},
 	},
+	-- mini icons
+	{ "echasnovski/mini.icons", version = false, config = true },
+	-- mini starter
+	{ "echasnovski/mini.pairs", version = false, config = true },
+
 	-- [ TS Comments ]
 	-- Add comments based on the type of file
 	{

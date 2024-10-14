@@ -200,6 +200,7 @@ alt - s : /Applications/KeyClu.app/Contents/MacOS/KeyClu --toggle-panel --sheet 
 # Stack layout
 #----------------------------------------------------------------------------------------
 
+hyper - s : "${HOME}"/.config/yabai/toggle_layout.sh
 #KeyClu[Stack layout]: Focus next window
 alt + shift - n : yabai -m window --focus stack.next
 #KeyClu[Stack layout]: Focus previous window

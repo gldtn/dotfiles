@@ -1,42 +1,56 @@
-source "$HOME/.config/sketchybar/colors.sh"
-source "$HOME/.config/sketchybar/icons.sh"
-source "$HOME/.config/sketchybar/icons_alt.sh" # Loads all defined icons
-source "$HOME/.config/sketchybar/userconfig.sh" # Loads all defined variables
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+ITEM_DIR="$CONFIG_DIR/items"
 
-# Setting up and starting the helper process
-source "$HOME/.config/sketchybar/helper/helper.sh"
+# Load global styles, colors and icons
+source "$CONFIG_DIR/globalstyles.sh"
 
-export PLUGIN_DIR="$HOME/.config/sketchybar/gplugs" # Directory where all the plugins are stored
-export HELPER_DIR="$HOME/.config/sketchybar/helper"
-export ITEM_DIR="$HOME/.config/sketchybar/items"
+POPUP_CLICK_SCRIPT="sketchybar --set \$NAME popup.drawing=toggle"
+POPUP_OFF="sketchybar --set \$NAME popup.drawing=off"
 
-## Bar
-BAR=(
-    height=32
-    position=top
-    padding_left=0
-    padding_right=14
-    color=$BAR_COLOR
-    shadow=off
-    topmost=off
+# Unload the macOS on screen indicator overlay for volume change
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
+sketchybar --bar "${bar[@]}" --default "${item_defaults[@]}"
+
+# Left side items
+LEFT=(
+    apple.sh
+    spaces_simple.sh
+    front_app.sh
 )
-sketchybar -m --bar "${BAR[@]}"
 
-## Call global defaults
-sketchybar -m --default "${defaults[@]}"
+# Insert items on the left
+for items in "${LEFT[@]}"; do
+    source "$ITEM_DIR/$items"
+done
 
-## Left items
-source "$PLUGIN_DIR/spaces/spaces.sh"
+# Center
+# source "$ITEM_DIR/countdown.sh"
 
-## Center items
-source "$PLUGIN_DIR/spotify/item/spotify.sh"
+# Right side items
+RIGHT=(
+    datetime.sh
+    weather.sh
+    dnd.sh
+    ethernet.sh
+    volume.sh
+    messages.sh
+    yabai.sh
+    music.sh
+)
 
-## Right items
-source "$PLUGIN_DIR/calendar/calendar.sh"
-#source "$PLUGIN_DIR/volume/volume.sh"
-source "$PLUGIN_DIR/mic/mic.sh"
-source "$PLUGIN_DIR/stats/stats.sh"
+# Insert items on the right
+for items in "${RIGHT[@]}"; do
+    source "$ITEM_DIR/$items"
+done
 
-## FINALIZING THE SETUP
-sketchybar -m --update
-echo "sketchybar configuration loaded.."
+# Brackets '/space\..*/'
+sketchybar \
+        --add bracket left.side '/space\..*/'       \
+        --set left.side "${bracket_defaults[@]}"    \
+                                                    \
+        --add bracket status_icons volume_icon volume ethernet dnd weather messages volume \
+        --set status_icons "${bracket_defaults[@]}"
+
+sketchybar --hotload on
+sketchybar --update

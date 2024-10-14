@@ -2,9 +2,10 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	event = { "BufReadPre", "BufNewFile" },
+	cmd = { "TSUpdateSync" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		"nvim-treesitter/nvim-treesitter-refactor",
+		-- "nvim-treesitter/nvim-treesitter-refactor",
 		"windwp/nvim-ts-autotag",
 	},
 	config = function()
@@ -14,8 +15,7 @@ return {
 			-- enable syntax highlighting
 			highlight = {
 				enable = true,
-				use_languagetree = true,
-				additional_vim_regex_highlighting = false,
+				additional_vim_regex_highlighting = true,
 			},
 			-- enable indentation
 			indent = { enable = true },
@@ -39,29 +39,29 @@ return {
 			auto_install = true,
 			sync_install = false,
 			incremental_selection = { enable = true },
-			refactor = { highlight_definitions = { enable = true } },
+			-- refactor = { highlight_definitions = { enable = true } },
 			autotag = {
 				enable = true,
 			},
 		})
 
-		-- FIXME: this is a hack to add blade support
-		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
-		---@class ParserConfig
-		parser_config.blade = {
-			install_info = {
-				url = "https://github.com/EmranMR/tree-sitter-blade",
-				files = { "src/parser.c" },
-				branch = "main",
-			},
-			filetype = "blade",
-		}
-
-		vim.filetype.add({
-			pattern = {
-				[".*%.blade%.php"] = "blade",
-			},
-		})
+		-- -- FIXME: this is a hack to add blade support
+		-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+		--
+		-- ---@class ParserConfig
+		-- parser_config.blade = {
+		-- 	install_info = {
+		-- 		url = "https://github.com/EmranMR/tree-sitter-blade",
+		-- 		files = { "src/parser.c" },
+		-- 		branch = "main",
+		-- 	},
+		-- 	filetype = "blade",
+		-- }
+		--
+		-- vim.filetype.add({
+		-- 	pattern = {
+		-- 		[".*%.blade%.php"] = "blade",
+		-- 	},
+		-- })
 	end,
 }
