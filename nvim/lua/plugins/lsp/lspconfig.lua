@@ -56,7 +56,6 @@ return {
 				automatic_installation = true,
 				ensure_installed = {
 					"zls",
-					"html",
 					"cssls",
 					"lua_ls",
 					"bashls",
@@ -88,13 +87,13 @@ return {
 									align_array_table = false,
 								},
 								hint = {
-									enable = true,
-									await = true, -- If a function has been defined as @async, display an await hint when it is being called.
-									setType = true, -- Show a hint to display the type being applied at assignment operations.
-									paramType = true, -- Show a hint for parameter types at a function definition. Requires the parameters to be defined with @param
-									paramName = "All", -- All, Literal, Disable
-									semicolon = "SameLine", -- All, SameLine, Disable
-									arrayIndex = "Disable", -- Enable, Auto, Disable
+									enable = false,
+									-- await = true, -- If a function has been defined as @async, display an await hint when it is being called.
+									-- setType = true, -- Show a hint to display the type being applied at assignment operations.
+									-- paramType = true, -- Show a hint for parameter types at a function definition. Requires the parameters to be defined with @param
+									-- paramName = "All", -- All, Literal, Disable
+									-- semicolon = "SameLine", -- All, SameLine, Disable
+									-- arrayIndex = "Disable", -- Enable, Auto, Disable
 								},
 							},
 						},

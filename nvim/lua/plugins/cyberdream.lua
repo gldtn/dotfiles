@@ -14,15 +14,18 @@ return {
 					return {
 						-- TreeSitter
 						["@boolean"] = { fg = colors.cyan, italic = true }, --keep true/false
-						["@keyword"] = { fg = colors.orange, italic = true }, -- return, etc..
+						["@keyword"] = { fg = colors.orange, italic = true }, -- import, export, return...
+						["@Constant"] = { fg = colors.pink, italic = true }, -- string, number, boolean, this, super
+						["@StorageClass"] = { fg = colors.purple, italic = true }, -- class keyword
 						["@keyword.repeat"] = { fg = colors.orange, italic = true }, --keep
 						["@keyword.function"] = { fg = colors.orange, italic = true }, --keep function()
 						["@keyword.conditional"] = { fg = colors.orange, italic = true }, --keep
 
 						-- LSP Semantic (0.9+)
-						["@lsp.type.parameter"] = { fg = colors.fg, italic = true }, --keep colors.
-						["@lsp.type.function"] = { fg = colors.blue, italic = true }, --keep require()
-						["@lsp.type.namespace"] = { fg = colors.blue, italic = true }, --keep = .setup({})
+						["@lsp.type.modifier"] = { fg = colors.orange, italic = true }, -- static keyword
+						-- ["@lsp.type.parameter"] = { fg = colors.fg, italic = true }, --keep colors.
+						-- ["@lsp.type.function"] = { fg = colors.blue, italic = true }, --keep require()
+						-- ["@lsp.type.namespace"] = { fg = colors.blue, italic = true }, --keep = .setup({})
 
 						-- Telescope misc
 						TelescopeMatching = { fg = colors.cyan },

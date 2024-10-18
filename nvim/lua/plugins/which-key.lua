@@ -31,7 +31,7 @@ return {
 			{ "<leader>d", group = "dap", icon = { icon = "", hl = "markdownH3" } },
 			{ "<leader>f", group = "find/files" },
 			{ "<leader>g", group = "goto", icon = { icon = "󰆤", color = "yellow" } },
-			{ "<leader>G", group = "git", icon = { icon = "󰒍", hl = "markdownH1" } },
+			{ "<leader>G", group = "git", icon = { icon = "󰊢", hl = "markdownH2" } },
 			{ "<leader>l", group = "lsp", icon = { icon = "󰒍", hl = "markdownH1" } },
 			{ "<leader>m", group = "marks", icon = { icon = "󰸕", hl = "markdownH5" } },
 			{ "<leader>r", group = "find/replace", icon = { icon = "󰛔", hl = "markdownH4" } },

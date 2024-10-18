@@ -16,11 +16,11 @@ return {
 	end,
     -- stylua: ignore
 	keys = {
-		{ "<leader>ff", "<cmd>FzfLua files<CR>", desc = "Files" },
-        { "<leader>fh", "<cmd>FzfLua helptags<CR>", desc = "Helptags" },
-        { "<leader>fg", "<cmd>FzfLua live_grep<CR>", desc = "Live grep" },
-        { "<leader>fH", "<cmd>FzfLua highlights<CR>", desc = "Highlights" },
-		{ "<leader>fc", "<cmd>FzfLua colorschemes<CR>", desc = "Colorscheme" },
-        { "<leader>fd", function() require("fzf-lua").files({ cwd = "~/.config"}) end, desc = "Dotfiles" },
+        { "<D-k><D-f>", "<cmd>FzfLua files<CR>", desc = "Files" },
+        { "<D-k><D-t>", "<cmd>FzfLua helptags<CR>", desc = "Helptags" },
+        { "<D-k><D-g>", "<cmd>FzfLua live_grep<CR>", desc = "Live grep" },
+        { "<D-k><D-h>", "<cmd>FzfLua highlights<CR>", desc = "Highlights" },
+        { "<D-k><D-c>", "<cmd>FzfLua colorschemes<CR>", desc = "Colorscheme" },
+        { "<D-k><D-d>", function() require("fzf-lua").files({ cwd = "~/.config"}) end, desc = "Dotfiles" },
 	},
 }

@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	---@diagnostic disable: assign-type-mismatch
 	dev = {
-		path = "~/git-projects",
+		path = "~/git/projects",
 		fallback = true,
 	},
 	---@diagnostic enable: assign-type-mismatch
