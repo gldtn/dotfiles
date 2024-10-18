@@ -54,7 +54,8 @@ alias find="fd"
 ## https://github.com/eza-community/eza
 ezargs="--icons --git-ignore -I='$(awk '{$1=$1} NF{printf "%s|", $0}' "${ZDOTDIR}/.ezaignore" | sed 's/|$//')' --group-directories-first"
 
-alias ls="eza -Galh $ezargs" # all files and dirs; long format/grid
+alias ls="eza -alh $ezargs" # all files and dirs; long format
+alias lg="eza -Galh $ezargs" # all files and dirs; long format/grid
 alias la="eza -a $ezargs" # all files and dirs
 alias tr="eza -aT $ezargs" # tree listing
 alias ll='eza -l --all --show-symlinks | grep "^l"'

@@ -12,7 +12,7 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				php = { "pint" },
-				zls = { "zig fmt" },
+				zls = { "zigfmt" },
 				lua = { "stylua" },
 				toml = { "taplo" },
 				css = { "prettierd" },
@@ -87,5 +87,6 @@ return {
 			vim.notify("Formatting complete!", vim.log.levels.INFO, { title = "Buffer Format" })
 		end, { desc = "Format buffer" })
 		map("n", "<leader>tf", toggle_autoformat, { desc = "Toggle autoformat-on-save" })
+		map("n", "<C-t><C-f>", toggle_autoformat, { desc = "Toggle autoformat-on-save" })
 	end,
 }
