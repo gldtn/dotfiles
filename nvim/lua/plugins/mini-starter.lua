@@ -81,9 +81,9 @@ return {
 
 		vim.cmd("hi MiniStarterHeader guifg=" .. c.blue)
 		vim.cmd("hi MiniStarterSection guifg=" .. c.pink)
-		vim.cmd("hi MiniStarterItemBullet guifg=" .. c.pink)
+		vim.cmd("hi MiniStarterItemBullet guifg=" .. c.grey)
 		vim.cmd("hi MiniStarterItemPrefix guifg=" .. c.orange)
-		vim.cmd("hi MiniStarterItem guifg=" .. c.grey)
+		vim.cmd("hi MiniStarterItem guifg=" .. c.fg)
 		vim.cmd("hi MiniStarterQuery guifg=" .. c.cyan)
 		vim.cmd("hi MiniStarterCurrent guifg=" .. c.cyan)
 		vim.cmd("hi MiniStarterFooter guifg=" .. c.grey)
