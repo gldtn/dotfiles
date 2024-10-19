@@ -25,6 +25,7 @@ return {
 						insert_mode = true,
 					},
 					use_absolute_path = true,
+					hints = { enabled = false },
 				},
 			},
 		},

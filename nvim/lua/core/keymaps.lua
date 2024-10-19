@@ -16,14 +16,16 @@ vim.g.maplocalleader = " "
 -- ------------------------------------------------
 -- a good part of these keymaps was stolen from Lazyvim.
 
--- Misc bindings
+-- Yank bindings
 map({ "n", "v" }, "p", '"_dP') -- don't yank on paste selection
 map("n", "x", '"_x', { noremap = true }) -- don't yank on single char delete
-map("n", "<M-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
-map("n", "<S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
-map({ "n", "v", "i" }, "<D-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "<D-a>", "gg0VG$", { desc = "Select all" })
+
+-- Nvim save & quit
+map("n", "<D-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
+map("n", "<M-S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
 map("n", "<leader>q", "<cmd>qa!<cr>", { desc = "Quit without saving" })
+map({ "n", "v", "i" }, "<D-s>", "<cmd>w<cr>", { desc = "Save File" })
 
 -- stylua: ignore
 map("n", "<leader>th", function()
@@ -88,17 +90,32 @@ map("n", "<leader>mu", "<cmd>Unmark<cr>", { desc = "Unmark file" })
 map("n", "\\", "<cmd>Neotree toggle right<cr>", { desc = "Toggle file explorer" })
 map("n", "-", "<cmd>Neotree toggle float<cr>", { desc = "Float file explorer" })
 
+-- Code/LSP
+-- stylua: ignore start
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "<leader>cl", ":LspInfo<cr>", { desc = "LSP Info" })
+map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+map("n", "gr", ":Telescope lsp_references<cr>", { desc = "Goto References" })
+map("n", "gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, { desc = "Goto Implementation" })
+map("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "Goto Definition" })
+map("n", "gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, { desc = "Goto Type Definition" })
+-- stylua: ignore end
+
 -- Yank lines
 -- map("n", "Y", "y$<CR>", { desc = "Yank to end of line" })
 -- map("n", "P", "<cmd>pu!<CR>", { desc = "Paste before cursor" })
 -- map("n", "p", "<cmd>pu<CR>", { desc = "Paste after cursor" })
 
 -- ------------------------------------------------
--- [[ Misc/Experimental ]]
+-- [[ Tools ]]
 -- ------------------------------------------------
-map("n", "<D-k><D-l>", "<cmd>Lazy<cr>", {})
-map("n", "<D-k><D-s>", "<cmd>Lazy sync<cr>", {})
+map("n", "<C-k><C-l>", "<cmd>Lazy<cr>", {})
+map("n", "<C-k><C-s>", "<cmd>Lazy sync<cr>", {})
+map("n", "<C-k><C-m>", "<cmd>Mason<cr>", {})
 
--- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
-map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- Clear search with <esc>
+map("n", "<esc>", ":noh<cr><esc>", { desc = "Escape and clear hlsearch" })

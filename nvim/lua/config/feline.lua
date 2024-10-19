@@ -501,6 +501,7 @@ feline.setup({
 			"^mason$",
 			"^packer$",
 			"^Neogit*",
+			"^Starter$",
 			"^trouble$",
 			"^lspinfo$",
 			"^Outline$",

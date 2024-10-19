@@ -21,7 +21,7 @@ local options = {
 
 	-- Search settings
 	incsearch = true, -- Include search
-	hlsearch = false, -- Highlight search
+	hlsearch = true, -- Highlight search
 	smartcase = true, -- Smart case search
 	ignorecase = true, -- Ignore case search
 	inccommand = "split", -- Split search editing

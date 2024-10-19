@@ -10,57 +10,40 @@ return {
 			borderless_telescope = { border = false, style = "flat" },
 			theme = {
 				variant = "auto",
-				overrides = function(colors)
+				overrides = function(c)
 					return {
 						-- TreeSitter
-						["@boolean"] = { fg = colors.cyan, italic = true }, --keep true/false
-						["@keyword"] = { fg = colors.orange, italic = true }, -- import, export, return...
-						["@Constant"] = { fg = colors.pink, italic = true }, -- string, number, boolean, this, super
-						["@StorageClass"] = { fg = colors.purple, italic = true }, -- class keyword
-						["@keyword.repeat"] = { fg = colors.orange, italic = true }, --keep
-						["@keyword.function"] = { fg = colors.orange, italic = true }, --keep function()
-						["@keyword.conditional"] = { fg = colors.orange, italic = true }, --keep
+						["@boolean"] = { fg = c.orange, italic = true }, -- true/false
+						["@keyword"] = { fg = c.orange, italic = true }, -- import, export, return...
+						["@Constant"] = { fg = c.pink, italic = true }, -- string, number, boolean, this, super
+						["@StorageClass"] = { fg = c.purple, italic = true }, -- class keyword
+						["@keyword.repeat"] = { fg = c.orange, italic = true }, --keep
+						["@keyword.function"] = { fg = c.orange, italic = true }, -- function()
+						["@keyword.conditional"] = { fg = c.orange, italic = true }, --keep
+						["@variable"] = { fg = c.cyan, italic = false }, -- variables values
 
 						-- LSP Semantic (0.9+)
-						["@lsp.type.modifier"] = { fg = colors.orange, italic = true }, -- static keyword
-						-- ["@lsp.type.parameter"] = { fg = colors.fg, italic = true }, --keep colors.
-						-- ["@lsp.type.function"] = { fg = colors.blue, italic = true }, --keep require()
-						-- ["@lsp.type.namespace"] = { fg = colors.blue, italic = true }, --keep = .setup({})
+						-- ["@lsp.type.modifier"] = { fg = c.orange, italic = true }, -- static keyword
+						-- ["@lsp.type.parameter"] = { fg = c.cyan, italic = true }, --keep colors.
+						-- ["@lsp.type.function"] = { fg = c.blue, italic = true }, --keep require()
+						-- ["@lsp.type.namespace"] = { fg = c.blue, italic = true }, --keep = .setup({})
 
 						-- Telescope misc
-						TelescopeMatching = { fg = colors.cyan },
-						TelescopeSelectionCaret = { fg = colors.pink },
-						TelescopeBorder = { fg = colors.bgAlt, bg = colors.bgAlt },
+						TelescopeMatching = { fg = c.cyan },
+						TelescopeSelectionCaret = { fg = c.pink },
+						TelescopeBorder = { fg = c.bgAlt, bg = c.bgAlt },
 						-- Telescope prompt
-						TelescopePromptCounter = { fg = colors.bg },
-						TelescopePromptPrefix = { fg = colors.blue },
-						TelescopePromptNormal = { bg = colors.bgAlt },
+						TelescopePromptCounter = { fg = c.bg },
+						TelescopePromptPrefix = { fg = c.blue },
+						TelescopePromptNormal = { bg = c.bgAlt },
 						-- Telecope titles
-						TelescopePromptTitle = { fg = colors.bgAlt, bg = colors.blue, bold = true },
-						TelescopeResultsTitle = { fg = colors.blue, bg = colors.bgAlt, bold = true },
-						TelescopePreviewTitle = { fg = colors.bgAlt, bg = colors.green, bold = true },
+						TelescopePromptTitle = { fg = c.bgAlt, bg = c.blue, bold = true },
+						TelescopeResultsTitle = { fg = c.blue, bg = c.bgAlt, bold = true },
+						TelescopePreviewTitle = { fg = c.bgAlt, bg = c.green, bold = true },
 					}
 				end,
 			},
 		})
 		vim.cmd("colorscheme cyberdream")
-		-- -- define italic groups
-		-- local italic_groups = {
-		-- 	-- TreeSitter
-		-- 	"@boolean",
-		-- 	"@keyword",
-		-- 	"@keyword.repeat",
-		-- 	"@keyword.function",
-		-- 	"@keyword.conditional",
-		-- 	-- LSP Semantic (0.9+)
-		-- 	"@lsp.type.function",
-		-- 	"@lsp.type.namespace",
-		-- 	"@lsp.type.parameter",
-		-- }
-		--
-		-- -- must appear AFTER the "colorscheme cyberdream" command
-		-- for _, group in ipairs(italic_groups) do
-		-- 	vim.cmd("hi " .. group .. " gui=italic cterm=italic")
-		-- end
 	end,
 }
