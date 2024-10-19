@@ -7,11 +7,7 @@ return {
 		},
 	},
 	keys = {
-		{
-			"<leader>u",
-			"<cmd>Telescope undo initial_mode=normal<cr>",
-			desc = "undo history",
-		},
+		{ "<leader>u", "<cmd>Telescope undo initial_mode=normal<cr>", desc = "undo history" },
 	},
 	opts = {
 		extensions = {
