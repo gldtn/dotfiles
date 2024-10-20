@@ -5,6 +5,7 @@
 
 -- Shorten `vim.keymap.set` function to `Map`,
 local map = require("core.util").map
+local type_info = vim.log.levels.INFO
 
 -- Leader key, remap to space
 map("", "<Space>", "<Nop>")
@@ -23,14 +24,14 @@ map("n", "<D-a>", "gg0VG$", { desc = "Select all" })
 
 -- Nvim save & quit
 map("n", "<D-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
-map("n", "<M-S-s>", "<cmd>so %<cr>", { desc = "Reload file" })
 map("n", "<leader>q", "<cmd>qa!<cr>", { desc = "Quit without saving" })
-map({ "n", "v", "i" }, "<D-s>", "<cmd>w<cr>", { desc = "Save File" })
+-- stylua: ignore start
+map({ "n", "v", "i" }, "<D-s>", function() vim.cmd("w") vim.notify("File saved successfully!", type_info, { title = "Save Notification" }) end, { desc = "Save File" })
+map("n", "<C-k><C-r>", function() vim.cmd("so %") vim.notify("File reloaded successfully!", type_info, { title = "Reload Notification" }) end, { desc = "Reload file" })
+-- stylua: irgnore end
 
--- stylua: ignore
-map("n", "<leader>th", function()
-  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-end, { desc = "✨lsp toggle inlay hints" })
+-- Hints
+map("n", "<leader>th", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "✨lsp toggle inlay hints" }) -- stylua: ignore
 
 -- Identing; stay in indent mode
 map("v", "<", "<gv^")
@@ -39,6 +40,10 @@ map("v", ">", ">gv^")
 -- Open new lines: stay in normal mode
 map("n", "O", "O<Esc>^")
 map("n", "o", "o<Esc>^")
+
+-- Map `n` to jump to next search result
+map("n", "n", "n", { desc = "Next search result" })
+map("n", "p", "N", { desc = "Previous search result" })
 
 -- Move Lines
 map("n", "<D-S-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
@@ -87,28 +92,38 @@ map("n", "<leader>mu", "<cmd>Unmark<cr>", { desc = "Unmark file" })
 
 -- Filesystem/Browser
 -- map("n", "-", "<cmd>Triptych<cr>", { desc = "Browse files" })
-map("n", "\\", "<cmd>Neotree toggle right<cr>", { desc = "Toggle file explorer" })
-map("n", "-", "<cmd>Neotree toggle float<cr>", { desc = "Float file explorer" })
+map("n", "-", "<cmd>Neotree toggle right<cr>", { desc = "Toggle file explorer" })
+map("n", "\\", "<cmd>Neotree toggle float<cr>", { desc = "Float file explorer" })
 
 -- Code/LSP
--- stylua: ignore start
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "<leader>cl", ":LspInfo<cr>", { desc = "LSP Info" })
 map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
 map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
 map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-map("n", "gr", ":Telescope lsp_references<cr>", { desc = "Goto References" })
-map("n", "gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, { desc = "Goto Implementation" })
-map("n", "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, { desc = "Goto Definition" })
-map("n", "gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, { desc = "Goto Type Definition" })
--- stylua: ignore end
+map("n", "gr", ":FzfLua lsp_references<cr>", { desc = "Goto References" })
+map("n", "gI", ":FzfLua lsp_implementations<cr>", { desc = "Goto Implementation" })
+map("n", "gd", ":fzfLua lsp_definitions<cr>", { desc = "Goto Definition" })
+map("n", "gy", ":FzfLua lsp_typedefs<cr>", { desc = "Goto Type Definition" })
 
--- Yank lines
--- map("n", "Y", "y$<CR>", { desc = "Yank to end of line" })
--- map("n", "P", "<cmd>pu!<CR>", { desc = "Paste before cursor" })
--- map("n", "p", "<cmd>pu<CR>", { desc = "Paste after cursor" })
+-- Keymap to trigger live_grep for the current file only
+map('n', '<leader>fg', function()
+  require('fzf-lua').lgrep_curbuf({
+    cmd = "rg --column --line-number --no-heading --color=always --smart-case",  -- Customize with desired rg options
+    winopts = {
+      height = 0.3,        -- 30% of the window height
+      width = 1,           -- full window width
+      row = vim.o.lines - 2,  -- position near the bottom of the window
+      border = { "▍", " ", " ", " ", " ", " ", "▍", "▍" },
+      fullscreen = false,      -- Do not open fullscreen
+      -- preview = {
+      --           horizontal = "right:50%",  -- Adjust the preview size
+      -- },
+    },
+  })
+end, { desc = "Fzf-lua live grep for current buffer" })
 
 -- ------------------------------------------------
 -- [[ Tools ]]
