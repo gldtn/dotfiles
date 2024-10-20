@@ -33,9 +33,15 @@ return {
 			cwd_prompt = false,
 			formatter = "path.filename_first",
 		},
-		grep = { prompt = "   " },
+		grep = {
+			prompt = "   ",
+			rg_glob = true,
+			glob_flag = "--iglob",
+			glob_separator = "%s%-%-",
+		},
 		helptags = { prompt = "   " },
 		manpages = { prompt = "   " },
+		highlights = { prompt = "   " },
 	},
 	config = function(_, opts)
 		require("fzf-lua").setup(opts)

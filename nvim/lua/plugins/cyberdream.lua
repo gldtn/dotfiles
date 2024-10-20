@@ -20,7 +20,7 @@ return {
 						["@keyword.repeat"] = { fg = c.orange, italic = true }, --keep
 						["@keyword.function"] = { fg = c.orange, italic = true }, -- function()
 						["@keyword.conditional"] = { fg = c.orange, italic = true }, --keep
-						["@variable"] = { fg = c.cyan, italic = false }, -- variables values
+						["@variable"] = { fg = c.green, italic = false }, -- variables values
 
 						-- LSP Semantic (0.9+)
 						-- ["@lsp.type.modifier"] = { fg = c.orange, italic = true }, -- static keyword
