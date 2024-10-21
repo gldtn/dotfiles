@@ -25,7 +25,7 @@ return {
 			update_in_insert = true,
 			virtual_text = {
 				source = "if_many",
-				prefix = " ●",
+				prefix = " ● ",
 			},
 		})
 
