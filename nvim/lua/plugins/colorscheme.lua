@@ -1,20 +1,34 @@
--- Theme enable/disable variables
-local rose_pine_enabled = true
-local cyberdream_enabled = false
+-- Theme switch: enable/disable theme here
+local themes = {
+	["rose-pine"] = {
+		enabled = true,
+		git_repo = "rose-pine/neovim",
+	},
+	["cyberdream"] = {
+		enabled = false,
+		git_repo = "scottmckendry/cyberdream.nvim",
+	},
+	["catppuccin"] = {
+		enabled = false,
+		git_repo = "catppuccin/nvim",
+	},
+}
 
--- Determine which theme to load based on the enabled flags
-local theme, git_repo
-if rose_pine_enabled then
-	theme = "rose-pine"
-	git_repo = "rose-pine/neovim"
-elseif cyberdream_enabled then
-	theme = "cyberdream"
-	git_repo = "scottmckendry/cyberdream.nvim"
-else
+-- Get active theme
+local active_theme, git_repo
+for name, data in pairs(themes) do
+	if data.enabled then
+		active_theme = name
+		git_repo = data.git_repo
+		break
+	end
+end
+
+if not active_theme then
 	error("No theme enabled")
 end
 
--- Plugin specifications
+-- Lazy specs
 return {
 	{
 		-- Theme setup
@@ -24,7 +38,7 @@ return {
 		enabled = true,
 		priority = 1000,
 		config = function()
-			require("themes." .. theme .. "." .. theme).setup()
+			require("themes." .. active_theme .. "." .. active_theme).setup()
 		end,
 	},
 
@@ -34,7 +48,7 @@ return {
 		dependencies = { "kyazdani42/nvim-web-devicons" },
 		enabled = true,
 		config = function()
-			require("themes." .. theme .. ".plugins.feline")
+			require("themes." .. active_theme .. ".plugins.feline")
 		end,
 	},
 }

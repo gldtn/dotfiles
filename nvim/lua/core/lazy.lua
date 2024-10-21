@@ -22,9 +22,9 @@ require("lazy").setup({
 		fallback = true,
 	},
 	ui = {
-		backdrop = 100,
+		backdrop = 25,
 		border = {
-			{ "", "FloatTitle" },
+			{ "╭", "FloatBorder" },
 			{ "─", "FloatBorder" },
 			{ "╮", "FloatBorder" },
 			{ "│", "FloatBorder" },
