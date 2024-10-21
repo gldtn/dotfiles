@@ -26,7 +26,7 @@ return {
 		},
 		winopts = {
 			width = 0.90,
-			height = 0.85,
+			height = 0.80,
 			backdrop = 25,
 			preview = { horizontal = "right:70%" },
 			border = { "▌", " ", " ", " ", " ", " ", "▌", "▌" },
