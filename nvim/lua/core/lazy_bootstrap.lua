@@ -22,12 +22,21 @@ require("lazy").setup({
 		fallback = true,
 	},
 	ui = {
-		border = "rounded",
-		title = "lazy package manager",
+		backdrop = 100,
+		border = {
+			{ "", "FloatTitle" },
+			{ "─", "FloatBorder" },
+			{ "╮", "FloatBorder" },
+			{ "│", "FloatBorder" },
+			{ "╯", "FloatBorder" },
+			{ "─", "FloatBorder" },
+			{ "╰", "FloatBorder" },
+			{ "│", "FloatBorder" },
+		},
+		title = " lazy package manager ",
 	},
 	install = {
 		missing = true,
-		colorscheme = { "cyberdream" },
 	},
 	checker = {
 		enabled = true,

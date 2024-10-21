@@ -5,7 +5,6 @@
 
 -- Shorten `vim.keymap.set` function to `Map`,
 local map = require("core.util").map
-local type_info = vim.log.levels.INFO
 
 -- Leader key, remap to space
 map("", "<Space>", "<Nop>")
@@ -22,16 +21,40 @@ map({ "n", "v" }, "p", '"_dP') -- don't yank on paste selection
 map("n", "x", '"_x', { noremap = true }) -- don't yank on single char delete
 map("n", "<D-a>", "gg0VG$", { desc = "Select all" })
 
--- Nvim save & quit
+-- Nvim quit
 map("n", "<D-q>", "<cmd>qa<cr>", { desc = "Exit nvim" })
 map("n", "<leader>q", "<cmd>qa!<cr>", { desc = "Quit without saving" })
--- stylua: ignore start
-map({ "n", "v", "i" }, "<D-s>", function() vim.cmd("w") vim.notify("File saved successfully!", type_info, { title = "Save Notification" }) end, { desc = "Save File" })
-map("n", "<C-k><C-r>", function() vim.cmd("so %") vim.notify("File reloaded successfully!", type_info, { title = "Reload Notification" }) end, { desc = "Reload file" })
--- stylua: irgnore end
+
+-- [[ save file ]]
+local save_desc = "Save file"
+local save_title = "Save Notification"
+local save_msg = "File saved successfully!"
+local info_msg = vim.log.levels.INFO
+
+-- Save file
+map("n", "<D-s>", function()
+	vim.cmd("w")
+	vim.notify(save_msg, info_msg, { title = save_title })
+end, { desc = save_desc })
+
+-- Save file, exit insert mode
+map("i", "<D-s>", function()
+	vim.cmd("stopinsert") -- Exit insert mode
+	vim.cmd("w")
+	vim.notify(save_msg, info_msg, { title = save_title })
+end, { desc = save_desc })
+
+-- Save file and exit visual modes (visual, visual-line, visual-block)
+map({ "v", "x" }, "<D-s>", function()
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+	vim.cmd("w")
+	vim.notify(save_msg, info_msg, { title = save_title })
+end, { desc = save_desc })
 
 -- Hints
-map("n", "<leader>th", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "✨lsp toggle inlay hints" }) -- stylua: ignore
+map("n", "<leader>th", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "✨lsp toggle inlay hints" })
 
 -- Identing; stay in indent mode
 map("v", "<", "<gv^")
@@ -109,28 +132,29 @@ map("n", "gd", ":fzfLua lsp_definitions<cr>", { desc = "Goto Definition" })
 map("n", "gy", ":FzfLua lsp_typedefs<cr>", { desc = "Goto Type Definition" })
 
 -- Keymap to trigger live_grep for the current file only
-map('n', '<leader>fg', function()
-  require('fzf-lua').lgrep_curbuf({
-    cmd = "rg --column --line-number --no-heading --color=always --smart-case",  -- Customize with desired rg options
-    winopts = {
-      height = 0.3,        -- 30% of the window height
-      width = 1,           -- full window width
-      row = vim.o.lines - 2,  -- position near the bottom of the window
-      border = { "▍", " ", " ", " ", " ", " ", "▍", "▍" },
-      fullscreen = false,      -- Do not open fullscreen
-      -- preview = {
-      --           horizontal = "right:50%",  -- Adjust the preview size
-      -- },
-    },
-  })
+map("n", "<leader>fg", function()
+	require("fzf-lua").lgrep_curbuf({
+		cmd = "rg --column --line-number --no-heading --color=always --smart-case", -- Customize with desired rg options
+		winopts = {
+			height = 0.3, -- 30% of the window height
+			width = 1, -- full window width
+			row = vim.o.lines - 2, -- position near the bottom of the window
+			border = { "▍", " ", " ", " ", " ", " ", "▍", "▍" },
+			fullscreen = false, -- Do not open fullscreen
+			-- preview = {
+			--           horizontal = "right:50%",  -- Adjust the preview size
+			-- },
+		},
+	})
 end, { desc = "Fzf-lua live grep for current buffer" })
 
 -- ------------------------------------------------
 -- [[ Tools ]]
 -- ------------------------------------------------
-map("n", "<C-k><C-l>", "<cmd>Lazy<cr>", {})
-map("n", "<C-k><C-s>", "<cmd>Lazy sync<cr>", {})
-map("n", "<C-k><C-m>", "<cmd>Mason<cr>", {})
+map("n", "<C-k><C-l>", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<C-k><C-s>", "<cmd>Lazy sync<cr>", { desc = "Lazy sync" })
+map("n", "<C-k><C-m>", "<cmd>Mason<cr>", { desc = "Mason" })
+map("n", "<C-g><C-g>", "<cmd>Neogit<cr>", { desc = "Neo-git" })
 
 -- Clear search with <esc>
 map("n", "<esc>", ":noh<cr><esc>", { desc = "Escape and clear hlsearch" })

@@ -22,8 +22,6 @@ return {
 			nowait = false,
 		}
 
-		local c = require("cyberdream.colors").default
-
 		local mappings = {
 			{ "<leader>a", group = "ai" },
 			{ "<leader>b", group = "buffer/browser" },
