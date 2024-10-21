@@ -9,7 +9,7 @@ local map = require("core.util").map
 -- Leader key, remap to space
 map("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 -- ------------------------------------------------
 -- [[ Keymaps ]] --
