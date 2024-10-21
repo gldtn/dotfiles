@@ -1,15 +1,15 @@
--- colorschemes/rose-pine/plugins/feline.lua
+-- colorschemes/catppuccin/plugins/feline.lua
 local feline = require("feline")
 local get_colors = require("feline.providers.vi_mode")
-local p = require("rose-pine.palette")
+local p = require("catppuccin.palettes").get_palette("mocha")
 
 local background = p.base
 local theme = {
 	fg = p.base,
 	bg = background,
-	fg_alt = p.subtle,
-	bg_alt = p.surface,
-	component_fg = p.muted,
+	fg_alt = p.text,
+	bg_alt = p.surface0,
+	component_fg = p.rosewater,
 	component_bg = background,
 }
 
@@ -19,32 +19,32 @@ local color = {
 	mode_bg = theme.bg,
 	-- branch
 	branch_bg = theme.bg,
-	branch_icon = p.foam,
-	branch_text = p.foam,
+	branch_icon = p.sapphire,
+	branch_text = p.sapphire,
 	-- fileinfo
 	fileinfo_bg = theme.bg,
-	fileinfo_text = p.subtle,
+	fileinfo_text = p.rosewater,
 	-- position
 	position_bg = theme.bg,
-	position_icon = p.ose,
-	position_text = p.rose,
+	position_icon = p.pink,
+	position_text = p.pink,
 	-- scrollbar
 	scrollbar_bg = theme.bg,
-	scrollbar_icon = p.love,
-	scrollbar_text = p.love,
+	scrollbar_icon = p.mauve,
+	scrollbar_text = p.mauve,
 	-- git changes
-	git_add = p.foam,
-	git_delete = p.love,
-	git_change = p.rose,
+	git_add = p.blue,
+	git_delete = p.red,
+	git_change = p.green,
 	-- diagnostics
-	errors = p.love,
-	warnings = p.gold,
-	hints = p.rose,
-	info = p.foam,
+	errors = p.red,
+	warnings = p.peach,
+	hints = p.rosewater,
+	info = p.blue,
 	-- lsp
-	lsp_icon = p.muted,
+	lsp_icon = p.lavender,
 	-- lazy
-	lazy = p.foam,
+	lazy = p.green,
 }
 
 -- [ components icon ]
@@ -61,30 +61,30 @@ local default_hl = {
 	bg = "component_bg",
 }
 
+-- [ modes ]
+local mode_theme = {
+	["NORMAL"] = p.peach,
+	["OP"] = p.green,
+	["INSERT"] = p.red,
+	["VISUAL"] = p.mauve,
+	["LINES"] = p.mauve,
+	["BLOCK"] = p.mauve,
+	["REPLACE"] = p.red,
+	["V-REPLACE"] = p.red,
+	["ENTER"] = p.peach,
+	["MORE"] = p.peach,
+	["SELECT"] = p.peach,
+	["SHELL"] = p.lavender,
+	["TERM"] = p.lavender,
+	["NONE"] = p.lavender,
+	["COMMAND"] = p.red,
+}
+
 -- components separator
 local left_separator = ""
 local right_separator = ""
-local prefix_separator = ""
-local suffix_separator = ""
-
--- [ modes ]
-local mode_theme = {
-	["NORMAL"] = p.gold,
-	["OP"] = p.pine,
-	["INSERT"] = p.love,
-	["VISUAL"] = p.iris,
-	["LINES"] = p.iris,
-	["BLOCK"] = p.pine,
-	["REPLACE"] = p.love,
-	["V-REPLACE"] = p.love,
-	["ENTER"] = p.gold,
-	["MORE"] = p.gold,
-	["SELECT"] = p.gold,
-	["SHELL"] = p.subtle,
-	["TERM"] = p.subtle,
-	["NONE"] = p.subtle,
-	["COMMAND"] = p.love,
-}
+local prefix_separator = "left_rounded"
+local suffix_separator = "right_rounded"
 
 local modes = setmetatable({
 	["n"] = "NORMAL",
@@ -475,6 +475,7 @@ feline.setup({
 				-- component.file_type,
 				-- component.copilot_status,
 				component.lsp,
+				-- component.spacer,
 				component.lazy,
 				component.spacer,
 				-- component.time_clock,

@@ -1,5 +1,5 @@
 local M = {}
-local hl_dir = "themes.rose-pine.rose-pine-highlights"
+local highlights = require("themes.rose-pine.rose-pine-highlights")
 
 -- Function to set up the rose-pine theme
 M.setup = function()
@@ -51,16 +51,12 @@ M.setup = function()
 			h5 = "pine",
 			h6 = "foam",
 		},
+
+		highlight_groups = highlights,
 	})
 
-	-- Load highlights after setting up the colorscheme
+	-- Load colorscheme
 	vim.cmd("colorscheme rose-pine")
-
-	-- Apply the custom highlights
-	local ok, highlights = pcall(require, hl_dir)
-	if ok then
-		highlights.setup()
-	end
 end
 
 return M

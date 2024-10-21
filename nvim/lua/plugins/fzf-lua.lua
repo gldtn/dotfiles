@@ -25,9 +25,9 @@ return {
 			},
 		},
 		winopts = {
-			width = 0.9,
+			width = 0.90,
 			height = 0.85,
-			backdrop = 100,
+			backdrop = 25,
 			preview = { horizontal = "right:70%" },
 			border = { "▌", " ", " ", " ", " ", " ", "▌", "▌" },
 		},
@@ -46,7 +46,4 @@ return {
 		manpages = { prompt = "   " },
 		highlights = { prompt = "   " },
 	},
-	config = function(_, opts)
-		require("fzf-lua").setup(opts)
-	end,
 }

@@ -1,82 +1,87 @@
-local M = {}
+local M = {
+	-- [[ Custom Button Highlights ]] --
+	ButtonLove = { fg = "base", bg = "love" },
+	ButtonGold = { fg = "base", bg = "gold" },
+	ButtonRose = { fg = "base", bg = "rose" },
+	ButtonPine = { fg = "base", bg = "pine" },
+	ButtonFoam = { fg = "base", bg = "foam" },
+	ButtonIris = { fg = "base", bg = "iris" },
 
-M.setup = function()
-	local c = require("rose-pine.palette") -- Pulls the color palette
-	local highlights = {
-		-- [[ Custom Button Highlights ]] --
-		ButtonLove = { fg = c.base, bg = c.love },
-		ButtonGold = { fg = c.base, bg = c.gold },
-		ButtonRose = { fg = c.base, bg = c.rose },
-		ButtonPine = { fg = c.base, bg = c.pine },
-		ButtonFoam = { fg = c.base, bg = c.foam },
-		ButtonIris = { fg = c.base, bg = c.iris },
+	-- [[ dashboard ]] --
+	DashboardKey = { fg = "love" },
+	DashboardIcon = { fg = "rose" },
+	DashboardHeader = { fg = "gold" },
+	DashboardFooter = { fg = "muted" },
 
-		-- [[ dashboard ]] --
-		DashboardKey = { fg = c.love },
-		DashboardIcon = { fg = c.rose },
-		DashboardHeader = { fg = c.gold },
-		DashboardFooter = { fg = c.muted },
+	-- [[ notify ]] --
+	NotifyINFOBody = { bg = "base" },
+	NotifyWARNBody = { bg = "base" },
+	NotifyERRORBody = { bg = "base" },
+	NotifyDEBUGBody = { bg = "base" },
+	NotifyTRACEBody = { bg = "base" },
+	NotifyINFOBorder = { bg = "base" },
+	NotifyWARNBorder = { bg = "base" },
+	NotifyERRORBorder = { bg = "base" },
+	NotifyDEBUGBorder = { bg = "base" },
+	NotifyTRACEBorder = { bg = "base" },
 
-		-- [[ notify ]] --
-		NotifyINFOBody = { bg = c.base },
-		NotifyWARNBody = { bg = c.base },
-		NotifyERRORBody = { bg = c.base },
-		NotifyDEBUGBody = { bg = c.base },
-		NotifyTRACEBody = { bg = c.base },
-		NotifyINFOBorder = { bg = c.base },
-		NotifyWARNBorder = { bg = c.base },
-		NotifyERRORBorder = { bg = c.base },
-		NotifyDEBUGBorder = { bg = c.base },
-		NotifyTRACEBorder = { bg = c.base },
+	-- [[ Neo-tree ]] --
+	NeoTreeNormal = { bg = "surface" },
+	NeoTreeDirectoryIcon = { fg = "love" },
+	NeotreeFloatTitle = { link = "ButtonGold" },
+	NeoTreeFloatBorder = { fg = "surface", bg = "surface" },
 
-		-- [[ Neo-tree ]] --
-		NeoTreeNormal = { bg = c.surface },
-		NeoTreeDirectoryIcon = { fg = c.love },
-		NeotreeFloatTitle = { link = "ButtonGold" },
-		NeoTreeFloatBorder = { fg = c.surface, bg = c.surface },
+	-- [[ Treesitter highlights ]] --
+	["@boolean"] = { fg = "love", italic = true },
+	["@string"] = { fg = "foam", italic = false },
+	["@variable"] = { fg = "gold", italic = false },
+	["@operator"] = { fg = "foam", italic = false },
+	["@property"] = { fg = "text", italic = false },
+	["@string.regexp"] = { fg = "text", italic = false },
+	["@variable.member"] = { fg = "rose", italic = true },
 
-		-- [[ Treesitter highlights ]] --
-		["@boolean"] = { fg = c.love, italic = true }, -- booleans (true/false)
-		["@string"] = { fg = c.foam, italic = false }, -- property of a variable
-		["@variable"] = { fg = c.gold, italic = false }, -- variables, variable values
-		["@operator"] = { fg = c.foam, italic = false }, -- operators (^-+=)
-		["@property"] = { fg = c.text, italic = false }, -- property of a variable
-		["@string.regexp"] = { fg = c.text, italic = false }, -- property of a variable
-		["@variable.member"] = { fg = c.rose, italic = true }, -- var.members
+	-- [[ telescope ]] --
+	TelescopeTitle = { fg = "gold" },
+	TelescopeMatching = { fg = "gold" },
+	TelescopeNormal = { fg = "text", bg = "surface" },
+	TelescopeBorder = { fg = "base", bg = "surface" },
+	TelescopeSelection = { fg = "text", bg = "highlight_med" },
+	TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
+	TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
+	-- prompt
+	TelescopePromptPrefix = { fg = "gold" },
+	TelescopePromptCounter = { fg = "foam" },
+	TelescopePromptTitle = { link = "ButtonGold" },
+	TelescopePromptNormal = { fg = "text", bg = "overlay" },
+	TelescopePromptBorder = { fg = "overlay", bg = "overlay" },
+	-- preview
+	TelescopePreviewTitle = { link = "ButtonFoam" },
+	TelesscopePreviewBorder = { fg = "base", bg = "overlay" },
 
-		-- [[ telescope ]] --
-		TelescopeTitle = { fg = c.gold },
-		TelescopeMatching = { fg = c.gold },
-		TelescopeNormal = { fg = c.text, bg = c.surface },
-		TelescopeBorder = { fg = c.base, bg = c.surface },
-		TelescopeSelection = { fg = c.text, bg = c.highlight_med },
-		TelescopeSelectionCaret = { fg = c.love, bg = c.highlight_med },
-		TelescopeMultiSelection = { fg = c.text, bg = c.highlight_high },
-		-- prompt
-		TelescopePromptPrefix = { fg = c.gold },
-		TelescopePromptCounter = { fg = c.foam },
-		TelescopePromptTitle = { link = "ButtonGold" },
-		TelescopePromptNormal = { fg = c.text, bg = c.overlay },
-		TelescopePromptBorder = { fg = c.overlay, bg = c.overlay },
-		-- preview
-		TelescopePreviewTitle = { link = "ButtonFoam" },
+	-- [[ defaults ]]
+	LazyBackdrop = { bg = "base" },
+	FloatTitle = { link = "ButtonGold" },
+	FloatBorder = { fg = "surface", bg = "surface" },
 
-		FloatTitle = { link = "ButtonGold" },
-		FloatBorder = { fg = c.surface, bg = c.surface },
-
-		-- [[ fzf-lua ]]--
-		FzfLuaFzfHeader = { fg = c.muted },
-		FzfLuaHeaderText = { fg = c.muted },
-		FzfLuaHeaderBind = { fg = c.rose },
-
-		FzfLuaTitle = { link = "ButtonGold" },
-		FzfLuaPreviewTitle = { link = "ButtonFoam" },
-		FzfLuaFzfBorder = { fg = c.overlay, bg = c.surface }, -- small inset borders
-		FzfLuaPreviewBorder = { fg = c.base, bg = c.surface },
-	}
-	for group, hl in pairs(highlights) do
-		vim.api.nvim_set_hl(0, group, hl)
-	end
-end
+	-- [[ fzf-lua ]] --
+	-- headers
+	FzfLuaFzfHeader = { fg = "muted" },
+	FzfLuaHeaderText = { fg = "muted" },
+	FzfLuaHeaderBind = { fg = "rose" },
+	-- general
+	FzfLuaBackdrop = { bg = "base" },
+	FzfLuaNormal = { fg = "text", bg = "surface" },
+	-- title
+	FzfLuaTitle = { link = "ButtonGold" },
+	FzfLuaPreviewTitle = { link = "ButtonFoam" },
+	-- prompt
+	FzfLuaFzfMatching = { fg = "gold" },
+	FzfLuaFzfPointer = { fg = "surface" },
+	FzfLuaFzfPrompt = { fg = "gold", bg = "surface" },
+	-- border
+	FzfLuaBorder = { fg = "base", bg = "surface" },
+	FzfLuaFzfBorder = { fg = "surface", bg = "surface" }, -- scroll borders, top sep
+	FzfLuaPreviewBorder = { fg = "base", bg = "surface" },
+}
 
 return M
