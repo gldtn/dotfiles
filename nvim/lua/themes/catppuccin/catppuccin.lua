@@ -48,9 +48,6 @@ M.setup = function()
 			},
 		},
 	})
-
-	-- Load colorscheme
-	vim.cmd("colorscheme catppuccin")
 end
 
 return M

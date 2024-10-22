@@ -54,9 +54,6 @@ M.setup = function()
 
 		highlight_groups = highlights,
 	})
-
-	-- Load colorscheme
-	vim.cmd("colorscheme rose-pine")
 end
 
 return M
