@@ -64,24 +64,26 @@ M.setup = function(c)
 
 		-- [[ defaults ]]
 		LazyBackdrop = { bg = c.base },
-		FloatTitle = { link = "ButtonPeach" },
+		MasonBackdrop = { bg = c.base },
+		FloatTitle = { link = "ButtonGreen" },
 		FloatBorder = { fg = c.mantle, bg = c.mantle },
+		MiniIndentscopeSymbol = { fg = c.blue },
 
 		-- [[ fzf-lua ]]--
 		-- headers
-		FzfLuaHeaderBind = { fg = c.peach },
+		FzfLuaHeaderBind = { fg = c.lavender },
 		FzfLuaFzfHeader = { fg = c.overlay0 },
 		FzfLuaHeaderText = { fg = c.overlay0 },
 		-- general
 		FzfLuaBackdrop = { bg = c.base },
 		FzfLuaNormal = { fg = c.text, bg = c.mantle },
 		-- title
-		FzfLuaTitle = { link = "ButtonPeach" },
+		FzfLuaTitle = { link = "ButtonBlue" },
 		FzfLuaPreviewTitle = { link = "ButtonGreen" },
 		-- prompt
-		FzfLuaFzfMatch = { fg = c.peach },
+		FzfLuaFzfMatch = { fg = c.sapphire },
 		FzfLuaFzfPointer = { fg = c.mantle },
-		FzfLuaFzfPrompt = { fg = c.peach, bg = c.mantle },
+		FzfLuaFzfPrompt = { fg = c.blue, bg = c.mantle },
 		-- borders
 		FzfLuaBorder = { fg = c.base, bg = c.mantle },
 		FzfLuaFzfBorder = { fg = c.surface0, bg = c.mantle }, -- scroll borders, top sep

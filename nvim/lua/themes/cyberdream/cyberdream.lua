@@ -45,9 +45,6 @@ M.setup = function()
 		},
 	})
 
-	-- Apply the colorscheme
-	vim.cmd("colorscheme cyberdream")
-
 	-- load highlights
 	local ok, highlights = pcall(require, "themes.cyberdream.cyberdream-highlights")
 	if ok then

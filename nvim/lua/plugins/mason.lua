@@ -1,5 +1,6 @@
 return {
 	"williamboman/mason.nvim",
+	dev = true,
 	cmd = "Mason",
 	keys = { { "<leader>cm", ":Mason<cr>", desc = "Mason" } },
 	build = ":MasonUpdate",
@@ -7,6 +8,7 @@ return {
 		require("mason").setup({
 			ui = {
 				border = "rounded",
+				backdrop = 25,
 				width = 0.8,
 				height = 0.8,
 			},

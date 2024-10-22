@@ -158,3 +158,24 @@ map("n", "<C-g><C-g>", "<cmd>Neogit<cr>", { desc = "Neo-git" })
 
 -- Clear search with <esc>
 map("n", "<esc>", ":noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+local themes = {
+	{
+		name = "rose-pine",
+		setup = function()
+			require("themes.rose-pine.rose-pine").setup()
+		end,
+	},
+	{
+		name = "cyberdream",
+		setup = function()
+			require("themes.cyberdream.cyberdream").setup()
+		end,
+	},
+	{
+		name = "catppuccin",
+		setup = function()
+			require("themes.catppuccin.catppuccin").setup()
+		end,
+	},
+}
