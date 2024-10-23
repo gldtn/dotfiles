@@ -50,8 +50,8 @@ return {
 			format = {
 				cmdline = {
 					pattern = "^:",
-					icon = "",
-					icon_hl_group = "@comment.error",
+					icon = "  ",
+					icon_hl_group = "markdownH1",
 					lang = "vim",
 				},
 			},

@@ -19,28 +19,28 @@ local color = {
 	mode_bg = theme.bg,
 	-- branch
 	branch_bg = theme.bg,
-	branch_icon = p.sapphire,
-	branch_text = p.sapphire,
+	branch_icon = p.sky,
+	branch_text = p.sky,
 	-- fileinfo
 	fileinfo_bg = theme.bg,
 	fileinfo_text = p.rosewater,
 	-- position
 	position_bg = theme.bg,
-	position_icon = p.pink,
-	position_text = p.pink,
+	position_icon = p.mauve,
+	position_text = p.mauve,
 	-- scrollbar
 	scrollbar_bg = theme.bg,
-	scrollbar_icon = p.mauve,
-	scrollbar_text = p.mauve,
+	scrollbar_icon = p.pink,
+	scrollbar_text = p.pink,
 	-- git changes
-	git_add = p.blue,
+	git_add = p.green,
 	git_delete = p.red,
-	git_change = p.green,
+	git_change = p.peach,
 	-- diagnostics
-	errors = p.red,
-	warnings = p.peach,
-	hints = p.rosewater,
 	info = p.blue,
+	errors = p.red,
+	hints = p.flamingo,
+	warnings = p.peach,
 	-- lsp
 	lsp_icon = p.lavender,
 	-- lazy
@@ -57,27 +57,27 @@ local icon = {
 
 -- [ default highlight ]
 local default_hl = {
-	fg = "component_fg",
-	bg = "component_bg",
+	fg = theme.component_fg,
+	bg = theme.component_bg,
 }
 
 -- [ modes ]
 local mode_theme = {
-	["NORMAL"] = p.peach,
 	["OP"] = p.green,
-	["INSERT"] = p.red,
-	["VISUAL"] = p.mauve,
 	["LINES"] = p.mauve,
 	["BLOCK"] = p.mauve,
-	["REPLACE"] = p.red,
-	["V-REPLACE"] = p.red,
-	["ENTER"] = p.peach,
+	["VISUAL"] = p.mauve,
 	["MORE"] = p.peach,
+	["ENTER"] = p.peach,
+	["NORMAL"] = p.peach,
 	["SELECT"] = p.peach,
-	["SHELL"] = p.lavender,
-	["TERM"] = p.lavender,
-	["NONE"] = p.lavender,
+	["INSERT"] = p.red,
+	["REPLACE"] = p.red,
 	["COMMAND"] = p.red,
+	["V-REPLACE"] = p.red,
+	["NONE"] = p.lavender,
+	["TERM"] = p.lavender,
+	["SHELL"] = p.lavender,
 }
 
 -- components separator
@@ -94,14 +94,12 @@ local modes = setmetatable({
 	[""] = "V-BLOCK",
 	["s"] = "SELECT",
 	["S"] = "S-LINE",
-	[""] = "S-BLOCK",
 	["i"] = "INSERT",
 	["ic"] = "INSERT",
 	["R"] = "REPLACE",
 	["Rv"] = "V-REPLACE",
 	["c"] = "COMMAND",
 	["cv"] = "EX",
-	["ce"] = "EX",
 	["r"] = "PROMPT",
 	["rm"] = "MORE",
 	["r?"] = "CONFIRM",
@@ -111,17 +109,17 @@ local modes = setmetatable({
 	__index = function()
 		return "-"
 	end,
-}) -- }}}
+})
 
 -- mode icons
 local unicodes = {
-	n = "", --"",
-	i = "", -- "",
-	c = "",
-	R = "",
-	v = "",
-	V = "",
-	[""] = "󰫙",
+	n = " ", --"",
+	i = " ", -- "",
+	c = " ",
+	R = " ",
+	v = " ",
+	V = " ",
+	[""] = "󰫙 ",
 }
 
 -- components
@@ -141,12 +139,12 @@ component.vim_mode = {
 	provider = function()
 		local mode = vim.fn.mode()
 		local mode_name = modes[mode]
-		return string.format(" %s", mode_name)
+		return string.format("%s", mode_name)
 	end,
 	hl = function()
 		return {
 			fg = get_colors.get_mode_color(),
-			bg = "component_bg",
+			bg = theme.component_bg,
 			style = "bold",
 		}
 	end,
@@ -157,8 +155,8 @@ component.vim_mode = {
 component.vim_mode_icon = {
 	provider = function()
 		local mode = vim.fn.mode()
-		local mode_icon = unicodes[mode] or ""
-		return string.format("%s ", mode_icon)
+		local mode_icon = unicodes[mode] or " "
+		return string.format("%s", mode_icon)
 	end,
 	hl = function()
 		return {
