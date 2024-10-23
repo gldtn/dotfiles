@@ -4,7 +4,7 @@ local M = {}
 M.setup = function()
 	-- Base setup for the cyberdream theme
 	require("cyberdream").setup({
-		transparent = true,
+		transparent = false,
 		italic_comments = true,
 		borderless_telescope = { border = false, style = "flat" },
 		theme = {
