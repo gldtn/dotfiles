@@ -11,6 +11,7 @@ M.setup = function(c)
 		ButtonSapphire = { fg = c.base, bg = c.sapphire },
 
 		-- -- [[ dashboard ]] --
+		DashboardHeader = { fg = c.overlay2 },
 		-- DashboardKey = { fg = c.love },
 		-- DashboardIcon = { fg = c.rose },
 		-- DashboardHeader = { fg = c.peach },
@@ -47,7 +48,7 @@ M.setup = function(c)
 
 		TelescopeTitle = { fg = c.blue },
 		TelescopeMatching = { fg = c.yellow },
-		TelescopeBorder = { fg = c.matle, bg = c.matle },
+		TelescopeBorder = { fg = c.mantle, bg = c.mantle },
 		TelescopeNormal = { fg = c.lavender, bg = c.mantle },
 		TelescopeSelection = { fg = c.lavender, bg = c.surface0 },
 		-- TelescopeSelectionCaret = { fg = c.red, bg = c.overlay0 },
