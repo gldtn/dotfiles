@@ -1,42 +1,49 @@
+local schema = require("themes.highlights-schema")
+
 local M = {}
 
-M.setup = function()
-	-- Load the color palette for cyberdream
-	local c = require("cyberdream.colors").default
+M.setup = function(c)
+	-- theme colors
+	local accent = {
+		color1 = c.blue,
+		color2 = c.cyan,
+		color3 = c.magenta,
+	}
+	local neutral = {
+		color1 = c.fg,
+		color2 = c.grey,
+		color3 = c.bgHighlight,
+	}
+	local primary = {
+		color1 = c.bg,
+		color2 = c.bgAlt,
+		color3 = c.bgHighlight,
+	}
+	local title = {
+		float = { fg = primary.color1, bg = c.blue },
+		preview = { fg = primary.color1, bg = c.green },
+	}
 
-	-- ------------------------------------------------------------
-	-- [[ mini.starter ]]
-	-- ------------------------------------------------------------
+	local schema_highlights = schema.get_highlights(accent, neutral, primary, title)
+	local extra_highlights = {
+		-- TreeSitter
+		["@Constant"] = { fg = c.pink, italic = true }, -- string, number, boolean, this, super
+		["@boolean"] = { fg = c.orange, italic = true }, -- boolean
+		["@keyword"] = { fg = c.orange, italic = true }, -- import, export, return...
+		["@property"] = { fg = c.fg, italic = false }, -- variables property
+		["@variable"] = { fg = c.green, italic = false }, -- variables values
+		["@StorageClass"] = { fg = c.purple, italic = true }, -- class keyword
+		["@keyword.repeat"] = { fg = c.orange, italic = true }, --keep?
+		["@keyword.function"] = { fg = c.orange, italic = true }, -- function()
+		["@keyword.conditional"] = { fg = c.orange, italic = true }, --keep?
+	}
+	-- Merge schema highlights and extra highlights
+	for k, v in pairs(extra_highlights) do
+		schema_highlights[k] = v
+	end
 
-	vim.cmd("hi MiniStarterHeader guifg=" .. c.blue)
-	vim.cmd("hi MiniStarterSection guifg=" .. c.pink)
-	vim.cmd("hi MiniStarterItemBullet guifg=" .. c.grey)
-	vim.cmd("hi MiniStarterItemPrefix guifg=" .. c.orange)
-	vim.cmd("hi MiniStarterItem guifg=" .. c.fg)
-	vim.cmd("hi MiniStarterQuery guifg=" .. c.cyan)
-	vim.cmd("hi MiniStarterCurrent guifg=" .. c.cyan)
-	vim.cmd("hi MiniStarterFooter guifg=" .. c.grey)
-
-	-- ------------------------------------------------------------
-	-- [[ fzf-lua ]]
-	-- ------------------------------------------------------------
-
-	-- keybinds
-	vim.api.nvim_set_hl(0, "FzfLuaFzfHeader", { fg = c.grey })
-	vim.api.nvim_set_hl(0, "FzfLuaHeaderText", { fg = c.grey })
-	vim.api.nvim_set_hl(0, "FzfLuaHeaderBind", { fg = c.orange })
-	-- prompt
-	vim.api.nvim_set_hl(0, "FzfLuaFzfQuery", { fg = c.fg })
-	vim.api.nvim_set_hl(0, "FzfLuaFzfInfo", { fg = c.cyan })
-	vim.api.nvim_set_hl(0, "FzfLuaFzfMatch", { fg = c.blue })
-	vim.api.nvim_set_hl(0, "FzfLuaFzfPrompt", { fg = c.blue })
-	vim.api.nvim_set_hl(0, "FzfLuaFzfMarker", { fg = c.pink })
-	vim.api.nvim_set_hl(0, "FzfLuaFzfPointer", { fg = c.bgAlt })
-	vim.api.nvim_set_hl(0, "FzfLuaTitle", { fg = c.bgAlt, bg = c.blue })
-	-- preview
-	vim.api.nvim_set_hl(0, "FzfLuaFzfSeparator", { fg = c.bgHighlight })
-	vim.api.nvim_set_hl(0, "FzfLuaPreviewTitle", { fg = c.bgAlt, bg = c.green })
-	vim.api.nvim_set_hl(0, "FzfLuaPreviewBorder", { fg = c.bgHighlight, bg = c.bgAlt })
+	-- Return the combined highlight groups as a plain table (no function)
+	return schema_highlights
 end
 
 return M

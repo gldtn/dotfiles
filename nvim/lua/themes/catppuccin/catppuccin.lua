@@ -1,11 +1,11 @@
 -- catppuccin/catppuccin.lua
 local M = {}
-local hl_dir = "themes.catppuccin.catppuccin-highlights"
+local highlights = require("themes.catppuccin.catppuccin-highlights")
 
 M.setup = function()
 	require("catppuccin").setup({
 		flavour = "auto", -- latte, frappe, macchiato, mocha
-		background = { -- :h background
+		background = {
 			light = "latte",
 			dark = "mocha",
 		},
@@ -16,24 +16,15 @@ M.setup = function()
 			shade = "dark",
 			percentage = 0.15,
 		},
-		styles = { -- see `:h highlight-args`
+		styles = {
 			comments = { "italic" },
 			conditionals = { "italic" },
-			loops = {},
 			functions = { "italic" },
-			keywords = {},
-			strings = {},
-			variables = {},
-			numbers = {},
 			booleans = { "italic" },
-			properties = {},
-			types = {},
-			operators = {},
 		},
 		color_overrides = {},
-		custom_highlights = function(colors)
-			local custom_hl = require(hl_dir)
-			return custom_hl.setup(colors)
+		custom_highlights = function(c)
+			return highlights.setup(c)
 		end,
 		default_integrations = true,
 		integrations = {
