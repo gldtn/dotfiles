@@ -14,19 +14,22 @@ M.get_highlights = function(accent, neutral, primary, title)
 		FzfLuaPreviewTitle = { link = "PreviewTitle" },
 
 		-- fzf-lua headers
-		FzfLuaHeaderBind = { fg = accent.color3 },
+		FzfLuaHeaderBind = { fg = accent.ff3 },
 		FzfLuaFzfHeader = { fg = neutral.color3 },
 		FzfLuaHeaderText = { fg = neutral.color3 },
 
 		-- fzf-lua prompt details
-		FzfLuaFzfMatch = { fg = accent.color1 },
-		FzfLuaMarker = { fg = accent.color1 },
-		FzfLuaFzfPointer = { fg = primary.color1 },
+		FzfLuaFzfQuery = { fg = neutral.color1 },
+
+		-- fzf-lua results
+		FzfLuaMarker = { fg = accent.ff1 },
+		FzfLuaFzfMatch = { fg = accent.ff1 },
+		FzfLuaFzfPointer = { fg = primary.color2 },
 
 		-- fzf-lua backgrounds
-		FzfLuaNormal = { fg = neutral.color1, bg = primary.color2 },
 		FzfLuaBackdrop = { bg = primary.color1 },
-		FzfLuaFzfPrompt = { fg = accent.color1, bg = primary.color2 },
+		FzfLuaNormal = { fg = neutral.color1, bg = primary.color2 },
+		FzfLuaFzfPrompt = { fg = accent.ff1, bg = primary.color2 },
 
 		-- fzf-lua borders
 		FzfLuaBorder = { fg = primary.color2, bg = primary.color2 },
@@ -35,18 +38,18 @@ M.get_highlights = function(accent, neutral, primary, title)
 		FzfLuaPreviewBorder = { fg = primary.color1, bg = primary.color2 },
 
 		-- telescope titles
-		TelescopeTitle = { fg = accent.color1 },
+		TelescopeTitle = { fg = accent.ff1 },
 		TelescopePromptTitle = { link = "FloatTitle" },
 		TelescopePreviewTitle = { link = "PreviewTitle" },
 
 		-- telescope prompt details
-		TelescopePromptPrefix = { fg = accent.color1 },
-		TelescopePromptCounter = { fg = accent.color2 },
+		TelescopePromptPrefix = { fg = accent.ff1 },
+		TelescopePromptCounter = { fg = accent.ff2 },
 
 		-- telescope prompt behaviors
-		TelescopeMatching = { fg = accent.color2 },
+		TelescopeMatching = { fg = accent.ff2 },
 		TelescopeSelection = { fg = neutral.color1, bg = primary.color3 },
-		TelescopeMultiSelection = { fg = accent.color1, bg = primary.color3 },
+		TelescopeMultiSelection = { fg = accent.ff1, bg = primary.color3 },
 
 		-- telescope backgrounds
 		TelescopeNormal = { fg = neutral.color1, bg = primary.color2 },

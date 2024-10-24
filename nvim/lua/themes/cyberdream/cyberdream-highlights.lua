@@ -5,9 +5,10 @@ local M = {}
 M.setup = function(c)
 	-- theme colors
 	local accent = {
-		color1 = c.blue,
-		color2 = c.cyan,
-		color3 = c.magenta,
+		-- fzf colors
+		fzf1 = c.blue,
+		fzf2 = c.cyan,
+		fzf3 = c.magenta,
 	}
 	local neutral = {
 		color1 = c.fg,
@@ -26,7 +27,17 @@ M.setup = function(c)
 
 	local schema_highlights = schema.get_highlights(accent, neutral, primary, title)
 	local extra_highlights = {
-		-- TreeSitter
+		-- dashboard
+		dashKey1 = { fg = c.blue },
+		dashKey2 = { fg = c.cyan },
+		dashKey3 = { fg = c.magenta },
+		dashKey4 = { fg = c.green },
+		dashKey5 = { fg = c.yellow },
+		dashKey6 = { fg = c.red },
+		dashIcons = { fg = c.orange },
+		DashboardHeader = { fg = c.grey },
+
+		-- treesitter
 		["@Constant"] = { fg = c.pink, italic = true }, -- string, number, boolean, this, super
 		["@boolean"] = { fg = c.orange, italic = true }, -- boolean
 		["@keyword"] = { fg = c.orange, italic = true }, -- import, export, return...
@@ -37,12 +48,11 @@ M.setup = function(c)
 		["@keyword.function"] = { fg = c.orange, italic = true }, -- function()
 		["@keyword.conditional"] = { fg = c.orange, italic = true }, --keep?
 	}
-	-- Merge schema highlights and extra highlights
+	-- Merge schema/extra hls
 	for k, v in pairs(extra_highlights) do
 		schema_highlights[k] = v
 	end
 
-	-- Return the combined highlight groups as a plain table (no function)
 	return schema_highlights
 end
 

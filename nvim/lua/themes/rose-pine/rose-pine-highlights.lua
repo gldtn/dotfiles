@@ -5,9 +5,9 @@ local M = {}
 M.setup = function()
 	-- Define colors for rose-pine theme using plain strings
 	local accent = {
-		color1 = "gold",
-		color2 = "foam",
-		color3 = "rose",
+		fzf1 = "gold",
+		fzf2 = "foam",
+		fzf3 = "rose",
 	}
 	local neutral = {
 		color1 = "text",
@@ -29,6 +29,16 @@ M.setup = function()
 
 	-- Additional highlights specific to rose-pine
 	local extra_highlights = {
+		-- dashboard
+		dashKey1 = { fg = "iris" },
+		dashKey2 = { fg = "foam" },
+		dashKey3 = { fg = "pine" },
+		dashKey4 = { fg = "rose" },
+		dashKey5 = { fg = "gold" },
+		dashKey6 = { fg = "love" },
+		dashIcons = { fg = "gold" },
+		DashboardHeader = { fg = "subtle" },
+
 		-- [[ notify ]] --
 		NotifyINFOBody = { bg = "base" },
 		NotifyWARNBody = { bg = "base" },

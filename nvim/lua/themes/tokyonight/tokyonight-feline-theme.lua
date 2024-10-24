@@ -1,5 +1,4 @@
 local p = require("tokyonight.colors").setup()
-local util = require("tokyonight.util")
 
 local background = p.bg
 local theme = {
