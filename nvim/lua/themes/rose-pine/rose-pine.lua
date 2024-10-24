@@ -52,7 +52,7 @@ M.setup = function()
 			h6 = "foam",
 		},
 
-		highlight_groups = highlights,
+		highlight_groups = highlights.setup(),
 	})
 end
 
