@@ -3,49 +3,61 @@ return {
 	dependencies = { "kyazdani42/nvim-web-devicons" },
 	config = function()
 		local feline = require("feline")
-		local ui = require("ui.feline.components")
+		local colors = require("themes." .. _G.active_theme .. "." .. _G.active_theme .. "-feline-theme")
 
-		local c = ui.components
-		local colors = ui.colors
+		-- Load components
+		local c = {
+			spacer = require("ui.feline.components.spacer").spacer,
+			vim_mode = require("ui.feline.components.vim_mode"),
+			git = require("ui.feline.components.git"),
+			diagnostics = require("ui.feline.components.diagnostics"),
+			lsp = require("ui.feline.components.lsp").lsp,
+			lazy = require("ui.feline.components.lazy").lazy,
+			fileinfo = require("ui.feline.components.fileinfo").file_info,
+			filetype = require("ui.feline.components.filetype").filetype,
+			cursor = require("ui.feline.components.cursor").cursor_position,
+			scrollbar = require("ui.feline.components.scrollbar"),
+			inactive = require("ui.feline.components.inactive").inactive,
+		}
 
+		-- Components structure
 		feline.setup({
 			components = {
 				active = {
 					-- left
 					{
-						c.vim_mode_icon,
-						c.vim_mode,
+						c.vim_mode.vim_mode_icon,
+						c.vim_mode.vim_mode,
 						c.spacer,
-						c.git_branch,
+						c.git.git_branch,
 						c.spacer,
-						c.file_info,
+						c.fileinfo,
 						c.spacer,
-						c.git_add,
-						c.git_delete,
-						c.git_change,
+						c.git.git_add,
+						c.git.git_delete,
+						c.git.git_change,
 						c.spacer,
-						c.diagnostic_info,
-						c.diagnostic_hints,
-						c.diagnostic_errors,
-						c.diagnostic_warnings,
+						c.diagnostics.diagnostic_info,
+						c.diagnostics.diagnostic_hints,
+						c.diagnostics.diagnostic_errors,
+						c.diagnostics.diagnostic_warnings,
 					},
 					-- middle
 					{},
 					-- right
 					{
 						c.lsp,
-						-- c.spacer,
 						c.lazy,
 						c.spacer,
-						c.cursor_position,
+						c.cursor,
 						c.spacer,
-						c.scroll_bar_icon,
-						c.scroll_bar_position,
+						c.scrollbar.scroll_bar_icon,
+						c.scrollbar.scroll_bar_position,
 					},
 				},
 				inactive = {
 					{
-						c.inactive,
+						c.inactive.inactive,
 					},
 				},
 			},
