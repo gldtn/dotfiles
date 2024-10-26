@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 ###
-# Toggle-theme v1.3 by gldtn
+# Toggle-theme v1.4 by gldtn
 # https://github.com/gldtn/dotfiles/tree/main/.config/kitty
 # Note: include line must be present in your kitty config:
 # include /path/to/theme.conf
@@ -60,16 +60,43 @@ def toggle_theme(theme_input):
         print(f"{COLORS['RED']}Error{COLORS['RESET']}: Invalid input. Please provide a valid theme index or name.")
         return None
 
-# Apply the selected theme
+# Apply the selected theme and conditionally set opacity for specific themes
 def apply_theme(theme_name):
     theme_config = os.path.join(theme_directory, f'{theme_name}.conf')
     include_line = f'include themes/{theme_name}.conf'
 
+    # Themes that should have reduced opacity
+    low_opacity_themes = {
+        "cyberdream": 0.95,
+    }
+
+    # Default opacity
+    opacity_value = low_opacity_themes.get(theme_name, 1.0)
+    opacity_line = f"background_opacity {opacity_value}"
+
     with open(term_config, 'r') as f:
         config_content = f.read()
 
-    config_content = re.sub(r'include themes/.*', include_line, config_content)
+    # Replace or add background_opacity
+    if "background_opacity" in config_content:
+        new_content = []
+        for line in config_content.splitlines():
+            if line.startswith("background_opacity"):
+                new_content.append(opacity_line)
+            else:
+                new_content.append(line)
+        config_content = "\n".join(new_content)
+    else:
+        # Add the opacity line if not present
+        config_content += f"\n{opacity_line}\n"
 
+    # Replace theme include line
+    if "include themes/" in config_content:
+        config_content = re.sub(r'include themes/.*', include_line, config_content)
+    else:
+        config_content += f"\n{include_line}\n"
+
+    # Write final content to kitty.conf
     with open(term_config, 'w') as f:
         f.write(config_content)
 
