@@ -2,6 +2,7 @@
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
 ### ZAP PLUGINS ###
+plug "aloxaf/fzf-tab"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 
@@ -21,8 +22,8 @@ autoload -Uz suyabai;
 autoload -Uz nvimrm;
 
 # Mostly for neofetch
-#export WM="Yabai $(yabai --version | awk -F'[- ]' '{print $2}')"
-export WM=$(aerospace --version | awk '/AeroSpace.app server version/ {print "Aerospace v"$4}')
+export WM="Yabai $(yabai --version | awk -F'[- ]' '{print $2}')"
+#export WM=$(aerospace --version | awk '/AeroSpace.app server version/ {print "Aerospace v"$4}')
 export CPU="$(sysctl -n machdep.cpu.brand_string) - $(smctemp -c)c"
 export TERMINAL="Kitty v$(kitty --version | awk '{print $2}')"
 export TERM_FONT=$(awk '/font_family/ {print $2}' "${XDG_CONFIG_HOME}/kitty/kitty.conf")
