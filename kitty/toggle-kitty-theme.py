@@ -67,7 +67,7 @@ def apply_theme(theme_name):
 
     # Themes that should have reduced opacity
     low_opacity_themes = {
-        "cyberdream": 0.95,
+        "cyberdream": 0.90,
     }
 
     # Default opacity
