@@ -18,7 +18,7 @@ key-mapping.preset = 'qwerty'
 
 ### Normalizations
 enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = false
 
 ### Layouts settings
 accordion-padding = 32
