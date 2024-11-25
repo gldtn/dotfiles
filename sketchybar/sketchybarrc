@@ -15,7 +15,7 @@ sketchybar --bar "${bar[@]}" --default "${item_defaults[@]}"
 # Left side items
 LEFT=(
     apple.sh
-    spaces_simple.sh
+    aerospace_workspace.sh
     front_app.sh
 )
 
@@ -25,7 +25,14 @@ for items in "${LEFT[@]}"; do
 done
 
 # Center
-# source "$ITEM_DIR/countdown.sh"
+CENTER=(
+    aerospace_mode.sh
+    )
+
+# Insert items in the center
+for items in "${CENTER[@]}"; do
+    source "$ITEM_DIR/$items"
+done
 
 # Right side items
 RIGHT=(
@@ -35,7 +42,7 @@ RIGHT=(
     ethernet.sh
     volume.sh
     messages.sh
-    yabai.sh
+    # yabai.sh
     music.sh
 )
 
@@ -48,7 +55,7 @@ done
 sketchybar \
         --add bracket left.side '/space\..*/'       \
         --set left.side "${bracket_defaults[@]}"    \
-                                                    \
+        \
         --add bracket status_icons volume_icon volume ethernet dnd weather messages volume \
         --set status_icons "${bracket_defaults[@]}"
 

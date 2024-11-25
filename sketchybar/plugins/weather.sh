@@ -82,12 +82,12 @@ popup() {
 }
 
 case "$SENDER" in
-"mouse.entered")
-    popup on
-    ;;
-"mouse.exited" | "mouse.exited.global")
-    popup off
-    ;;
+# "mouse.entered")
+#     popup on
+#     ;;
+# "mouse.exited" | "mouse.exited.global")
+#     popup off
+#     ;;
 "mouse.clicked")
     popup toggle
     ;;

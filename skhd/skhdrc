@@ -101,13 +101,13 @@ alt - l : yabai -m window --focus east || yabai -m display --focus east
 # ----------------------------------------------------------------------------------------
 
 #KeuClu[Swap windows]: Swap west
-hyper - h : yabai -m window --swap west
+alt + shift - h : yabai -m window --swap west
 #KeyClu[Swap windows]: Swap south
-hyper - j : yabai -m window --swap south
+alt + shift - j : yabai -m window --swap south
 #KeyClu[Swap windows]: Swap north
-hyper - k : yabai -m window --swap north
+alt + shift - k : yabai -m window --swap north
 #KeyClu[Swap windows]: Swap east
-hyper - l : yabai -m window --swap east
+alt + shift - l : yabai -m window --swap east
 
 #----------------------------------------------------------------------------------------
 # Warp windows
