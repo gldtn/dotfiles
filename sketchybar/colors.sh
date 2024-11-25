@@ -24,6 +24,7 @@ getcolor() {
     local cyan=#5ef1ff
     local blue=#5ea1ff
     local bgAlt=#1e2124
+    local white=#ffffff
     local green=#5eff6c
     local yellow=#f1ff5e
     local orange=#ffbd5e
@@ -51,6 +52,7 @@ getcolor() {
     grey) local color=$grey ;;
     blue) local color=$blue ;;
     cyan) local color=$cyan ;;
+    white) local color=$white ;;
     green) local color=$green ;;
     bgAlt) local color=$bgAlt ;;
     yellow) local color=$yellow ;;

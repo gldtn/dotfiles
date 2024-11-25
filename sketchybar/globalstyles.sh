@@ -29,6 +29,7 @@ export item_defaults=(
     updates=when_shown
     # Icon
     icon.padding_left=2
+    icon.padding_right=2
     icon.color="$ICON_COLOR"
     icon.font="$FONT:Regular:12"
     icon.background.corner_radius=4

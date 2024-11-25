@@ -21,9 +21,15 @@ autoload -Uz brewcup;
 autoload -Uz suyabai;
 autoload -Uz nvimrm;
 
-# Mostly for neofetch
-export WM="Yabai $(yabai --version | awk -F'[- ]' '{print $2}')"
-#export WM=$(aerospace --version | awk '/AeroSpace.app server version/ {print "Aerospace v"$4}')
+v() {
+  while ! nvim; do
+    echo "restarting nvim..."
+  done
+}
+
+# Mostly for fastfetch
+#export WM="Yabai $(yabai --version | awk -F'[- ]' '{print $2}')"
+export WM=$(aerospace --version | awk '/AeroSpace.app server version/ {print "Aerospace v"$4}')
 export CPU="$(sysctl -n machdep.cpu.brand_string) - $(smctemp -c)c"
 export TERMINAL="Kitty v$(kitty --version | awk '{print $2}')"
 export TERM_FONT=$(awk '/font_family/ {print $2}' "${XDG_CONFIG_HOME}/kitty/kitty.conf")

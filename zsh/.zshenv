@@ -1,6 +1,7 @@
 # PATH
 export PATH="$PATH:${HOME}/.local/bin:${HOME}/bin:${HOME}/.composer/vendor/bin"
 export PATH="($brew --prefix)/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # zsh config dir
 export ZDOTDIR=${HOME}/.config/zsh
@@ -23,6 +24,7 @@ export SHELL_SESSIONS_DISABLE=1 # Disable sessions MacOS
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgrep/.ripgreprc"
 
 ### Programs related PATH ###
+export AEROSPACE_MODE_SCRIPT="${XDG_CONFIG_HOME}/sketchybar/plugins/aerospace_mode.sh"
 
 # Setting PATH for Python 3.11
 # The original version is saved in .zprofile.pysave

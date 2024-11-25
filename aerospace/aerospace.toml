@@ -1,15 +1,27 @@
 ### Aerospace startup settings
 start-at-login = true
 after-login-command = []
-after-startup-command = []
+after-startup-command = [
+  'exec-and-forget borders',
+  'exec-and-forget sketchybar',
+  'exec-and-forget ~/.config/aerospace/scripts/bsp_tiling.sh',
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
 key-mapping.preset = 'qwerty'
 
-### Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
+### Normalizations
+enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 ### Layouts settings
-accordion-padding = 50
+accordion-padding = 32
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'horizontal'
 
@@ -21,44 +33,35 @@ inner.horizontal = 12
 inner.vertical = 12
 outer.left = 8
 outer.bottom = 8
-outer.top = 8
+outer.top = 41
 outer.right = 8
 
-#[key-mapping.key-notation-to-key-code]
-#hyper = 'ctrl-alt-shift-cmd'
+#############################################
+### Main Mode
+#############################################
 [mode.main.binding]
 
 # Modes
-ctrl-alt-shift-cmd-w = 'mode warp'
-ctrl-alt-shift-cmd-r = 'mode resize'
-ctrl-alt-shift-cmd-space = 'mode alt'
+ctrl-alt-shift-cmd-l = [
+  'mode layout',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=layout',
+]
+ctrl-alt-shift-cmd-r = [
+  'mode restart',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=restart',
+]
 
 cmd-h = []     # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 # exec commands
-# ctrl-alt-shift-cmd-enter = [
-#   'exec-and-forget kitty --single-instance -d ~',
-#   'split horizontal',
-# ]
-# ctrl-alt-shift-cmd-backspace = [
-#   'exec-and-forget kitty --single-instance -d ~',
-#   'split opposite',
-# ]
-
-ctrl-alt-shift-cmd-c = 'reload-config'                                                 # aerospace config
-alt-shift-ctrl-b = 'exec-and-forget brew services restart felixkratz/formulae/borders' # jankyborders
-
-# layouts
-ctrl-alt-shift-cmd-slash = 'layout h_tiles v_tiles'
-ctrl-alt-shift-cmd-comma = 'layout h_accordion v_accordion'
-ctrl-alt-shift-cmd-f = 'layout floating tiling'
+ctrl-alt-shift-cmd-enter = ['exec-and-forget kitty --single-instance -d ~']
 
 # focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
 alt-f = 'fullscreen'
 
 # move
@@ -67,16 +70,10 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
-# warp (Yabai Equivalent?)
-# ctrl-alt-shift-cmd-h = 'split horizontal'
-# ctrl-alt-shift-cmd-v = 'split vertical'
-#alt-shift-ctrl-k = 'join-with up'
-#alt-shift-ctrl-l = 'join-with right'
-
-# resize
-ctrl-alt-shift-cmd-minus = 'resize smart -150'
-ctrl-alt-shift-cmd-equal = 'resize smart +150'
-ctrl-alt-shift-cmd-b = 'balance-sizes'
+# split
+alt-shift-x = 'split horizontal'
+alt-shift-v = 'split vertical'
+alt-shift-s = 'split opposite'
 
 # alternate workspace
 alt-1 = 'workspace 1'
@@ -85,9 +82,6 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
 
 # move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
@@ -96,23 +90,59 @@ alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
 alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
 alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
 alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
-alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
-alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
 # workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
-alt-shift-right = 'move-node-to-monitor prev'
-alt-shift-left = 'move-node-to-monitor next'
+alt-shift-right = 'move-node-to-monitor --wrap-around --focus-follows-window prev'
+alt-shift-left = 'move-node-to-monitor --wrap-around --focus-follows-window next'
+alt-right = 'move-node-to-monitor --wrap-around --focus-follows-window next'
 
-### Alt Mode
-[mode.alt.binding]
-esc = ['mode main']
+#############################################
+### Layout Mode
+#############################################
+[mode.layout.binding]
+esc = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 
 # layouts
-slash = ['layout tiles horizontal vertical']
-comma = ['layout accordion horizontal vertical']
-cmd-f = ['layout floating tiling', 'mode main']
+x = [
+  'layout h_tiles',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+v = [
+  'layout v_tiles',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+a = [
+  'layout accordion',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+f = [
+  'exec-and-forget ~/.config/aerospace/scripts/center_floats',
+  'move-mouse window-force-center',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+t = [
+  'layout h_tiles v_accordion',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+m = [
+  'fullscreen',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 
 # focus window
 h = ['focus --boundaries-action stop left', 'move-mouse window-force-center']
@@ -126,35 +156,45 @@ shift-j = 'move down'
 shift-k = 'move up'
 shift-l = 'move right'
 
-# warp (Yabai Equivalent?)
-shift-ctrl-h = 'join-with left'
-shift-ctrl-j = 'join-with down'
-shift-ctrl-k = 'join-with up'
-shift-ctrl-l = 'join-with right'
-
 # resize
 minus = 'resize smart -149'
 equal = 'resize smart +150'
-b = 'balance-sizes'
+0 = 'balance-sizes'
 
-### Resize Mode
-[mode.resize.binding]
-esc = 'mode main'
-b = 'balance-sizes'
-minus = 'resize smart -50'
-equal = 'resize smart +50'
-f = 'flatten-workspace-tree' # reset layout
+#############################################
+### Restart Mode
+#############################################
+[mode.restart.binding]
+esc = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 
-### Warp Mode
-[mode.warp.binding]
-h = 'join-with left'
-j = 'join-with down'
-k = 'join-with up'
-l = 'join-with right'
-esc = 'mode main'
+# reload config
+c = [
+  'reload-config',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  'exec-and-forget terminal-notifier -title "AeroSpace" -subtitle "Config Reloaded Successfully" -message "AeroSpace config reloaded"',
+]
+
+# restart aerospace
+r = [
+  'exec-and-forget sketchybar --reload',
+  'exec-and-forget ~/.config/aerospace/scripts/restart_aerospace.sh',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+# reload jankyborders
+b = [
+  'exec-and-forget brew services restart felixkratz/formulae/borders',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
 
 ### Monitor assignment
-# This seems like it needs to after be workspace bindings
+# This seems like it needs to be after workspace bindings
 [workspace-to-monitor-force-assignment]
 1 = 1
 2 = 1
@@ -162,10 +202,24 @@ esc = 'mode main'
 4 = 2
 5 = 2
 6 = 2
-7 = 3
-8 = 3
-9 = 3
+
+# Window Rules
+[[on-window-detected]]
+if.app-name-regex-substring = 'Finder|1Password'
+run = 'layout floating'
 
 [[on-window-detected]]
-if.app-id = 'com.1password.1password'
-run = 'layout floating'
+if.app-name-regex-substring = 'Spotify|Music'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Rustdesk'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Discord|Messages|WhatsApp|Zoom|Teams'
+run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Mimestream'
+run = ['layout tiling', 'move-node-to-workspace 6']

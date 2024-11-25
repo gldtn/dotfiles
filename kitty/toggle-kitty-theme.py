@@ -8,33 +8,36 @@
 ###
 
 import os
-import re
-import sys
-import shutil
 import random
+import re
+import shutil
 import signal
+import sys
 
 # ANSI color
 COLORS = {
-    'RED': '\033[91m',
-    'GREEN': '\033[92m',
-    'CYAN': '\033[96m',
-    'BOLD': '\033[1m',
-    'RESET': '\033[0m',
+    "RED": "\033[91m",
+    "GREEN": "\033[92m",
+    "CYAN": "\033[96m",
+    "BOLD": "\033[1m",
+    "RESET": "\033[0m",
 }
+
 
 # Function to underline text
 def underline_text(text):
-    return '\033[4m' + text + '\033[0m'
+    return "\033[4m" + text + "\033[0m"
+
 
 # Global variables
-script_name = os.path.basename(sys.argv[0]).replace('.py', '')
+script_name = os.path.basename(sys.argv[0]).replace(".py", "")
 usage = f"{COLORS['RED']}Usage{COLORS['RESET']}: {script_name} [{COLORS['CYAN']}OPTION{COLORS['RESET']}]\n"
 
 # Directories
-user_home = os.path.expanduser('~')
-theme_directory = os.path.join(user_home, '.config/kitty/themes')
-term_config = os.path.join(user_home, '.config/kitty/kitty.conf')
+user_home = os.path.expanduser("~")
+theme_directory = os.path.join(user_home, ".config/kitty/themes")
+term_config = os.path.join(user_home, ".config/kitty/kitty.conf")
+
 
 # Switch themes by index or name
 def toggle_theme(theme_input):
@@ -48,7 +51,7 @@ def toggle_theme(theme_input):
         index = int(theme_input)
         if 1 <= index <= len(themes):
             applied_theme = themes[index - 1]
-    elif theme_input == '-r' or theme_input == '--random':
+    elif theme_input == "-r" or theme_input == "--random":
         applied_theme = random.choice(themes)
     elif theme_input in themes:  # Treat input as theme name
         applied_theme = theme_input
@@ -57,24 +60,27 @@ def toggle_theme(theme_input):
         apply_theme(applied_theme)
         return applied_theme
     else:
-        print(f"{COLORS['RED']}Error{COLORS['RESET']}: Invalid input. Please provide a valid theme index or name.")
+        print(
+            f"{COLORS['RED']}Error{COLORS['RESET']}: Invalid input. Please provide a valid theme index or name."
+        )
         return None
+
 
 # Apply the selected theme and conditionally set opacity for specific themes
 def apply_theme(theme_name):
-    theme_config = os.path.join(theme_directory, f'{theme_name}.conf')
-    include_line = f'include themes/{theme_name}.conf'
+    theme_config = os.path.join(theme_directory, f"{theme_name}.conf")
+    include_line = f"include themes/{theme_name}.conf"
 
     # Themes that should have reduced opacity
     low_opacity_themes = {
-        "cyberdream": 0.90,
+        "cyberdream": 0.85,
     }
 
     # Default opacity
     opacity_value = low_opacity_themes.get(theme_name, 1.0)
     opacity_line = f"background_opacity {opacity_value}"
 
-    with open(term_config, 'r') as f:
+    with open(term_config, "r") as f:
         config_content = f.read()
 
     # Replace or add background_opacity
@@ -92,34 +98,41 @@ def apply_theme(theme_name):
 
     # Replace theme include line
     if "include themes/" in config_content:
-        config_content = re.sub(r'include themes/.*', include_line, config_content)
+        config_content = re.sub(r"include themes/.*", include_line, config_content)
     else:
         config_content += f"\n{include_line}\n"
 
     # Write final content to kitty.conf
-    with open(term_config, 'w') as f:
+    with open(term_config, "w") as f:
         f.write(config_content)
 
     return theme_name
 
+
 # List indexed themes
 def list_themes():
     global themes
-    themes = [f.replace('.conf', '') for f in os.listdir(theme_directory) if f.endswith('.conf')]
+    themes = [
+        f.replace(".conf", "")
+        for f in os.listdir(theme_directory)
+        if f.endswith(".conf")
+    ]
     themes.sort()  # sort alphabetically
     print("Available themes:\n")
     for i, theme in enumerate(themes, start=1):
         print(f"{i}. {theme}")
     print("\nSelect by index or name; i.e > toggle-theme 1")
 
+
 # Reload kitty preferences by sending SIGUSR1 signal
 def reload_kitty_preferences():
-    kitty_pid = os.environ.get('KITTY_PID')
+    kitty_pid = os.environ.get("KITTY_PID")
     if kitty_pid:
         os.kill(int(kitty_pid), signal.SIGUSR1)
         print("Kitty preferences reloaded.")
     else:
         print("KITTY_PID environment variable not set. Make sure kitty is running.")
+
 
 # Options
 def display_help():
@@ -137,6 +150,7 @@ def display_help():
     for option in options:
         print(f"    {option}")
 
+
 # Check arguments to switch, list themes, or display help
 if len(sys.argv) < 2:
     print("Please provide a theme index or name.\n")
@@ -144,24 +158,30 @@ if len(sys.argv) < 2:
     print(f"For more information, try '--help'.")
 else:
     theme_input = sys.argv[1]
-    if theme_input not in ['-h', '--help', '-l', '--list', '-i', '--interactive']:
-        themes = [f.replace('.conf', '') for f in os.listdir(theme_directory) if f.endswith('.conf')]
+    if theme_input not in ["-h", "--help", "-l", "--list", "-i", "--interactive"]:
+        themes = [
+            f.replace(".conf", "")
+            for f in os.listdir(theme_directory)
+            if f.endswith(".conf")
+        ]
         themes.sort()  # sort themes alphabetically
 
         if not themes:
             print("No themes available. Please add themes to /themes/ dir!")
         else:
-            if theme_input == '-r' or theme_input == '--random':
+            if theme_input == "-r" or theme_input == "--random":
                 theme_name = random.choice(themes)
                 applied_theme = toggle_theme(theme_name)
                 if applied_theme:
                     print(f"Theme '{applied_theme}' applied successfully!")
                     reload_kitty_preferences()
-            elif theme_input == '-i' or theme_input == '--interactive':
+            elif theme_input == "-i" or theme_input == "--interactive":
                 list_themes()
                 while True:
-                    user_input = input("Enter the theme index or name (type 'q' to quit): ")
-                    if user_input.lower() == 'q':
+                    user_input = input(
+                        "Enter the theme index or name (type 'q' to quit): "
+                    )
+                    if user_input.lower() == "q":
                         break
                     applied_theme = toggle_theme(user_input)
                     if applied_theme:
@@ -172,15 +192,15 @@ else:
                 if applied_theme:
                     print(f"Theme '{applied_theme}' applied successfully!")
                     reload_kitty_preferences()
-    elif theme_input in ['-h', '--help']:
+    elif theme_input in ["-h", "--help"]:
         display_help()
-    elif theme_input in ['-l', '--list']:
+    elif theme_input in ["-l", "--list"]:
         list_themes()
-    elif theme_input in ['-i', '--interactive']:
+    elif theme_input in ["-i", "--interactive"]:
         list_themes()
         while True:
             user_input = input("Enter the theme index or name (type 'q' to quit): ")
-            if user_input.lower() == 'q':
+            if user_input.lower() == "q":
                 break
             applied_theme = toggle_theme(user_input)
             if applied_theme:
