@@ -179,7 +179,7 @@ c = [
 ]
 
 # restart aerospace
-r = [
+a = [
   'exec-and-forget sketchybar --reload',
   'exec-and-forget ~/.config/aerospace/scripts/restart_aerospace.sh',
   'mode main',
