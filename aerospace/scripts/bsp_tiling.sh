@@ -17,7 +17,7 @@ arrange_windows() {
 
         if [ "$workspace_window_count" -eq 1 ]; then
             # If only one window, split horizontally
-            if aerospace flatten-workspace-tree && aerospace split horizontal; then
+            if aerospace split horizontal; then
                 echo "New window split horizontally"
             else
                 echo "Error: Could not split horizontally"
