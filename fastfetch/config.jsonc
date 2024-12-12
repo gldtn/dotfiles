@@ -3,12 +3,12 @@
     "display": {
         "separator": " "
     },
-    "logo": {
-        "source": "~/.config/fastfetch/macos_logo.png",
-        "padding": {
-            "top": 1
-        }
-    },
+    // "logo": {
+    //     "source": "~/.config/fastfetch/logo.txt",
+    //     "padding": {
+    //         "top": 1
+    //     }
+    // },
     "modules": [
         // "break",
         // {

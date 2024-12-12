@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Find the PID of AeroSpace
+# Find the PID
 PID=$(pgrep -a AeroSpace)
 
-# If the process exists, kill it
+# Kill it
 if [ -n "$PID" ]; then
     terminal-notifier -title "AeroSpace Restart" -message "Killing AeroSpace process with PID: $PID"
     kill -9 "$PID"
-    sleep 1 # Allow some time for the process to terminate
+    sleep 1
 else
     terminal-notifier -title "AeroSpace Restart" -message "AeroSpace is not running."
 fi
 
-# Relaunch AeroSpace
+# Relaunch
 open -a AeroSpace
 terminal-notifier -title "AeroSpace Restart" -message "Restarted AeroSpace successfully."

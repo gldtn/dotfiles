@@ -1,3 +1,8 @@
+# Ghostty shell integration for Bash. This must be at the top of your bashrc!
+# if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+#     builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
+# fi
+
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
@@ -63,4 +68,5 @@ export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 # Set brew curl path
 [ -d "$(brew --prefix)/opt/curl/bin" ] &&
 export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
+
 source "$HOME/.openai_key.zsh"

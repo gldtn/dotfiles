@@ -1,0 +1,68 @@
+# Theme
+window-theme = dark
+theme = catppuccin-mocha
+
+# Fonts
+font-family = "Monolisa Variable"
+# font-family = "Berkely Mono Trial"
+font-family = "Symbols Nerd Font Mono"
+font-size = 16
+# font-thicken = true
+
+
+# Mouse, Cursor & Clipboard
+cursor-style = bar
+copy-on-select = true
+cursor-style-blink = true
+mouse-hide-while-typing = true
+
+# Window appearance
+bold-is-bright = true
+window-padding-y = 3,2
+window-padding-x = 8
+resize-overlay = never
+background-opacity = 1
+window-decoration = true
+background-blur-radius = 20
+window-padding-balance = true
+macos-window-shadow = false
+macos-titlebar-style = hidden
+
+# general
+auto-update = check
+command = "/bin/zsh"
+gtk-single-instance = true
+# shell-integration = zsh
+# shell-integration-features = cursor,sudo,title
+
+# keybindings
+keybind = clear
+
+# Splits
+keybind = ctrl+g>h=goto_split:left
+keybind = ctrl+g>j=goto_split:bottom
+keybind = ctrl+g>k=goto_split:top
+keybind = ctrl+g>l=goto_split:right
+keybind = ctrl+shift+s=new_split:auto
+keybind = ctrl+shift+m=toggle_split_zoom
+
+# Clipboard & Font
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = ctrl+shift+zero=reset_font_size
+keybind = ctrl+shift+plus=increase_font_size:1
+keybind = ctrl+shift+minus=decrease_font_size:1
+
+# Windows
+keybind = super+n=new_window
+keybind = super+k=clear_screen
+keybind = super+enter=new_window
+keybind = ctrl+shift+enter=new_window
+keybind = ctrl+shift+w>q=close_window
+keybind = ctrl+shift+w>w=close_surface
+
+# Services
+keybind = ctrl+shift+c>o=open_config
+keybind = ctrl+shift+c>r=reload_config
+keybind = ctrl+shift+c>i=inspector:toggle
+keybind = ctrl+shift+c>d=write_screen_file:open

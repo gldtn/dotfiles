@@ -3,22 +3,29 @@ start-at-login = true
 after-login-command = []
 after-startup-command = [
   'exec-and-forget borders',
+  'workspace 3',
+  'layout v_accordion',
+  'workspace 5',
+  'layout v_accordion',
+  'workspace 4',
+  'workspace 1',
+  'exec-and-forget ~/.config/aerospace/scripts/bsp_tiling',
   'exec-and-forget sketchybar',
-  'exec-and-forget ~/.config/aerospace/scripts/bsp_tiling.sh',
+  'exec-and-forget sketchybar --reload',                    # Reload sketchybar to fix spaces
 ]
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE',
+  'sketchybar --trigger space_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 key-mapping.preset = 'qwerty'
 
 ### Normalizations
-enable-normalization-flatten-containers = false
-enable-normalization-opposite-orientation-for-nested-containers = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
 
 ### Layouts settings
 accordion-padding = 32
@@ -29,12 +36,12 @@ default-root-container-orientation = 'horizontal'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 [gaps]
-inner.horizontal = 12
-inner.vertical = 12
 outer.left = 8
-outer.bottom = 8
-outer.top = 41
+outer.top = 44
 outer.right = 8
+outer.bottom = 8
+inner.vertical = 14
+inner.horizontal = 14
 
 #############################################
 ### Main Mode
@@ -46,23 +53,27 @@ ctrl-alt-shift-cmd-l = [
   'mode layout',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=layout',
 ]
-ctrl-alt-shift-cmd-r = [
-  'mode restart',
-  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=restart',
+ctrl-alt-shift-cmd-s = [
+  'mode service',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=service',
+]
+ctrl-alt-shift-cmd-w = [
+  'mode workspace',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=workspace',
 ]
 
 cmd-h = []     # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 # exec commands
-ctrl-alt-shift-cmd-enter = ['exec-and-forget kitty --single-instance -d ~']
+ctrl-alt-shift-cmd-enter = ['exec-and-forget ghostty']
+ctrl-alt-shift-cmd-b = ['exec-and-forget open -a "Google Chrome.app"']
 
 # focus
-alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
-alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
-alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
-alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
-alt-f = 'fullscreen'
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
 
 # move
 alt-shift-h = 'move left'
@@ -71,9 +82,9 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
 # split
-alt-shift-x = 'split horizontal'
-alt-shift-v = 'split vertical'
-alt-shift-s = 'split opposite'
+# alt-shift-x = 'split horizontal'
+# alt-shift-v = 'split vertical'
+# alt-shift-s = 'split opposite'
 
 # alternate workspace
 alt-1 = 'workspace 1'
@@ -82,14 +93,6 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
-
-# move-node-to-workspace
-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
 
 # workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -101,6 +104,7 @@ alt-right = 'move-node-to-monitor --wrap-around --focus-follows-window next'
 ### Layout Mode
 #############################################
 [mode.layout.binding]
+
 esc = [
   'mode main',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
@@ -120,10 +124,12 @@ v = [
 ]
 
 a = [
-  'layout accordion',
+  'layout v_accordion',
   'mode main',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
 ]
+
+alt-a = 'layout accordion horizontal vertical'
 
 f = [
   'exec-and-forget ~/.config/aerospace/scripts/center_floats',
@@ -156,26 +162,112 @@ shift-j = 'move down'
 shift-k = 'move up'
 shift-l = 'move right'
 
+# join window with
+left = 'join-with left'
+down = 'join-with down'
+up = 'join-with up'
+right = 'join-with right'
+
+
 # resize
-minus = 'resize smart -149'
+minus = 'resize smart -150'
 equal = 'resize smart +150'
 0 = 'balance-sizes'
 
 #############################################
-### Restart Mode
+### Workspace Mode
 #############################################
-[mode.restart.binding]
+[mode.workspace.binding]
+
 esc = [
   'mode main',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
 ]
 
-# reload config
-c = [
-  'reload-config',
+# focus window
+h = ['focus --boundaries-action stop left', 'move-mouse window-force-center']
+j = ['focus --boundaries-action stop down', 'move-mouse window-force-center']
+k = ['focus --boundaries-action stop up', 'move-mouse window-force-center']
+l = ['focus --boundaries-action stop right', 'move-mouse window-force-center']
+
+# move-node-to-workspace; focus follows window
+1 = [
+  'move-node-to-workspace 1',
+  'workspace 1',
   'mode main',
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
-  'exec-and-forget terminal-notifier -title "AeroSpace" -subtitle "Config Reloaded Successfully" -message "AeroSpace config reloaded"',
+]
+2 = [
+  'move-node-to-workspace 2',
+  'workspace 2',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+3 = [
+  'move-node-to-workspace 3',
+  'workspace 3',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+4 = [
+  'move-node-to-workspace 4',
+  'workspace 4',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+5 = [
+  'move-node-to-workspace 5',
+  'workspace 5',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+6 = [
+  'move-node-to-workspace 6',
+  'workspace 6',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+# move-node-to-workspace; do not change focus
+alt-1 = [
+  'move-node-to-workspace 1',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-2 = [
+  'move-node-to-workspace 2',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-3 = [
+  'move-node-to-workspace 3',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-4 = [
+  'move-node-to-workspace 4',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-5 = [
+  'move-node-to-workspace 5',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+alt-6 = [
+  'move-node-to-workspace 6',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
+#############################################
+### Service Mode
+#############################################
+[mode.service.binding]
+
+esc = [
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
 ]
 
 # restart aerospace
@@ -193,6 +285,21 @@ b = [
   'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
 ]
 
+# reload config
+c = [
+  'reload-config',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  'exec-and-forget terminal-notifier -title "AeroSpace" -subtitle "Config Reloaded Successfully" -message "AeroSpace config reloaded"',
+]
+
+# reload sketchybar
+s = [
+  'exec-and-forget sketchybar --reload',
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+]
+
 ### Monitor assignment
 # This seems like it needs to be after workspace bindings
 [workspace-to-monitor-force-assignment]
@@ -205,21 +312,25 @@ b = [
 
 # Window Rules
 [[on-window-detected]]
-if.app-name-regex-substring = 'Finder|1Password'
+if.app-name-regex-substring = '(Finder|1Password)'
 run = 'layout floating'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Spotify|Music'
-run = ['move-node-to-workspace 2']
+if.app-name-regex-substring = '(ChatGPT|OpenAI|Siri)'
+run = ['layout tiling', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Rustdesk'
-run = ['layout tiling', 'move-node-to-workspace 3']
+if.app-name-regex-substring = '(Spotify|Music|Rustdesk|SF Symbols)'
+run = ['move-node-to-workspace 3']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Discord|Messages|WhatsApp|Zoom|Teams'
+if.app-name-regex-substring = '(Visual Studio Code|Code)'
+run = ['layout tiling', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-name-regex-substring = '(Discord|Messages|WhatsApp|Zoom|Teams)'
 run = ['move-node-to-workspace 5']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Mimestream'
+if.app-name-regex-substring = '(Mimestream)'
 run = ['layout tiling', 'move-node-to-workspace 6']

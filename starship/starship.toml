@@ -1,151 +1,173 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-#format = '$all$character'
-# ➜ [$symbol]($style)
+# Sets user-defined palette
+# Palettes must be defined _after_ this line
+palette = "catppuccin_mocha"
 
-[username]
-format = '[$user]($style) '
-disabled = false
-show_always = true
+# Starship modules
+[character]
+# Note the use of Catppuccin color 'peach'
+success_symbol = "[[](green) ❯](peach)"
+error_symbol = "[[](red) ❯](peach)"
+vimcmd_symbol = "[❮](subtext1)"         # For use with zsh-vi-mode
 
-# [username]
-# format = '\[[$user]($style)\]'
-
-[shell]
-zsh_indicator = 'zsh'
-disabled = true
-
-[battery]
-disabled = true
-
-# w/o version
-[aws]
-symbol = "  "
-format = '➜ [$symbol]($style)'
-
-[buf]
-symbol = " "
-format = '➜ [$symbol]($style)'
-
-[c]
-symbol = " "
-format = '➜ [$symbol]($style)'
-
-[conda]
-symbol = " "
-format = '➜ [$symbol]($style)'
-
-[dart]
-symbol = " "
-format = '➜ [$symbol]($style)'
+[git_branch]
+symbol = "󰊤 "
+style = "bold mauve"
 
 [directory]
 read_only = " 󰌾"
+truncation_length = 4
+style = "bold lavender"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[aws]
+symbol = " "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
 
 [docker_context]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [elixir]
-symbol = " "
-format = '➜ [$symbol]($style)'
+symbol = " "
 
 [elm]
 symbol = " "
-format = '➜ [$symbol]($style)'
+
+[fennel]
+symbol = " "
 
 [fossil_branch]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
-[git_branch]
-symbol = " "
-format = '➜ [$symbol]($style)'
+[git_commit]
+tag_symbol = '  '
 
 [golang]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [guix_shell]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [haskell]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [haxe]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [hg_branch]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [hostname]
 ssh_symbol = " "
-format = '➜ [$symbol]($style)'
 
 [java]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [julia]
 symbol = " "
-format = '➜ [$symbol]($style)'
+
+[kotlin]
+symbol = " "
 
 [lua]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [memory_usage]
 symbol = "󰍛 "
-format = '➜ [$symbol]($style)'
 
 [meson]
 symbol = "󰔷 "
-format = '➜ [$symbol]($style)'
 
 [nim]
 symbol = "󰆥 "
-format = '➜ [$symbol]($style)'
 
 [nix_shell]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [nodejs]
 symbol = " "
-format = '➜ [$symbol]($style)'
+
+[ocaml]
+symbol = " "
 
 [os.symbols]
 Macos = " "
 
 [package]
 symbol = "󰏗 "
-format = '➜ [$symbol]($style)'
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
 
 [pijul_channel]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [python]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [rlang]
 symbol = "󰟔 "
-format = '➜ [$symbol]($style)'
 
 [ruby]
 symbol = " "
-format = '➜ [$symbol]($style)'
 
 [rust]
-symbol = " "
-format = '➜ [$symbol]($style)'
+symbol = "󱘗 "
 
 [scala]
 symbol = " "
-format = '➜ [$symbol]($style)'
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "

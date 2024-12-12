@@ -6,6 +6,16 @@
 # map color names
 get_hex() {
 	case $1 in
+    # catppuccin theme
+    catp_red) echo "f38ba8" ;;
+	catp_blue) echo "89b4fa" ;;
+    catp_green) echo "a6e3a1" ;;
+    catp_yellow) echo "f9e2af" ;;
+    catp_peach) echo "fab387" ;;
+	catp_lavender) echo "b4befe" ;;
+    catp_mantle) echo "181825" ;;
+    catp_crust) echo "11111b" ;;
+
 	# rose-pine theme
 	love) echo "EB6F92" ;;
 	gold) echo "F6C177" ;;
@@ -51,15 +61,15 @@ get_hex() {
 }
 
 # set color
-act_color="cred"
-ina_color="cbg"
-bg_color="corange"
+act_color="catp_peach"
+ina_color="catp_crust"
+# bg_color="catp_crust"
 
 OPTIONS=(
 	hidpi=on
 	width=4.0
 	style=round
-	# blur_radius=80.0
+	blur_radius=80.0
 	# background_color="0xff$(get_hex $bg_color)"
 	active_color="0xff$(get_hex $act_color)"
 	inactive_color="0xff$(get_hex $ina_color)"
