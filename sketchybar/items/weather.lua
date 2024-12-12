@@ -218,8 +218,18 @@ local function create_weather_widget()
 		spacer = sbar.add("item", "weather.spacer", {
 			position = "popup." .. weather_bracket.name,
 			width = config.popup.width - 2,
-			label = { string = " ", y_offset = 10 },
-			y_offset = 18,
+			label = { string = " " },
+		}),
+		forecast_label = sbar.add("item", "weather.forecast_label", {
+			position = "popup." .. weather_bracket.name,
+			width = config.popup.width - 2,
+			label = {
+				string = "5 Day Forecast",
+				color = config.popup.headers.color,
+				padding_left = config.popup.headers.padding_left,
+				font = { size = settings.font.size_map["Large"] },
+			},
+			y_offset = 12,
 		}),
 	}
 
@@ -236,8 +246,8 @@ local function create_weather_widget()
 	end
 
 	local function toggle_popup()
-		local is_visible = weather:query().popup.drawing == "on"
-		weather:set({ popup = { drawing = not is_visible } })
+		local is_visible = weather_bracket:query().popup.drawing == "on"
+		weather_bracket:set({ popup = { drawing = not is_visible } })
 
 		if not is_visible then
 			for _, item in ipairs(forecast_items) do
@@ -282,14 +292,14 @@ local function create_weather_widget()
 
 	weather:subscribe("mouse.clicked", function(env)
 		toggle_popup()
-		if weather:query().popup.drawing == "on" then
+		if weather_bracket:query().popup.drawing == "on" then
 			update_weather()
 		end
 	end)
 
 	weather:subscribe("mouse.exited.global", function(env)
-		if weather:query().popup.drawing == "on" then
-			weather:set({ popup = { drawing = false } })
+		if weather_bracket:query().popup.drawing == "on" then
+			weather_bracket:set({ popup = { drawing = false } })
 		end
 	end)
 
