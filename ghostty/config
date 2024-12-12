@@ -4,7 +4,6 @@ theme = catppuccin-mocha
 
 # Fonts
 font-family = "Monolisa Variable"
-# font-family = "Berkely Mono Trial"
 font-family = "Symbols Nerd Font Mono"
 font-size = 16
 # font-thicken = true
@@ -18,8 +17,8 @@ mouse-hide-while-typing = true
 
 # Window appearance
 bold-is-bright = true
-window-padding-y = 3,2
-window-padding-x = 8
+window-padding-y = 3,4
+window-padding-x = 6
 resize-overlay = never
 background-opacity = 1
 window-decoration = true
@@ -30,7 +29,6 @@ macos-titlebar-style = hidden
 
 # general
 auto-update = check
-command = "/bin/zsh"
 gtk-single-instance = true
 # shell-integration = zsh
 # shell-integration-features = cursor,sudo,title
