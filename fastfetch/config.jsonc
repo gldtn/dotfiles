@@ -3,12 +3,9 @@
     "display": {
         "separator": " "
     },
-    // "logo": {
-    //     "source": "~/.config/fastfetch/logo.txt",
-    //     "padding": {
-    //         "top": 1
-    //     }
-    // },
+    "logo": {
+        "type": "none",
+    },
     "modules": [
         // "break",
         // {
@@ -47,7 +44,7 @@
             "type": "command",
             "shell": "/bin/zsh",
             "text": "echo $WM",
-            "format": "{#1}{1}",
+            "format": "{1}",
             "key": "├─ {#31}",
             "keyColor": "white"
         },
@@ -57,7 +54,10 @@
             "keyColor": "white"
         },
         {
-            "type": "terminalfont",
+            "type": "command",
+            "shell": "/bin/zsh",
+            "text": "echo $TERM_FONT",
+            "format": "{1}",
             "key": "╰─ {#31}",
             "keyColor": "white"
         },

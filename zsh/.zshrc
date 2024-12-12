@@ -37,7 +37,7 @@ v() {
 export WM=$(aerospace --version | awk '/AeroSpace.app server version/ {print "Aerospace v"$4}')
 export CPU="$(sysctl -n machdep.cpu.brand_string) - $(smctemp -c)c"
 export TERMINAL="Kitty v$(kitty --version | awk '{print $2}')"
-export TERM_FONT=$(awk '/font_family/ {print $2}' "${XDG_CONFIG_HOME}/kitty/kitty.conf")
+export TERM_FONT=$(ghostty +show-config | grep -m1 font-family | awk -F '=' '{gsub(/["#].*/, "", $2); print $2}' | xargs)
 
 # Load and initialise completion system
 autoload -Uz compinit
