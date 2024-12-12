@@ -1,3 +1,42 @@
+# files
+*.log
 .DS_Store
-nvim
 secret.lua
+
+# folders
+nvim
+yadm/
+valet/
+vscode/
+phpmon/
+swiftpm/
+raycast/
+prettier/
+cava/shaders/
+
+# fastfetch
+fastfetch/*
+!fastfetch/config.jsonc
+
+# aerospace
+aerospace/scripts/*.swift
+aerospace/scripts/backups/
+
+# screenshots
+shots/*
+!shots/nvim/
+!shots/config/
+
+# zsh
+zsh/rc/*
+zsh/.cache
+zsh/.zsh_*
+zsh/.zshrc_*
+zsh/.zcompcache
+!zsh/rc/aliases.zsh
+
+# zed
+zed/*
+!zed/themes
+!zed/keymap.json
+!zed/settings.json

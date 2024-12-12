@@ -66,14 +66,14 @@ cmd-h = []     # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 # exec commands
-ctrl-alt-shift-cmd-enter = ['exec-and-forget ghostty']
+ctrl-alt-shift-cmd-enter = ['exec-and-forget -a Ghostty.app']
 ctrl-alt-shift-cmd-b = ['exec-and-forget open -a "Google Chrome.app"']
 
 # focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
 
 # move
 alt-shift-h = 'move left'
