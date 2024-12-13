@@ -9,11 +9,12 @@
 ![Desktop](shots/top.png)
 **Theme**: [Catppuccin](https://github.com/catppuccin)
 
-- Ghostty
+Apps;
 
-* Neovim
-* Fastfetch
-* Btop++
+- Ghostty
+- Neovim
+- Fastfetch
+- Btop++
 
 ### Credits
 
