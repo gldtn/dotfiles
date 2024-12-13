@@ -22,11 +22,6 @@ fastfetch/*
 aerospace/scripts/*.swift
 aerospace/scripts/backups/
 
-# screenshots
-shots/*
-!shots/nvim/
-!shots/config/
-
 # zsh
 zsh/rc/*
 zsh/.cache

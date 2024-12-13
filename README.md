@@ -2,22 +2,14 @@
 
 #### Use at your own risk 😎
 
-**Theme**: [cyberdream](https://github.com/scottmckendry/cyberdream.nvim)
+**Theme**: Catppuccin(https://github.com/scottmckendry/cyberdream.nvim)
 
-**Windowmanager**: [Yabai](https://github.com/koekeishiya/yabai)
+**Bar**: [Sketchybar](https://github.com/FelixKratz/SketchyBar)
 
-### Yabai + kitty
+**Windowmanager**: [Aerospace](https://github.com/nikitabobko/AeroSpace)
 
-![Desktop](shots/desktop.png)
-Aerospace shown o fastfetch!
-
-### nvim
-
-![nvim](shots/nvim.png)
-
-### nvim + feline statusline
-
-![Feline](shots/feline.png)
+![Desktop](shots/top.png)
+nvim/fastfetch/btop
 
 ### Credits
 
