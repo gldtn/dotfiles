@@ -13,6 +13,7 @@ swiftpm/
 raycast/
 prettier/
 cava/shaders/
+github-copilot/
 
 # fastfetch
 fastfetch/*
