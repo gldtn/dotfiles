@@ -9,7 +9,10 @@
 **Windowmanager**: [Aerospace](https://github.com/nikitabobko/AeroSpace)
 
 ![Desktop](shots/top.png)
-nvim/fastfetch/btop
+Ghostty
+Neovim
+Fastfetch
+Btop++
 
 ### Credits
 
