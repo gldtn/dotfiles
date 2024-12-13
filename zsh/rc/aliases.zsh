@@ -52,9 +52,9 @@ alias find="fd"
 
 # LS replacement - eza
 ## https://github.com/eza-community/eza
-ezargs="--icons --git-ignore -I='$(awk '{$1=$1} NF{printf "%s|", $0}' "${ZDOTDIR}/.ezaignore" | sed 's/|$//')' --group-directories-first"
+ezargs="--icons -I='$(awk '{$1=$1} NF{printf "%s|", $0}' "${ZDOTDIR}/.ezaignore" | sed 's/|$//')' --group-directories-first"
 
-alias ls="eza -alh $ezargs" # all files and dirs; long format
+alias ls="eza -lah $ezargs" # all files and dirs; long format
 alias lg="eza -Galh $ezargs" # all files and dirs; long format/grid
 alias la="eza -a $ezargs" # all files and dirs
 alias tr="eza -aT $ezargs" # tree listing
@@ -76,10 +76,10 @@ alias brew.uf="brew update && brew upgrade --formula" # or brew outdated | xargs
 alias brew.up="brew update && brew outdated && brew upgrade && brew upgrade --cask && brew upgrade --fetch-HEAD && brew cleanup"
 
 # zsh manipulation
-alias :ez="nvim \${ZDOTDIR}"
-alias :sz="source \${ZDOTDIR}/.zshrc"
-alias :ea="cat \${ZDOTDIR}/rc/aliases.zsh"
-alias :sa="source \${ZDOTDIR}/rc/aliases.zsh"
+alias ez="nvim \${ZDOTDIR}"
+alias sz="source \${ZDOTDIR}/.zshrc"
+alias va="cat \${ZDOTDIR}/rc/aliases.zsh"
+alias sa="source \${ZDOTDIR}/rc/aliases.zsh"
 
 # YADM/Dotfiles
 alias yadms="yadm status"
