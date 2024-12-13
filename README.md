@@ -2,7 +2,7 @@
 
 #### Use at your own risk 😎
 
-**Theme**: Catppuccin(https://github.com/scottmckendry/cyberdream.nvim)
+**Theme**: Catppuccin(https://github.com/catppuccin)
 
 **Bar**: [Sketchybar](https://github.com/FelixKratz/SketchyBar)
 
