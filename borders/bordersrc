@@ -61,7 +61,7 @@ get_hex() {
 }
 
 # set color
-act_color="catp_peach"
+act_color="catp_yellow"
 ina_color="catp_crust"
 # bg_color="catp_crust"
 

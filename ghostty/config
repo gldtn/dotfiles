@@ -30,8 +30,8 @@ macos-titlebar-style = hidden
 # general
 auto-update = check
 gtk-single-instance = true
-# shell-integration = zsh
-# shell-integration-features = cursor,sudo,title
+#shell-integration = zsh
+#shell-integration-features = cursor,sudo,title
 
 # keybindings
 keybind = clear

@@ -78,6 +78,7 @@ alias brew.up="brew update && brew outdated && brew upgrade && brew upgrade --ca
 # zsh manipulation
 alias ez="nvim \${ZDOTDIR}"
 alias sz="source \${ZDOTDIR}/.zshrc"
+alias ea="nvim \${ZDOTDIR}/rc/aliases.zsh"
 alias va="cat \${ZDOTDIR}/rc/aliases.zsh"
 alias sa="source \${ZDOTDIR}/rc/aliases.zsh"
 
