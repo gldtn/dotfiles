@@ -15,16 +15,12 @@ export XDG_DATA_HOME=${HOME}/.local/share
 # Environment variables set everywhere
 export LANG="en_US.UTF-8"
 # export TERM="xterm-256color"
-# export TERM="Kitty $(kitty --version | awk '{print $2}')"
 
-export BROWSER="chrome"
+export BROWSER="Google Chrome"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export SHELL_SESSIONS_DISABLE=1 # Disable sessions MacOS
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgrep/.ripgreprc"
-
-### Programs related PATH ###
-export AEROSPACE_MODE_SCRIPT="${XDG_CONFIG_HOME}/sketchybar/plugins/aerospace_mode.sh"
 
 # Setting PATH for Python 3.11
 # The original version is saved in .zprofile.pysave

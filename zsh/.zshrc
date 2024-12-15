@@ -70,3 +70,6 @@ export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
 
 source "$HOME/.openai_key.zsh"
+
+# bun completions
+[ -s "/Users/gldtn/.bun/_bun" ] && source "/Users/gldtn/.bun/_bun"
