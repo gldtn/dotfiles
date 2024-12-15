@@ -3,6 +3,7 @@
 #### Use at your own risk 😎
 
 **Bar**: [Sketchybar](https://github.com/FelixKratz/SketchyBar)
+You can view my Sketchybar config 👉 [here](https://github.com/gldtn/sketchybar)
 
 **Windowmanager**: [Aerospace](https://github.com/nikitabobko/AeroSpace)
 

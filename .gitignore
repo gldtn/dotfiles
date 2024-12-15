@@ -5,10 +5,14 @@ secret.lua
 
 # folders
 nvim
+cava/
+skhd/
 yadm/
+yabai/
 valet/
 vscode/
 phpmon/
+lazygit/
 swiftpm/
 raycast/
 prettier/
@@ -36,3 +40,4 @@ zed/*
 !zed/themes
 !zed/keymap.json
 !zed/settings.json
+sketchybar/
