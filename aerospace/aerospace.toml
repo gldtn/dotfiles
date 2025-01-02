@@ -1,4 +1,4 @@
-### Aerospace startup settings
+# Aerospace startup settings
 start-at-login = true
 after-login-command = []
 after-startup-command = [
@@ -93,6 +93,14 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
+
+# move node to workspace
+alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
 
 # workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -310,27 +318,38 @@ s = [
 5 = 2
 6 = 2
 
-# Window Rules
+### Window Rules
+# Floating apps
 [[on-window-detected]]
 if.app-name-regex-substring = '(Finder|1Password)'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.window-title-regex-substring = '(Software Update|Update Available|Updating Ghostty)'
+run = 'layout floating'
+
+# Xcode settings
+[[on-window-detected]]
+if.window-title-regex-substring = '(General|Accounts|Settings)'
+run = 'layout floating'
+
+# Set workspace layout and move window to workspace
+[[on-window-detected]]
 if.app-name-regex-substring = '(ChatGPT|OpenAI|Siri)'
-run = ['layout tiling', 'move-node-to-workspace 2']
+run = ['layout tiling', 'move-node-to-workspace 5']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '(Spotify|Music|Rustdesk|SF Symbols)'
-run = ['move-node-to-workspace 3']
+run = ['move-node-to-workspace 6']
 
 [[on-window-detected]]
-if.app-name-regex-substring = '(Visual Studio Code|Code)'
-run = ['layout tiling', 'move-node-to-workspace 4']
+if.app-name-regex-substring = '(Visual Studio Code|Code|Xcode)'
+run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '(Discord|Messages|WhatsApp|Zoom|Teams)'
-run = ['move-node-to-workspace 5']
+run = ['move-node-to-workspace 2']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '(Mimestream)'
-run = ['layout tiling', 'move-node-to-workspace 6']
+run = ['layout tiling', 'move-node-to-workspace 3']

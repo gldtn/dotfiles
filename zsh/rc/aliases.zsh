@@ -72,6 +72,7 @@ alias brew.lc="brew list --cask"
 alias brew.lp="brew list --pinned"
 alias brew.lf="brew list --formula"
 alias brew.uc="brew update && brew upgrade --cask"
+alias fixbrew="sudo chown -R $(whoami) /opt/homebrew/* && cleanup"
 alias brew.uf="brew update && brew upgrade --formula" # or brew outdated | xargs brew install
 alias brew.up="brew update && brew outdated && brew upgrade && brew upgrade --cask && brew upgrade --fetch-HEAD && brew cleanup"
 

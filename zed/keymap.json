@@ -10,12 +10,15 @@
     "context": "Workspace",
     "bindings": {
       "\\": "workspace::ToggleRightDock",
-      "ctrl-/": "workspace::ToggleBottomDock"
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "cmd-k cmd-f": "file_finder::Toggle",
+      "ctrl-space": "tab_switcher::Toggle"
     }
   },
   {
     "context": "Editor",
     "bindings": {
+      "ctrl-space": "tab_switcher::Toggle"
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   }
