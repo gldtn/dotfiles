@@ -1,0 +1,98 @@
+# Space management
+
+## MONITOR 1 - SPACE 1-4
+
+# Space 1
+SPACE1=(
+  Ghostty
+  #Google Chrome
+)
+
+for ((i = 1; i <= "${#SPACE1[@]}"; i++)); do
+  yabai -m rule --add label="space1_${SPACE1[(($i - 1))]}" app="^${SPACE1[(($i - 1))]}.*$" space=^1
+done
+
+# Space 2
+SPACE2=(
+  Xcode
+  SF Symbols
+)
+
+for ((i = 1; i <= "${#SPACE2[@]}"; i++)); do
+  yabai -m rule --add label="space2_${SPACE2[(($i - 1))]}" app="^${SPACE2[(($i - 1))]}.*$" space=^2
+done
+
+# Space 3
+SPACE3=(
+  Zed
+  Zed Preview
+  Code
+  Sublime Text
+  Skim
+  Inkscape
+  Transmit
+  Mimestream
+  Thunderbird Daily
+)
+
+for ((i = 1; i <= "${#SPACE3[@]}"; i++)); do
+  yabai -m rule --add label="space3_${SPACE3[(($i - 1))]}" app="^${SPACE3[(($i - 1))]}.*$" space=^3
+done
+
+# Space 4
+SPACE4=(
+  Slack
+	Discord
+  WhatsApp
+  Messages
+  Telegram
+  Messenger
+  Spotify
+  Music
+)
+
+for ((i = 1; i <= "${#SPACE4[@]}"; i++)); do
+	yabai -m rule --add label="space4_${SPACE4[(($i - 1))]}" app="^${SPACE4[(($i - 1))]}.*$" space=^4
+done
+
+## MONITOR 2 - SPACE 5-8
+
+# Space 5
+SPACE5=(
+  #Firefox
+  #Google Chrome
+)
+
+for ((i = 1; i <= "${#SPACE5[@]}"; i++)); do
+  yabai -m rule --add label="space1_${SPACE5[(($i - 1))]}" app="^${SPACE5[(($i - 1))]}.*$" space=^5
+done
+
+# Space 6
+SPACE6=(
+  ChatGPT
+)
+
+for ((i = 1; i <= "${#SPACE6[@]}"; i++)); do
+  yabai -m rule --add label="space1_${SPACE6[(($i - 1))]}" app="^${SPACE6[(($i - 1))]}.*$" space=^6
+done
+
+# Space 7
+SPACE7=(
+  #Firefox
+  #Google Chrome
+)
+
+for ((i = 1; i <= "${#SPACE7[@]}"; i++)); do
+  yabai -m rule --add label="space1_${SPACE7[(($i - 1))]}" app="^${SPACE7[(($i - 1))]}.*$" space=^7
+done
+
+# Space 8
+SPACE8=(
+  #Firefox
+  #Google Chrome
+)
+
+for ((i = 1; i <= "${#SPACE8[@]}"; i++)); do
+  yabai -m rule --add label="space1_${SPACE8[(($i - 1))]}" app="^${SPACE8[(($i - 1))]}.*$" space=^8
+done
+

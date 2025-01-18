@@ -1,7 +1,10 @@
 format = '''
-$username$directory$git_branch$git_status[]($style)
+$username$directory $git_branch $git_status$git_metrics($style)
 $character
 '''
+
+# move the rest of the prompt to the right
+# right_format = """$swift$lua"""
 
 # Disable the blank line at the start of the prompt
 add_newline = true
@@ -9,6 +12,52 @@ add_newline = true
 # Sets user-defined palette
 # Palettes must be defined _after_ this line
 palette = "catppuccin_mocha"
+
+
+[username]
+show_always = true
+style_user = "lavender"
+style_root = "red"
+format = "[$user]($style)[❯](surface1)"
+disabled = true
+
+[character]
+success_symbol = "[[](green) ❯](peach)"
+error_symbol = "[[](red) ❯](peach)"
+vimcmd_symbol = "[❮](subtext1)"         # For use with zsh-vi-mode
+
+[directory]
+style = "blue"
+format = "[$path]($style)"
+repo_root_style = "peach"
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)"
+truncation_length = 6
+truncate_to_repo = false
+
+[git_branch]
+symbol = "󰊤"
+style = "sky"
+format = '[➜](fg:surface2) [$symbol $branch]($style)'
+
+[git_status]
+style = "peach"
+format = '[\([$all_status$ahead_behind]($style)](fg:surface2)'
+
+[git_metrics]
+added_style = "green"
+deleted_style = "red"
+format = '[[/](fg:surface2)[+$added]($added_style)[/](fg:surface2)[−$deleted]($deleted_style)\)](fg:surface2)'
+disabled = false
+
+[swift]
+symbol = "󰛥"
+style = "peach"
+format = '[$symbol]($style) [\(](fg:surface2)[$version](fg:overla2)[\)](fg:surface2)'
+
+[lua]
+symbol = "󰢱"
+style = "blue"
+format = '[$symbol]($style) [\(](fg:surface2)[$version](fg:overlay1)[\)](fg:surface2)'
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -37,34 +86,3 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
-
-[username]
-show_always = true
-style_user = "lavender"
-style_root = "red"
-format = "[$user]($style)[❯](surface1) "
-disabled = true
-
-[character]
-success_symbol = "[[](green) ❯](peach)"
-error_symbol = "[[](red) ❯](peach)"
-vimcmd_symbol = "[❮](subtext1)"         # For use with zsh-vi-mode
-
-[directory]
-style = "blue"
-format = "[$path]($style)"
-repo_root_style = "flamingo"
-repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)"
-truncation_length = 3
-truncate_to_repo = true
-# home_symbol = " "
-# truncation_symbol = "…/"
-
-[git_branch]
-symbol = "󰊤"
-style = "sky"
-format = '[ $symbol $branch]($style)'
-
-[git_status]
-style = "flamingo"
-format = '[ $all_status$ahead_behind]($style)'

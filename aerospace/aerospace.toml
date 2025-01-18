@@ -330,7 +330,7 @@ run = 'layout floating'
 
 # Xcode settings
 [[on-window-detected]]
-if.window-title-regex-substring = '(General|Accounts|Settings)'
+if.window-title-regex-substring = '(Settings|General|Accounts|Behaviors|Navigation|Themes|Text Editing|Key Bindings|Source Control|Components|Locations)'
 run = 'layout floating'
 
 # Set workspace layout and move window to workspace
