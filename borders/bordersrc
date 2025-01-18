@@ -8,23 +8,24 @@ get_hex() {
 	case $1 in
     # catppuccin theme
     catp_red) echo "f38ba8" ;;
-	catp_blue) echo "89b4fa" ;;
+    catp_blue) echo "89b4fa" ;;
     catp_green) echo "a6e3a1" ;;
     catp_peach) echo "fab387" ;;
     catp_mauve) echo "cba6f7" ;;
+    catp_maroon) echo "#eba0ac" ;;
     catp_crust) echo "11111b" ;;
     catp_yellow) echo "f9e2af" ;;
     catp_mantle) echo "181825" ;;
     catp_lavender) echo "b4befe" ;;
 
-	# rose-pine theme
-	love) echo "EB6F92" ;;
-	gold) echo "F6C177" ;;
-	rose) echo "EBBCBA" ;;
-	pine) echo "31748F" ;;
-	foam) echo "56949F" ;;
-	iris) echo "C4A7E7" ;;
-	base) echo "191724" ;;
+    # rose-pine theme
+    love) echo "EB6F92" ;;
+    gold) echo "F6C177" ;;
+    rose) echo "EBBCBA" ;;
+    pine) echo "31748F" ;;
+    foam) echo "56949F" ;;
+    iris) echo "C4A7E7" ;;
+    base) echo "191724" ;;
 
     # cyberdream
     cbg) echo "16181a" ;;
@@ -38,23 +39,23 @@ get_hex() {
     cyellow) echo "f1ff5e" ;;
     cmagenta) echo "ff5ef1" ;;
 
-	# dracula theme
-	dred) echo "FF5555" ;;
+    # dracula theme
+    dred) echo "FF5555" ;;
     dcyan) echo "8BE9FD" ;;
     dpink) echo "FF79C6" ;;
     dgreen) echo "50FA7B" ;;
     dpurple) echo "BD93F9" ;;
     dorange) echo "FFB86C" ;;
-	dyellow) echo "F1FA8C" ;;
-	dcurrent) echo "44475A" ;;
+    dyellow) echo "F1FA8C" ;;
+    dcurrent) echo "44475A" ;;
 
 	# tokyonight theme
     tkred) echo "F7768E" ;;
     tkgreen) echo "9FCE6A" ;;
-	tkdblue) echo "82AAFF" ;;
-	tklblue) echo "7DD0FF" ;;
-	tkpurple) echo "BC9BF7" ;;
-	tkyellow) echo "E1AF68" ;;
+    tkdblue) echo "82AAFF" ;;
+    tklblue) echo "7DD0FF" ;;
+    tkpurple) echo "BC9BF7" ;;
+    tkyellow) echo "E1AF68" ;;
 
 	# default color
 	*) echo "ffffff" ;;
@@ -62,7 +63,7 @@ get_hex() {
 }
 
 # set color
-act_color="catp_green"
+act_color="catp_lavender"
 ina_color="catp_crust"
 # bg_color="catp_crust"
 
