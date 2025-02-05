@@ -9,17 +9,34 @@
   {
     "context": "Workspace",
     "bindings": {
-      "\\": "workspace::ToggleRightDock",
+      "ctrl-\\": "project_panel::ToggleFocus",
+      "ctrl-o": "outline_panel::ToggleFocus",
+      // Docks
+      "ctrl-]": "workspace::ToggleRightDock",
       "ctrl-/": "workspace::ToggleBottomDock",
-      "cmd-k cmd-f": "file_finder::Toggle",
-      "ctrl-space": "tab_switcher::Toggle"
+      // Pickers
+      "cmd-k cmd-f": "file_finder::Toggle"
     }
   },
   {
     "context": "Editor",
     "bindings": {
-      "ctrl-space": "tab_switcher::Toggle"
+      // "ctrl-space": "tab_switcher::Toggle"
       // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "AssistantPanel",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-k c": "assistant::CopyCode",
+      "ctrl-\\": "project_panel::ToggleFocus",
+      "cmd-g": "search::SelectNextMatch",
+      "cmd-shift-g": "search::SelectPrevMatch",
+      "cmd-alt-/": "assistant::ToggleModelSelector",
+      "cmd-k h": "assistant::DeployHistory",
+      "cmd-k l": "assistant::DeployPromptLibrary",
+      "cmd-n": "assistant::NewContext"
     }
   }
 ]

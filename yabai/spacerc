@@ -4,8 +4,11 @@
 
 # Space 1
 SPACE1=(
+  Zed
+  Code
   Ghostty
-  #Google Chrome
+  Zed Preview
+  Sublime Text
 )
 
 for ((i = 1; i <= "${#SPACE1[@]}"; i++)); do
@@ -15,7 +18,6 @@ done
 # Space 2
 SPACE2=(
   Xcode
-  SF Symbols
 )
 
 for ((i = 1; i <= "${#SPACE2[@]}"; i++)); do
@@ -24,10 +26,6 @@ done
 
 # Space 3
 SPACE3=(
-  Zed
-  Zed Preview
-  Code
-  Sublime Text
   Skim
   Inkscape
   Transmit
@@ -59,8 +57,9 @@ done
 
 # Space 5
 SPACE5=(
-  #Firefox
-  #Google Chrome
+  Firefox
+  DuckDuckGo
+  Google Chrome
 )
 
 for ((i = 1; i <= "${#SPACE5[@]}"; i++)); do
@@ -69,7 +68,8 @@ done
 
 # Space 6
 SPACE6=(
-  ChatGPT
+  # ChatGPT
+  SF Symbols
 )
 
 for ((i = 1; i <= "${#SPACE6[@]}"; i++)); do

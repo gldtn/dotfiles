@@ -11,18 +11,17 @@
 
   "assistant": {
     "default_model": {
-      "provider": "openai",
+      "provider": "copilot_chat",
       "model": "gpt-4o"
     },
     "version": "2"
   },
 
   "ui_font_size": 16,
-
   "buffer_font_family": "MonoLisa Variable",
   "buffer_font_fallbacks": ["Symbols Nerd Font Mono"],
-  "buffer_font_size": 16,
-  "buffer_line_height": { "custom": 1.8 },
+  "buffer_font_size": 15,
+  "buffer_line_height": { "custom": 1.9 },
   "buffer_font_features": {
     "calt": true,
     "ss02": true
@@ -43,7 +42,7 @@
     }
   },
 
-  // Hide bars
+  // Bars
   "tab_bar": {
     "show": false,
     "show_nav_history_buttons": false
@@ -61,6 +60,7 @@
     "selected_symbol": false
   },
 
+  // Panels
   "project_panel": {
     "dock": "right"
   },
@@ -78,15 +78,23 @@
     "PHP": {
       "language_servers": ["phpactor"]
     },
-    "lua": {
-      "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
-      "runtime.version": "Lua 5.4",
-      "diagnostics.severity": {
-        //      "duplicate-set-field": "Hint"
-      },
-      "format.defaultConfig": {
-        "indent_style": "space",
-        "indent_size": "2"
+    "Lua": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "stylua",
+          "arguments": [
+            "--syntax=Lua54",
+            "-",
+            "--indent_width=2",
+            "column_width=180",
+            "--line_endings=Unix",
+            "--indent_type=Spaces",
+            "--call_parentheses=Always",
+            "--quote_style=AutoPreferDouble",
+            "--collapse_simple_statement=Never"
+          ]
+        }
       }
     }
   }
